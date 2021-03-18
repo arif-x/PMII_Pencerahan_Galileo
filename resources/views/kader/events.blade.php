@@ -64,7 +64,9 @@
 				<div class="card-header my-card-header">
 					<div class="panel-heading">
 						<ul class="nav nav-tabs border-0">
-							<li class="active card-header-padding"><a href="#profile" data-toggle="tab">Profil</a></li>
+							<li class="active card-header-padding"><a href="#pengkaderan" data-toggle="tab">Event Pengkaderan</a></li>
+							<li class="card-header-padding">|</li>
+							<li class="card-header-padding"><a href="#umum" data-toggle="tab">Event Umum</a></li>
 						</ul>
 					</div>
 				</div>
@@ -72,9 +74,9 @@
 					<div class="col-md-12">
 						<div class="tab-content">
 
-							<div class="tab-pane in active" id="profile">
+							<div class="tab-pane in active" id="pengkaderan">
 								<div>
-									<a href="{{ route('publics.event') }}" type="button" class="btn btn-warning text-white">Lihat & Ikuti Event</a>
+									<a href="{{ route('publics.event-pengkaderan') }}" type="button" class="btn btn-warning text-white">Lihat & Ikuti Event</a>
 								</div>
 								<hr>
 								@foreach($joins as $join)
@@ -100,6 +102,10 @@
 								</div>
 								<hr>
 								@endforeach								
+							</div>
+
+							<div class="tab-pane in" id="umum">
+								<p>Belum Ada</p>						
 							</div>
 
 						</div>
