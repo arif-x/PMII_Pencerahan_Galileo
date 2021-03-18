@@ -403,7 +403,7 @@
     </section>
 
 
-    <section id="article" class="wow fadeIn">
+    <section id="event" class="wow fadeIn">
         <div class="container">
             <header class="section-header">
                 <h3>Event</h3>
@@ -429,9 +429,9 @@
                                 </div>
                                 <div class="text-center">
                                     <strong>Open Register:</strong> <br>
-                                    {{ $event->tgl_mulai_regist }} - {{ $event->tgl_akhir_regist }} <br>
+                                    {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }} <br>
                                     <strong>Pelaksanaan:</strong> <br>
-                                    {{ $event->tgl_mulai }} - {{ $event->tgl_akhir }}
+                                    {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}
                                 </div>
                             </div>
                         </div>    

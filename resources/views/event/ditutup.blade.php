@@ -97,9 +97,9 @@
                   <div class="shadow align-middle block-20 mt-3 mb-3"><img src="{{ $event->thumbnail }}" style="max-width: 100% !important;">
                   </div>
                   <div class="text d-block pl-md-4 mt-1">
-                    <h3>{{ $event->nama_event }}</h3>
-                    <h5 style="text-align: justify !important;">Tanggal Pendaftaran Event: <br> {{ \Carbon\Carbon::parse($event->tanggal_awal_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tanggal_akhir_regist)->format('d-m-Y') }}</h5>
-                    <h5 style="text-align: justify !important;">Tanggal Pelaksanaan Event: <br> {{ \Carbon\Carbon::parse($event->tanggal_awal)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tanggal_akhir)->format('d-m-Y') }}</h5>
+                    <h3><strong>{{ $event->nama_event }}</strong></h3>
+                    <h5 style="text-align: justify !important;"><strong>Tanggal Pendaftaran Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }}</h5>
+                    <h5 style="text-align: justify !important;"><strong>Tanggal Pelaksanaan Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}</h5>
 
                     <p><a href="#" class="btn btn-primary py-2 px-3">Event Telah Berakhir</a></p>
                   </div>
