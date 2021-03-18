@@ -32,6 +32,9 @@
             <a href="{{ route('event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
                 <i class="icon-desktop"></i><span>Data Event PMII Rayon "Pencarahan" Galileo</span>
             </a>
+            <a href="{{ route('peserta-event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
+                <i class="icon-desktop"></i><span>Data Peserta Event PMII Rayon "Pencarahan" Galileo</span>
+            </a>
         </li>
     </ul>
     <br><br><br><br>

@@ -88,6 +88,7 @@ Route::group([
 	Route::resource('/admin/kader','KaderController');	
 	Route::resource('/admin/article','ArticleVerificationController');
 	Route::resource('/admin/event','EventController');
+	Route::resource('/admin/peserta-event','PesertaEventController');
 	Route::get('/admin/kader/{nim}/photo/pasphoto', 'DataFotokaderController@pasPhoto')->name('admin.kader.photo.pasphoto');
 	Route::get('/admin/kader/{nim}/photo/ktm', 'DataFotokaderController@ktm')->name('admin.kader.photo.ktm');
 });
