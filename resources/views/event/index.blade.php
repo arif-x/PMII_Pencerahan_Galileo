@@ -103,7 +103,87 @@
                     <h3><strong>{{ $event->nama_event }}</strong></h3>
                     <h5 style="text-align: justify !important;"><strong>Tanggal Pendaftaran Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }}</h5>
                     <h5 style="text-align: justify !important;"><strong>Tanggal Pelaksanaan Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}</h5>
+                    @guest
+                    @if (Route::has('register'))
+                    @endif
+                    <p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistGuestModal{{$event->id}}">Ikuti Event</a></p>
+                    <div class="modal-lg fade" id="eventRegistGuestModal{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="modalGusestLabel{{$event->id}}" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalGuestLabel{{$event->id}}">Konfirmasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Ingin Mengikuti {{$event->nama_event}}?
+                          </div>
+                          <div class="modal-footer">
+                            <form method="POST" action="/event/guest/join">
+                              @csrf
+                              <input type="hidden" value="{{$event->id}}" name="event_id">
+                              <div class="mt-2">
+                                <label for="email">Email</label>
+                                <input id="email" type="text" class="form-control" value="" name="email">
+                              </div>
+                              <div class="mt-2">
+                                <label for="nama">Nama</label>
+                                <input id="nama" type="text" class="form-control" value="" name="nama">
+                              </div>
+                              <div class="mt-2">
+                                <label for="rayon">Rayon</label>
+                                <input id="rayon" type="text" class="form-control" value="" name="rayon">
+                              </div>
+                              <div class="mt-4">
+                                <div class="col-md-12">
+                                  <button type="submit" class="btn btn-primary" style="width:100% !important">Ikut</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    @else
+                    <input type="hidden" id="id{{ $event->id }}" value="{{ $event->id }}">
 
+                    <?php
+                    $date = new DateTime($event['tgl_akhir_regist']);
+                    $now = new DateTime(); 
+
+                    if($date > $now) {
+                      echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>
+
+                      <div class="modal-lg fade" id="eventRegistModal'. $event['id'] .'" tabindex="-1" role="dialog" aria-labelledby="modalLabel'. $event['id'] .'" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel'. $event['id'] .'">Konfirmasi</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                      <div class="modal-body">
+                      Ingin Mengikuti '. $event['nama_event'] .'?
+                      </div>
+                      <div class="modal-footer">
+                      <form method="POST" action="/event/authed/join">
+                      <input name="_token" value="' . csrf_token() . ' " type="hidden">
+                      <input type="hidden" value="'. $event['id'] .'" name="event_id">
+                      <button type="submit" class="btn btn-primary">Ikut</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                      ';
+                    } elseif($date < $now) {
+                      echo '<p><a href="#" class="btn btn-primary py-2 px-3">Event Telah Berakhir</a></p>';
+                    }
+                    ?>                    
+
+                    @endguest
                   </div>
                 </div>
               </div>

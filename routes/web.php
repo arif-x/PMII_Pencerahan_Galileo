@@ -50,6 +50,20 @@ Route::group([
 });
 
 Route::group([
+	'middleware' => ['guest'],
+	'namespace' => 'Publics',
+], function(){
+	Route::post('/event/guest/join', 'PesertaEventController@guest')->name('guest.event.join');
+});
+
+Route::group([
+	'middleware' => ['auth', 'biodata'],
+	'namespace' => 'Publics',
+], function(){
+	Route::post('/event/authed/join', 'PesertaEventController@authed')->name('authed.event.join');
+});
+
+Route::group([
 	'middleware' => ['auth', 'biodata'],
 	'namespace' => 'Publics',
 ], function(){	
