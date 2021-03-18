@@ -59,7 +59,7 @@
           var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('peserta-event.index') }}",
+            ajax: "{{ route('peserta-event-pengkaderan.index') }}",
             columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nama_event', name: 'nama_event'},

@@ -53,7 +53,7 @@ Route::group([
 	'middleware' => ['auth', 'biodata'],
 	'namespace' => 'Publics',
 ], function(){	
-	Route::post('/event/join', 'EventController@join')->name('authed.event.join');
+	Route::post('/event-pengkaderan/join', 'EventPengkaderanController@join')->name('authed.event-pengkaderan.join');
 });
 
 Auth::routes();
@@ -98,7 +98,7 @@ Route::group([
 	Route::resource('/admin/kader','KaderController');	
 	Route::resource('/admin/article','ArticleVerificationController');
 	Route::resource('/admin/event','EventController');
-	Route::resource('/admin/peserta-event','PesertaEventController');
+	Route::resource('/admin/peserta-event-pengkaderan','PesertaEventPengkaderanController');
 	Route::resource('/admin/event-pengkaderan','EventPengkaderanController');
 	Route::get('/admin/kader/{nim}/photo/pasphoto', 'DataFotokaderController@pasPhoto')->name('admin.kader.photo.pasphoto');
 	Route::get('/admin/kader/{nim}/photo/ktm', 'DataFotokaderController@ktm')->name('admin.kader.photo.ktm');

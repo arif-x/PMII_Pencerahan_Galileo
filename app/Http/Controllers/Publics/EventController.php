@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Publics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Event;
-use App\PesertaEvent;
+use App\PesertaEventPengkaderan;
 use Carbon\Carbon;
 
 class EventController extends Controller
@@ -32,23 +32,23 @@ class EventController extends Controller
     	return view('event.ditutup', ['events' => $event]);
     }
 
-    public function join(Request $request){
-        $check = PesertaEvent::where('event_id', $request->event_id)->where('user_id', $request->user_id)->first();
+    // public function join(Request $request){
+    //     $check = PesertaEvent::where('event_id', $request->event_id)->where('user_id', $request->user_id)->first();
 
-        $eventNames = Event::where('id', $request->event_id)->pluck('nama_event');
+    //     $eventNames = Event::where('id', $request->event_id)->pluck('nama_event');
 
-        $eventName = str_replace('"]', '', $eventNames);
-        $eventName = str_replace('["', '', $eventName);
+    //     $eventName = str_replace('"]', '', $eventNames);
+    //     $eventName = str_replace('["', '', $eventName);
 
 
-        if (empty($check)){
-            PesertaEvent::create([
-                'event_id' => $request->event_id,
-                'user_id' => $request->user_id,
-            ]);
-            return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
-        } else {
-            return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
-        }
-    }
+    //     if (empty($check)){
+    //         PesertaEvent::create([
+    //             'event_id' => $request->event_id,
+    //             'user_id' => $request->user_id,
+    //         ]);
+    //         return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
+    //     } else {
+    //         return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
+    //     }
+    // }
 }

@@ -139,7 +139,7 @@
                       Ingin Mengikuti '. $event['nama_event'] .'?
                       </div>
                       <div class="modal-footer">
-                      <form method="POST" action="/event/join">
+                      <form method="POST" action="/event-pengkaderan/join">
                       <input name="_token" value="' . csrf_token() . ' " type="hidden">
                       <input type="hidden" value="'. $event['id'] .'" name="event_id">
                       <input type="hidden" value="'. Auth::user()->id .'" name="user_id">
