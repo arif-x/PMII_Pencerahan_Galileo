@@ -18,7 +18,6 @@ class CheckBiodataMiddleware
     {
         if (
             auth()->user()->alamat_asli == null || 
-            auth()->user()->nim == null || 
             auth()->user()->jenis_kelamin == null || 
             auth()->user()->tanggal_lahir == null || 
             auth()->user()->jurusan == null || 
