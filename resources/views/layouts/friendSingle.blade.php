@@ -44,6 +44,7 @@
           <ul>
             <li class="active"><a href="/#intro">Home</a></li>
             <li><a href="/cms/manage">Tulis Artikel</a></li>
+            <li><a href="/my-events">Event Saya</a></li>
             <li><a href="/friends">Teman</a></li>
             <li><a href="/profile">Profil</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();

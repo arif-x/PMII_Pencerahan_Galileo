@@ -65,7 +65,8 @@ Route::group([
 	Route::post('/verify/submit', 'VerifyController@upload');
 	Route::get('/profile', 'ProfileController@index')->name('kader.profil');
 	Route::post('/profile/store', 'ProfileController@store')->name('kader.profile.store');
-	Route::post('/profile/photo/store', 'ProfileController@photoStore')->name('kader.profile.photo.store');		
+	Route::post('/profile/photo/store', 'ProfileController@photoStore')->name('kader.profile.photo.store');
+	Route::get('/my-events', 'JoinedEvent@index')->name('kader.joinedevents.index');		
 });
 
 Route::group([
