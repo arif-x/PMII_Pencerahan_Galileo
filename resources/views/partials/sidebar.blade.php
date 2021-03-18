@@ -30,10 +30,13 @@
         <li>
             <div class="sidebar-title">Kelola Event</div>
             <a href="{{ route('event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Event PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Event Umum PMII Rayon "Pencarahan" Galileo</span>
             </a>
             <a href="{{ route('peserta-event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Peserta Event PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Peserta Event Umum PMII Rayon "Pencarahan" Galileo</span>
+            </a>
+            <a href="{{ route('event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
+                <i class="icon-desktop"></i><span>Data Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
             </a>
         </li>
     </ul>

@@ -3,6 +3,7 @@
 <head>
   <title>PMII Rayon "Pencerahan" Galileo</title>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <!-- Favicons -->
@@ -67,21 +68,23 @@
             >
           </span>
           <span style="color: #000 !important;">
-            <a href="/event" style="color: #000 !important;">
-              Event Umum
-            </a>
-          </span>
-          <span style="color: #000 !important;">
-            >
-          </span>
-          <span style="color: #000 !important;">
-            Event Umum Ditutup
+            Event Pengkaderan
           </span>
 
         </p>
-        <h1 class="mb-0 bread">Event Umum Ditutup</h1>
+        <h1 class="mb-0 bread">Daftar Event Pengkaderan</h1>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    @if ($message = Session::get('success'))
+    <br>
+    <div class="col-md-12 alert alert-info alert-block margin-tengah">      
+      <button type="button" class="close" data-dismiss="alert">×</button>    
+      <strong>{{ $message }}</strong>
+    </div>
+    @endif
   </div>
 
   <section class="ftco-section ftco-degree-bg">
@@ -101,7 +104,50 @@
                     <h5 style="text-align: justify !important;"><strong>Tanggal Pendaftaran Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }}</h5>
                     <h5 style="text-align: justify !important;"><strong>Tanggal Pelaksanaan Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}</h5>
 
-                    <p><a href="#" class="btn btn-primary py-2 px-3">Event Telah Berakhir</a></p>
+                    @guest
+                    @if (Route::has('register'))
+                    @endif
+                    <p><a href="/login" class="btn btn-primary py-2 px-3">Login Untuk Ikutan</a></p>
+                    @else
+                    <input type="hidden" id="id{{ $event->id }}" value="{{ $event->id }}">
+
+                    <?php
+                    $date = new DateTime($event['tgl_akhir_regist']);
+                    $now = new DateTime(); 
+
+                    if($date > $now) {
+                      echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>
+
+                      <div class="modal-lg fade" id="eventRegistModal'. $event['id'] .'" tabindex="-1" role="dialog" aria-labelledby="modalLabel'. $event['id'] .'" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel'. $event['id'] .'">Konfirmasi</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                      <div class="modal-body">
+                      Ingin Mengikuti '. $event['nama_event'] .'?
+                      </div>
+                      <div class="modal-footer">
+                      <form method="POST" action="/event/join">
+                      <input name="_token" value="' . csrf_token() . ' " type="hidden">
+                      <input type="hidden" value="'. $event['id'] .'" name="event_id">
+                      <input type="hidden" value="'. Auth::user()->id .'" name="user_id">
+                      <button type="submit" class="btn btn-primary">Ikut</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
+                      ';
+                    } elseif($date < $now) {
+                      echo '<p><a href="#" class="btn btn-primary py-2 px-3">Event Telah Berakhir</a></p>';
+                    }
+                    ?>                    
+
+                    @endguest
                   </div>
                 </div>
               </div>

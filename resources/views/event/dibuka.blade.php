@@ -69,18 +69,18 @@
           </span>
           <span style="color: #000 !important;">
             <a href="/event" style="color: #000 !important;">
-              Event
+              Event Umum
             </a>
           </span>
           <span style="color: #000 !important;">
             >
           </span>
           <span style="color: #000 !important;">
-            Event Dibuka
+            Event Umum Dibuka
           </span>
 
         </p>
-        <h1 class="mb-0 bread">Event Dibuka</h1>
+        <h1 class="mb-0 bread">Event Umum Dibuka</h1>
       </div>
     </div>
   </div>
@@ -179,9 +179,25 @@
           <div class="sidebar-box ftco-animate shadow">
             <h3 class="heading">Kategori</h3>
             <ul class="categories">
-              <li><a href="/event" class="tag-cloud-link">Semua</a></li>
-              <li><a href="/event/dibuka" class="tag-cloud-link">Dibuka</a></li>
-              <li><a href="/event/ditutup" class="tag-cloud-link">Ditutup</a></li>
+              <li><a href="/event" class="tag-cloud-link">Event Umum</a></li>
+              <ul>
+                <li>
+                  <a href="/event/dibuka" class="tag-cloud-link">Event Dibuka</a>
+                </li>
+                <li>
+                  <a href="/event/ditutup" class="tag-cloud-link">Event Ditutup</a>
+                </li>
+              </ul>
+              <hr>
+              <li><a href="/event-pengkaderan" class="tag-cloud-link">Event Pengkaderan</a></li>
+              <ul>
+                <li>
+                  <a href="/event-pengkaderan/dibuka" class="tag-cloud-link">Event Dibuka</a>
+                </li>
+                <li>
+                  <a href="/event-pengkaderan/ditutup" class="tag-cloud-link">Event Ditutup</a>
+                </li>
+              </ul>
             </ul>
           </div>
         </div>        

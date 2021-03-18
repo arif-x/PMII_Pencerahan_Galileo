@@ -409,16 +409,47 @@
             <header class="section-header">
                 <h3>Event</h3>
                 <p>Event PMII Rayon <nobr style="font-style: italic;"> Pencerahan </nobr> Galileo</p>
-                <div class="text-center">
-                    <a type="button" class="btn btn-secondary" href="{{ route('publics.event') }}">Lihat Semua Event</a>
-                </div>
-            </header>
+            </header>            
+            <div class="text-center mt-4">
+                <h4>Event Umum</h4>
+            </div>
             <div class="text-center">
-
+                <a type="button" class="btn btn-secondary" href="{{ route('publics.event') }}">Lihat Semua Event Umum</a>
             </div>
             <div class="mt-4">
                 <div class="row">
                     @foreach ($events as $event)
+                    <div class="col-md-3">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <img src="{{ $event->thumbnail }}">
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <strong><a href="/event">{{ $event->nama_event }}</a></strong>
+                                </div>
+                                <div class="text-center">
+                                    <strong>Open Register:</strong> <br>
+                                    {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }} <br>
+                                    <strong>Pelaksanaan:</strong> <br>
+                                    {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h4>Event Pengkaderan</h4>
+            </div>
+            <div class="text-center">
+                    <a type="button" class="btn btn-secondary" href="{{ route('publics.event-pengkaderan') }}">Lihat Semua Event Pengkaderan</a>
+                </div>
+            <div class="mt-4">
+                <div class="row">
+                    @foreach ($pengkaderans as $event)
                     <div class="col-md-3">
                         <div class="card shadow">
                             <div class="card-header">

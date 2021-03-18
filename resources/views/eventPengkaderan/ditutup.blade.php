@@ -67,19 +67,19 @@
             >
           </span>
           <span style="color: #000 !important;">
-            <a href="/event" style="color: #000 !important;">
-              Event Umum
+            <a href="/event-pengkaderan" style="color: #000 !important;">
+              Event Pengkaderan
             </a>
           </span>
           <span style="color: #000 !important;">
             >
           </span>
           <span style="color: #000 !important;">
-            Event Umum Ditutup
+            Event Pengkaderan Ditutup
           </span>
 
         </p>
-        <h1 class="mb-0 bread">Event Umum Ditutup</h1>
+        <h1 class="mb-0 bread">Event Pengkaderan Dibuka</h1>
       </div>
     </div>
   </div>
