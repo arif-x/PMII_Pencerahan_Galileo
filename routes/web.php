@@ -117,6 +117,7 @@ Route::group([
 	Route::resource('/admin/absensi-event-pengkaderan','AbsensiEventKaderisasiController');	
 	Route::get('/admin/kader/{nim}/photo/pasphoto', 'DataFotokaderController@pasPhoto')->name('admin.kader.photo.pasphoto');
 	Route::get('/admin/kader/{nim}/photo/ktm', 'DataFotokaderController@ktm')->name('admin.kader.photo.ktm');
+	Route::get('/set-all-status-kaderisasi', 'SetAllStatusKaderisasiController@setAll')->name('admin.kader.set-all-status-kaderisasi');
 });
 
 Route::group([

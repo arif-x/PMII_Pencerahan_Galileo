@@ -64,12 +64,6 @@
 
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="event" class="col-sm-12 control-label">Nama Event</label>
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control" id="event" name="event" disabled>
-                            </div>
-                          </div>
 
                           <div class="form-group">
                             <label for="nama" class="col-sm-12 control-label">Nama</label>

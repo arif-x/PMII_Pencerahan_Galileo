@@ -22,6 +22,17 @@
     </div>
     <!-- Container-fluid Ends -->
 
+    <div style="margin-bottom: 50px;">
+      <a href="{{ route('admin.kader.set-all-status-kaderisasi') }}" type="button" class="btn btn-primary">Ubah Semua Status Kaderisasi (Untuk yang Hadir)</a>
+    </div>
+
+    @if ($message = Session::get('success'))
+    <div class="col-md-12 alert alert-info alert-block margin-tengah">
+      <button type="button" class="close" data-dismiss="alert">×</button>    
+      <strong>{{ $message }}</strong>
+    </div>
+    @endif
+
     <!-- Container-fluid starts -->
     <div class="container-fluid">
       <div class="row">   
@@ -57,17 +68,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form id="articleForm" name="articleForm" class="form-horizontal">
+                    <form id="absensiForm" name="absensiForm" class="form-horizontal">
                       <input type="hidden" name="absensi_id" id="absensi_id" value="">
 
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="event" class="col-sm-12 control-label">Nama Event</label>
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control" id="event" name="event" disabled>
-                            </div>
-                          </div>
 
                           <div class="form-group">
                             <label for="nama" class="col-sm-12 control-label">Nama</label>
@@ -129,7 +134,6 @@
             $('#saveBtn').val("edit-absensi");
             $('#ajaxModel').modal('show');
             $('#absensi_id').val(data.id);
-            $('#event').val(data.event);
             $('#nama').val(data.nama);            
             $('#kehadiran').val(data.kehadiran);
           })
@@ -140,12 +144,12 @@
           $(this).html('Save Changes');
 
           $.ajax({
-            data: $('#articleForm').serialize(),
+            data: $('#absensiForm').serialize(),
             url: "{{ route('absensi-event-pengkaderan.store') }}",
             type: "POST",
             dataType: 'json',
             success: function (data) {
-              $('#articleForm').trigger("reset");
+              $('#absensiForm').trigger("reset");
               $('#ajaxModel').modal('hide');
               table.draw();
             },
