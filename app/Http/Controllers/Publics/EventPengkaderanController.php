@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Publics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\EventPengkaderan;
-use App\PesertaEventPengkaderan;
+use App\AbsensiEventKaderisasi;
 use Carbon\Carbon;
+use Auth;
 
 class EventPengkaderanController extends Controller
 {
@@ -33,7 +34,7 @@ class EventPengkaderanController extends Controller
     }
 
     public function join(Request $request){
-        $check = PesertaEventPengkaderan::where('event_id', $request->event_id)->where('user_id', $request->user_id)->first();
+        $check = AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', $request->user_id)->first();
 
         $eventNames = EventPengkaderan::where('id', $request->event_id)->pluck('nama_event');
 
@@ -42,12 +43,22 @@ class EventPengkaderanController extends Controller
 
 
         if (empty($check)){
-            PesertaEvent::create([
-                'event_id' => $request->event_id,
-                'user_id' => $request->user_id,
+            AbsensiEventKaderisasi::create([
+                'id_event' => $request->event_id,
+                'id_user' => Auth::user()->id,
+                'nama' => Auth::user()->name,
+                'kehadiran' => 'Pending'
             ]);
             return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
         } else {
+
+            AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', Auth::user()->id)->update([
+                'id_event' => $request->event_id,
+                'id_user' => Auth::user()->id,
+                'nama' => Auth::user()->name,
+                'kehadiran' => 'Pending'
+            ]);
+
             return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
         }
     }

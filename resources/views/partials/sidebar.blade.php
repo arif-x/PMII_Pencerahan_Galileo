@@ -35,8 +35,11 @@
             <a href="{{ route('event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
                 <i class="icon-desktop"></i><span>Data Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
             </a>
-            <a href="{{ route('peserta-event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Peserta Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
+            <a href="{{ route('absensi-event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
+                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Umum PMII Rayon "Pencarahan" Galileo</span>
+            </a>
+            <a href="{{ route('absensi-event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
+                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
             </a>
         </li>
     </ul>

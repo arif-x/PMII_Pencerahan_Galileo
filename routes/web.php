@@ -53,14 +53,14 @@ Route::group([
 	'middleware' => ['guest'],
 	'namespace' => 'Publics',
 ], function(){
-	Route::post('/event/guest/join', 'PesertaEventController@guest')->name('guest.event.join');
+	Route::post('/event/guest/join', 'EventController@guest')->name('guest.event.join');
 });
 
 Route::group([
 	'middleware' => ['auth', 'biodata'],
 	'namespace' => 'Publics',
 ], function(){
-	Route::post('/event/authed/join', 'PesertaEventController@authed')->name('authed.event.join');
+	Route::post('/event/authed/join', 'EventController@authed')->name('authed.event.join');
 });
 
 Route::group([
@@ -111,9 +111,10 @@ Route::group([
 	Route::get('/admin/see-article/{url}', 'ArticleCheckController@index');
 	Route::resource('/admin/kader','KaderController');	
 	Route::resource('/admin/article','ArticleVerificationController');
-	Route::resource('/admin/event','EventController');
-	Route::resource('/admin/peserta-event-pengkaderan','PesertaEventPengkaderanController');
+	Route::resource('/admin/event','EventController');	
 	Route::resource('/admin/event-pengkaderan','EventPengkaderanController');
+	Route::resource('/admin/absensi-event','AbsensiEventController');
+	Route::resource('/admin/absensi-event-pengkaderan','AbsensiEventKaderisasiController');	
 	Route::get('/admin/kader/{nim}/photo/pasphoto', 'DataFotokaderController@pasPhoto')->name('admin.kader.photo.pasphoto');
 	Route::get('/admin/kader/{nim}/photo/ktm', 'DataFotokaderController@ktm')->name('admin.kader.photo.ktm');
 });

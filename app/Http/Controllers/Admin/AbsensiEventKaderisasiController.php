@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\AbsensiEventKaderisasi;
+use DataTables;
 
 class AbsensiEventKaderisasiController extends Controller
 {
@@ -15,14 +16,19 @@ class AbsensiEventKaderisasiController extends Controller
      */
     public function index(Request $request){ 
     	if ($request->ajax()) {
-    		$data = AbsensiEventKaderisasi::get();
+    		$data = AbsensiEventKaderisasi::join('users', 'users.id', '=', 'absensi_event_kaderisasi.id_user')
+    		->join('event_pengkaderans', 'event_pengkaderans.id', '=', 'absensi_event_kaderisasi.id_event')
+    		->select('users.name', 'event_pengkaderans.nama_event as event', 'absensi_event_kaderisasi.*')
+    		->get();
+
     		return Datatables::of($data)
     		->addIndexColumn()
-    		->addColumn('verification', function($row){
-    			$btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Detail" class="edit btn btn-primary btn-sm verify">Verifikasi</a>';
+    		->addColumn('option', function($row){
+    			$btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Detail" class="edit btn btn-primary btn-sm opsi">Edit Kehadiran</a>';
 
     			return $btn;
     		})
+    		->rawColumns(['option'])
     		->make(true);
     	}
 
@@ -37,9 +43,9 @@ class AbsensiEventKaderisasiController extends Controller
      */
     public function store(Request $request){
     	AbsensiEventKaderisasi::updateOrCreate(
-    		['id' => $request->artikel_id],
+    		['id' => $request->absensi_id],
     		[
-    			'status' => $request->status,
+    			'kehadiran' => $request->kehadiran,
     		]
     	);        
 

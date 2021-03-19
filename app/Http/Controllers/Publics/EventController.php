@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Publics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Event;
-use App\PesertaEventPengkaderan;
+use App\AbsensiEvent;
 use Carbon\Carbon;
+use Auth;
 
 class EventController extends Controller
 {
@@ -32,23 +33,68 @@ class EventController extends Controller
     	return view('event.ditutup', ['events' => $event]);
     }
 
-    // public function join(Request $request){
-    //     $check = PesertaEvent::where('event_id', $request->event_id)->where('user_id', $request->user_id)->first();
+    public function guest(Request $request){
+        $check = AbsensiEvent::where('email', $request->email)->where('id_event', $request->event_id)->first();
 
-    //     $eventNames = Event::where('id', $request->event_id)->pluck('nama_event');
+        $eventNames = Event::where('id', $request->event_id)->pluck('nama_event');
 
-    //     $eventName = str_replace('"]', '', $eventNames);
-    //     $eventName = str_replace('["', '', $eventName);
+        $eventName = str_replace('"]', '', $eventNames);
+        $eventName = str_replace('["', '', $eventName);
 
+        if(empty($check)){            
 
-    //     if (empty($check)){
-    //         PesertaEvent::create([
-    //             'event_id' => $request->event_id,
-    //             'user_id' => $request->user_id,
-    //         ]);
-    //         return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
-    //     } else {
-    //         return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
-    //     }
-    // }
+            AbsensiEvent::insert([
+                'id_event' => $request->event_id,
+                'email' => $request->email,
+                'nama' => $request->nama,
+                'kehadiran' => 'Pending',
+                'rayon' => 'Rayon PMII Pencerahan Galileo',
+            ]);
+
+            return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
+        } else {
+
+            AbsensiEvent::where('id_event', $request->event_id)->where('email', $request->email)->update([
+                'id_event' => $request->event_id,
+                'email' => $request->email,
+                'nama' => $request->nama,
+                'kehadiran' => 'Pending',
+                'rayon' => 'Rayon PMII Pencerahan Galileo',
+            ]);
+
+            return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
+        }
+    }
+
+    public function authed(Request $request){
+        $check = AbsensiEvent::where('id_event', $request->event_id)->where('email', Auth::user()->email)->first();
+
+        $eventNames = Event::where('id', $request->event_id)->pluck('nama_event');
+
+        $eventName = str_replace('"]', '', $eventNames);
+        $eventName = str_replace('["', '', $eventName);
+        
+        if(empty($check)){
+
+            AbsensiEvent::insert([
+                'id_event' => $request->event_id,
+                'email' => Auth::user()->email,
+                'nama' => Auth::user()->name,
+                'rayon' => 'Rayon PMII Pencerahan Galileo',
+                'kehadiran' => 'Pending',
+            ]);
+
+            return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
+        } else {
+
+            AbsensiEvent::where('id_event', $request->event_id)->where('email', Auth::user()->email)->update([
+                'id_event' => $request->event_id,
+                'email' => Auth::user()->email,
+                'nama' => Auth::user()->name,
+                'rayon' => 'Rayon PMII Pencerahan Galileo',
+                'kehadiran' => 'Pending',
+            ]);
+            return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
+        }
+    }
 }
