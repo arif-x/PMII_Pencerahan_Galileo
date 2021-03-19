@@ -92,7 +92,7 @@
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Tanggal Lahir</label>
 											<div class="col-md-9">
-												<input type="text" class="form-control" value="{{ Auth::user()->tanggal_lahir }}" readonly>
+												<input type="text" class="form-control" value="{{ \Carbon\Carbon::parse(Auth::user()->tanggal_lahir)->format('d-M-Y') }}" readonly>
 											</div>
 										</div>
 										<div class="form-group row">

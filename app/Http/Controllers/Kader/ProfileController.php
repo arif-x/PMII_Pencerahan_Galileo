@@ -17,9 +17,7 @@ class ProfileController extends Controller
 
     public function store(Request $request){
     	$validator = Validator::make(request()->all(),[
-			'nim' =>'required',
 			'tanggal_lahir' => 'required',
-			'jenis_kelamin' => 'required',
 			'jurusan' => 'required',
 			'alamat_di_malang' => 'required',
 			'alamat_asli' => 'required',
@@ -36,9 +34,7 @@ class ProfileController extends Controller
 			return back()->with('Maaf, Semua Data Harus Diisi');
 		} else {
 			User::where('email', Auth::user()->email)->update([
-				'nim' => $request->nim,
 				'tanggal_lahir' => $request->tanggal_lahir,
-				'jenis_kelamin' => $request->jenis_kelamin,
 				'jurusan' => $request->jurusan,
 				'alamat_di_malang' => $request->alamat_di_malang,
 				'alamat_asli' => $request->alamat_asli,
