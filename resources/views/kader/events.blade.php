@@ -76,10 +76,10 @@
 
 							<div class="tab-pane in active" id="pengkaderan">
 								<div>
-									<a href="{{ route('publics.event-pengkaderan') }}" type="button" class="btn btn-warning text-white">Lihat & Ikuti Event</a>
+									<a href="{{ route('publics.event-pengkaderan') }}" type="button" class="btn btn-warning text-white">Lihat & Ikuti Event Kaderisasi</a>
 								</div>
 								<hr>
-								@foreach($joins as $join)
+								@foreach($joinsK as $joinK)
 								<div class="card mb-3">
 									<div class="card-body">
 										<div class="row">
@@ -89,12 +89,12 @@
 											<div class="col-md-8">
 												<p>
 													<strong style="font-size: 1.3rem;">
-														{{ $join->nama_event }}
+														{{ $joinK->nama_event }}
 													</strong><br>
 													<strong>Open Register:</strong> <br>
-													{{ \Carbon\Carbon::parse($join->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($join->tgl_akhir_regist)->format('d-m-Y') }} <br>
+													{{ \Carbon\Carbon::parse($joinK->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($joinK->tgl_akhir_regist)->format('d-m-Y') }} <br>
 													<strong>Pelaksanaan:</strong> <br>
-													{{ \Carbon\Carbon::parse($join->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($join->tgl_akhir)->format('d-m-Y') }}
+													{{ \Carbon\Carbon::parse($joinK->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($joinK->tgl_akhir)->format('d-m-Y') }}
 												</p>
 											</div>
 										</div>
@@ -104,8 +104,34 @@
 								@endforeach								
 							</div>
 
-							<div class="tab-pane in" id="umum">
-								<p>Belum Ada</p>						
+							<div class="tab-pane fade" id="umum">
+								<div>
+									<a href="{{ route('publics.event') }}" type="button" class="btn btn-warning text-white">Lihat & Ikuti Event Umum</a>
+								</div>
+								<hr>
+								@foreach($joinsU as $joinU)
+								<div class="card mb-3">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-4">
+
+											</div>
+											<div class="col-md-8">
+												<p>
+													<strong style="font-size: 1.3rem;">
+														{{ $joinU->nama_event }}
+													</strong><br>
+													<strong>Open Register:</strong> <br>
+													{{ \Carbon\Carbon::parse($joinU->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($joinU->tgl_akhir_regist)->format('d-m-Y') }} <br>
+													<strong>Pelaksanaan:</strong> <br>
+													{{ \Carbon\Carbon::parse($joinU->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($joinU->tgl_akhir)->format('d-m-Y') }}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								@endforeach								
 							</div>
 
 						</div>
