@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AbsensiEvent extends Model
 {
-    //
+    protected $table = "absensu_event";
+    protected $guarded = [];
 }

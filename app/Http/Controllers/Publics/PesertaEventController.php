@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\PesertaEvent;
 use App\Event;
+use App\AbsensiEvent;
 
 class PesertaEventController extends Controller
 {
@@ -19,12 +20,19 @@ class PesertaEventController extends Controller
         $eventName = str_replace('["', '', $eventName);
 
     	if(empty($check)){
-    		PesertaEvent::insert([
+    		
+            PesertaEvent::insert([
     			'event_id' => $request->event_id,
     			'email' => $request->email,
     			'nama' => $request->nama,
     			'rayon' => $request->rayon,
     		]);
+
+            AbsensiEvent::insert([
+                'event_id' => $request->event_id,
+                'email' => $request->email,
+                'kehadiran' => 'Pending';
+            ]);
 
     		return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
     	} else {
