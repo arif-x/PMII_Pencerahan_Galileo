@@ -343,21 +343,7 @@
                 $('#saveBtn').html('Save Changes');
               }
             });
-          });
-          $('body').on('click', '.deleteKader', function () {
-            var kader_id = $(this).data("id");
-            confirm("Are You sure want to delete !");
-            $.ajax({
-              type: "DELETE",
-              url: "{{ route('kader.store') }}"+'/'+kader_id,
-              success: function (data) {
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-              }
-            });
-          });
+          });          
 
           $('body').on('click', '.detailKader', function () {
             var kader_id = $(this).data('id');

@@ -160,21 +160,7 @@
                     $('#saveBtn').html('Simpan');
                 }
             });
-        });
-        $('body').on('click', '.deleteArticle', function () {
-            var artikel_id = $(this).data("id");
-            confirm("Are You sure want to delete !");
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('manage.store') }}"+'/'+artikel_id,
-                success: function (data) {
-                    table.draw();
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                }
-            });
-        });
+        });        
     });
 </script>
 
