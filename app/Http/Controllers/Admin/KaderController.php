@@ -38,8 +38,6 @@ class KaderController extends Controller
 
 				$btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editKader">Edit</a>';
 
-				$btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteKader">Delete</a>';
-
 				return $btn;
 			})
 			->rawColumns(['pasfoto', 'ktm', 'detail' ,'action'])
@@ -75,18 +73,6 @@ class KaderController extends Controller
     public function edit($id){
     	$user = User::find($id);
     	return response()->json($user);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id){
-    	User::find($id)->delete();
-
-    	return response()->json(['success'=>'Data Kader Dihapus.']);
     }
 
     public function show($id){

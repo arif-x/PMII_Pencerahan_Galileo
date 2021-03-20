@@ -26,8 +26,6 @@ class CmsController extends Controller
             ->addColumn('action', function($row){
                 $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editArticle">Edit</a>';
 
-                $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteArticle">Delete</a>';
-
                 return $btn;
             })
             ->rawColumns(['action'])
@@ -173,18 +171,6 @@ class CmsController extends Controller
     public function edit($id){
         $user = Cms::find($id);
         return response()->json($user);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id){
-        Cms::find($id)->delete();
-
-        return response()->json(['success'=>'Artikel Dihapus.']);
     }
 
     public function show($id){
