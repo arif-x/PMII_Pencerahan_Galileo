@@ -11,9 +11,18 @@ use Auth;
 
 class EventController extends Controller
 {
-    public function index(){
-    	$event = Event::orderBy('id', 'desc')->paginate(10);
-    	return view('event.index', ['events' => $event]);
+    public function index(){        
+    	$eventCheck = Event::first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = Event::orderBy('id', 'desc')->paginate(10);
+            return view('event.index', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = Event::orderBy('id', 'desc')->paginate(10);
+            return view('event.index', ['events' => $event, 'notFound' => $notFound]);
+        }        
     }
 
     public function single($id){
@@ -23,14 +32,32 @@ class EventController extends Controller
 
     public function dibuka(){
     	$now = Carbon::today()->toDateString();
-    	$event = Event::where('tgl_akhir_regist', '>', $now)->orderBy('id', 'desc')->paginate(10);
-    	return view('event.dibuka', ['events' => $event]);
+        $eventCheck = Event::where('tgl_akhir_regist', '>=', $now)->first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('event.dibuka', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('event.dibuka', ['events' => $event, 'notFound' => $notFound]);
+        }
     }
 
     public function ditutup(){
     	$now = Carbon::today()->toDateString();
-    	$event = Event::where('tgl_akhir_regist', '<', $now)->orderBy('id', 'desc')->paginate(10);
-    	return view('event.ditutup', ['events' => $event]);
+        $eventCheck = Event::where('tgl_akhir_regist', '>=', $now)->first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('event.ditutup', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('event.ditutup', ['events' => $event, 'notFound' => $notFound]);
+        }
     }
 
     public function guest(Request $request){

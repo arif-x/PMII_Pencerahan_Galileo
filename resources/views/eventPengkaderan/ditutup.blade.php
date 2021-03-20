@@ -27,7 +27,7 @@
         </span>
 
       </p>
-      <h1 class="mb-0 bread">Event Pengkaderan Dibuka</h1>
+      <h1 class="mb-0 bread">Event Pengkaderan Ditutup</h1>
     </div>
   </div>
 </div>
@@ -37,6 +37,7 @@
     <div class="row">      
       <div class="col-lg-8 ftco-animate shadow">
         <hr class="hr-yellow">
+        <h1 class="text-center mt-3">{{ $notFound }}</h1>
         @foreach($events as $event)
         <div class="col-md-12">          
           <div class="row">

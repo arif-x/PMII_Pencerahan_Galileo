@@ -47,6 +47,7 @@
     <div class="row">      
       <div class="col-lg-8 ftco-animate shadow">
         <hr class="hr-yellow">
+        <h1 class="text-center mt-3">{{ $notFound }}</h1>
         @foreach($events as $event)
         <div class="col-md-12">          
           <div class="row">
@@ -67,10 +68,12 @@
                   <input type="hidden" id="id{{ $event->id }}" value="{{ $event->id }}">
 
                   <?php
-                  $date = new DateTime($event['tgl_akhir_regist']);
-                  $now = new DateTime(); 
+                  $date = \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y');
+                  $now = \Carbon\Carbon::today()->toDateString();
 
-                  if($date > $now) {
+                  // echo $date;
+
+                  if($date >= $now) {
                     echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>
 
                     <div class="modal-lg fade" id="eventRegistModal'. $event['id'] .'" tabindex="-1" role="dialog" aria-labelledby="modalLabel'. $event['id'] .'" aria-hidden="true">

@@ -12,8 +12,17 @@ use Auth;
 class EventPengkaderanController extends Controller
 {
     public function index(){
-    	$event = EventPengkaderan::orderBy('id', 'desc')->paginate(10);
-    	return view('eventPengkaderan.index', ['events' => $event]);
+    	$eventCheck = EventPengkaderan::first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = EventPengkaderan::orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.index', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = EventPengkaderan::orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.index', ['events' => $event, 'notFound' => $notFound]);
+        }   
     }
 
     public function single($id){
@@ -23,14 +32,32 @@ class EventPengkaderanController extends Controller
 
     public function dibuka(){
     	$now = Carbon::today()->toDateString();
-    	$event = EventPengkaderan::where('tgl_akhir_regist', '>', $now)->orderBy('id', 'desc')->paginate(10);
-    	return view('eventPengkaderan.dibuka', ['events' => $event]);
+        $eventCheck = EventPengkaderan::where('tgl_akhir_regist', '>=', $now)->first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = EventPengkaderan::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.dibuka', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = EventPengkaderan::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.dibuka', ['events' => $event, 'notFound' => $notFound]);
+        }
     }
 
     public function ditutup(){
     	$now = Carbon::today()->toDateString();
-    	$event = EventPengkaderan::where('tgl_akhir_regist', '<', $now)->orderBy('id', 'desc')->paginate(10);
-    	return view('eventPengkaderan.ditutup', ['events' => $event]);
+        $eventCheck = EventPengkaderan::where('tgl_akhir_regist', '<', $now)->first();
+
+        if (empty($eventCheck)){
+            $notFound = 'Tidak Ada Event';
+            $event = EventPengkaderan::where('tgl_akhir_regist', '<', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.ditutup', ['events' => $event, 'notFound' => $notFound]);
+        } else {
+            $notFound = '';
+            $event = EventPengkaderan::where('tgl_akhir_regist', '<', $now)->orderBy('id', 'desc')->paginate(10);
+            return view('eventPengkaderan.ditutup', ['events' => $event, 'notFound' => $notFound]);
+        }
     }
 
     public function join(Request $request){
