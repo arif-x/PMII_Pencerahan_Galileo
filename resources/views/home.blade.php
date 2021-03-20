@@ -422,7 +422,7 @@
                     <div class="col-md-3">
                         <div class="card shadow">
                             <div class="card-header">
-                                <img src="{{ $event->thumbnail }}">
+                                <img src="{{ $event->image }}">
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
@@ -453,7 +453,7 @@
                     <div class="col-md-3">
                         <div class="card shadow">
                             <div class="card-header">
-                                <img src="{{ $event->thumbnail }}">
+                                <img src="{{ $event->image }}">
                             </div>
                             <div class="card-body">
                                 <div class="text-center">

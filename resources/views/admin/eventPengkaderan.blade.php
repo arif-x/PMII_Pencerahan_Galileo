@@ -14,7 +14,7 @@
         <div class="col-lg-6">
           <ol class="breadcrumb pull-right">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-            <li class="breadcrumb-item active">Data Event
+            <li class="breadcrumb-item active">Data Event Pengkaderan
             </ol>
           </div>
         </div>
@@ -41,13 +41,15 @@
         </div>
         <br />
         <div style="width: 100%">
-          <div class="table-responsive">
-            <table class="table stripe row-border order-column data-table" style="width: 100% !important">
+          <div class="">
+            <table class="table stripe row-border order-column data-table table-responsive" style="width: 100% !important">
               <thead>
                 <tr>
                   <th>No.</th>
                   <th>Nama Event</th>
-                  <th>Event Angkatan</th>
+                  <th>Tempat</th>
+                  <th>Event Angkatan</th>                  
+                  <th>Gambar</th>
                   <th>Tanggal Mulai Pendaftaran</th>
                   <th>Tanggal Akhir Pendaftaran</th>
                   <th>Tanggal Mulai Pelaksanaan</th>
@@ -93,7 +95,27 @@
                               </div>
                             </div>
                           </div>
-                        </div>                        
+                        </div> 
+
+                        <div class="col-sm-12">
+                          <div class="input-group">
+                            <label class="control-label">Pilih Gambar</label>
+                            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white" type="button" style="width:100% !important">
+                              <i class="fa fa-picture-o"></i> Pilih Gambar
+                            </a>
+                            <input id="thumbnail" class="form-control" type="hidden" name="filepath">
+                          </div>
+                          <div class="text-center">
+                            <div id="holder" style="margin-top:15px;margin-bottom:15px;height:auto;"></div> 
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="text" class="col-sm-12 col-form-label">Tempat</label>
+                          <div class="col-sm-12">
+                            <input type="text" id="tempat" name="tempat" class="form-control" required>
+                          </div>
+                        </div>                       
 
                         <div class="row">
                           <div class="col-sm-6">
@@ -161,7 +183,9 @@
             columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'nama_event', name: 'nama_event'},
+            {data: 'tempat', name: 'tempat'},
             {data: 'event_angkatan', name: 'event_angkatan'},
+            {data: 'img', name: 'img', orderable: false, searchable: false},
             {data: 'tgl_mulai_regist', name: 'tgl_mulai_regist'},
             {data: 'tgl_akhir_regist', name: 'tgl_akhir_regist'},
             {data: 'tgl_mulai', name: 'tgl_mulai'},
@@ -184,6 +208,8 @@
               $('#saveBtn').val("edit-event");
               $('#ajaxModel').modal('show');
               $('#event_id').val(data.id);
+              $('#thumbnail').val(data.image);
+              $('#tempat').val(data.tempat);
               $('#nama_event').val(data.nama_event);
               $('#event_angkatan').val(data.event_angkatan);
               $('#tgl_mulai_regist').val(data.tgl_mulai_regist);
@@ -231,6 +257,25 @@
 
         });
       </script>
+
+      <script>
+        var route_prefix = "/filemanager";
+      </script>
+
+      <script>
+        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+      </script>
+      <script>
+        $('#lfm').filemanager('image', {prefix: route_prefix});
+      </script>
+
+      <style type="text/css">
+        #holder img {
+          max-width: 100% !important;
+          height: 100% !important;
+        }
+      </style>
+
 
     </div>
     <!-- Container-fluid Ends -->

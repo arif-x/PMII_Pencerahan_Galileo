@@ -37,12 +37,13 @@
     <div class="row">      
       <div class="col-lg-8 ftco-animate shadow">
         <hr class="hr-yellow">
+        <h1 class="text-center mt-3">{{ $notFound }}</h1>
         @foreach($events as $event)
         <div class="col-md-12">          
           <div class="row">
             <div class="col-md-12 d-flex ftco-animate">
               <div class="blog-entry align-self-stretch d-md-flex mb-3" style="width: 100% !important">
-                <div class="shadow align-middle block-20 mt-3 mb-3"><img src="{{ $event->thumbnail }}" style="max-width: 100% !important;">
+                <div class="shadow align-middle block-20 mt-3 mb-3"><img src="{{ $event->image }}" style="max-width: 100% !important;">
                 </div>
                 <div class="text d-block pl-md-4 mt-1">
                   <h3><strong>{{ $event->nama_event }}</strong></h3>

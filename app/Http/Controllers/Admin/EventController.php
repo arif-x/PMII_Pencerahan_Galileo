@@ -27,7 +27,13 @@ class EventController extends Controller {
 
 				return $btn;
 			})
-			->rawColumns(['action'])
+            ->addColumn('img', function($row){
+
+                $link = '<img src="'.$row->image.'"/ style="max-width:250px; height:auto;">';
+
+                return $link;
+            })
+			->rawColumns(['action', 'img'])
 			->make(true);
 		}
 
@@ -45,6 +51,9 @@ class EventController extends Controller {
             ['id' => $request->event_id],
     		[
                 'nama_event' => $request->nama_event,
+                'event_angkatan' => $request->event_angkatan,
+                'image' => $request->filepath,
+                'tempat' => $request->tempat,
                 'event_angkatan' => $request->event_angkatan,
                 'tgl_mulai_regist' => $request->tgl_mulai_regist,
                 'tgl_akhir_regist' => $request->tgl_akhir_regist,                
