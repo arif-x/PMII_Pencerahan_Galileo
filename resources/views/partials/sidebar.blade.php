@@ -9,7 +9,7 @@
         <li>
             <div class="sidebar-title">Home</div>
             <a href="{{ route('index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Kembali Ke Portal</span>
+                <i class="icon-desktop"></i><span>Kembali Ke Homepage</span>
             </a>
         </li>
 
@@ -30,16 +30,16 @@
         <li>
             <div class="sidebar-title">Kelola Event</div>
             <a href="{{ route('event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Event Umum PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Event Umum</span>
             </a>            
             <a href="{{ route('event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Event Pengkaderan</span>
             </a>
             <a href="{{ route('absensi-event.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Umum PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Umum</span>
             </a>
             <a href="{{ route('absensi-event-pengkaderan.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
-                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Pengkaderan PMII Rayon "Pencarahan" Galileo</span>
+                <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Pengkaderan</span>
             </a>
         </li>
     </ul>
