@@ -93,14 +93,28 @@
                 <h2>WEB Portal<br>Kader PMII<br>Rayon <nobr style="font-style: italic;">Pencerahan</nobr> Galileo</h2>
                 <div>
                     @guest
-                    <a href="" class="btn-get-started scrollto" data-toggle="modal" data-target="#login">Login</a>
-                    <a href="" class="btn-services scrollto" data-toggle="modal" data-target="#daftar">Daftar</a>
+                    <div class="row">
+                        <div class="col-md-2 mb-2">
+                            <a href="" type="button" class="btn-get-started scrollto" data-toggle="modal" data-target="#login">Login</a>  
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <a href="" type="button" class="btn-services scrollto" data-toggle="modal" data-target="#daftar">Daftar</a> 
+                        </div>
+                    </div>                                                            
+
                     @else
-                    <a class="btn-services scrollto" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    <div class="row">
+                        <div class="col-md-2 mb-2">
+                            <a href="/profile" type="button" class="btn-get-started scrollto" data-toggle="modal">Profile</a>  
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <a class="btn-services scrollto" type="button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>  
                     @endguest
                 </div>
             </div>
@@ -108,6 +122,7 @@
         </div>
     </section><!-- #intro -->
 
+    @guest
     <div class="modal login-modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -261,6 +276,8 @@
             </div>
         </div>
     </div>
+
+    @endguest
 
     <main id="main">
 
@@ -445,8 +462,8 @@
                 <h4>Event Pengkaderan</h4>
             </div>
             <div class="text-center">
-                    <a type="button" class="btn btn-secondary" href="{{ route('publics.event-pengkaderan') }}">Lihat Semua Event Pengkaderan</a>
-                </div>
+                <a type="button" class="btn btn-secondary" href="{{ route('publics.event-pengkaderan') }}">Lihat Semua Event Pengkaderan</a>
+            </div>
             <div class="mt-4">
                 <div class="row">
                     @foreach ($pengkaderans as $event)
@@ -744,86 +761,86 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Link</h4>
                         <ul>
-                            <li><a href="/">Home</li>
-                                <li><a href="#about">Tentang Kami</a></li>
-                                <li><a href="#services">Fitur</a></li>
-                                <li><a href="#team">Pengurus</a></li>          
-                                <li><a href="#contact">Kontak Kami</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#about">Tentang Kami</a></li>
+                            <li><a href="#services">Fitur</a></li>
+                            <li><a href="#team">Pengurus</a></li>          
+                            <li><a href="#contact">Kontak Kami</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">            
+                        <h4 style="">Kontak kami</h4>
+                        <!-- <p> -->
+                            <strong>Alamat: </strong><br>
+                            Jl. Joyo Tamansari 1 No. 67 Gg. II RT.06 RW.06 Merjosari Lokowaru Malang<br><br>
+                            <strong>Telpon:</strong>
+                            <ul>
+                                <li>+6285850987734</li>
                             </ul>
-                        </div>
+                            <strong>Email:</strong>
+                            <ul>
+                                <li>sahabatgalileo@gmail.com</li>
+                                <li>admin@pmiigalileo.or.id</li>
+                            </ul>
+                            <br>
+                            <!-- </p> -->
 
-                        <div class="col-lg-3 col-md-6 footer-contact">            
-                            <h4 style="">Kontak kami</h4>
-                            <!-- <p> -->
-                                <strong>Alamat: </strong><br>
-                                Jl. Joyo Tamansari 1 No. 67 Gg. II RT.06 RW.06 Merjosari Lokowaru Malang<br><br>
-                                <strong>Telpon:</strong>
-                                <ul>
-                                    <li>+6285850987734</li>
-                                </ul>
-                                <strong>Email:</strong>
-                                <ul>
-                                    <li>sahabatgalileo@gmail.com</li>
-                                    <li>admin@pmiigalileo.or.id</li>
-                                </ul>
-                                <br>
-                                <!-- </p> -->
-
-                                <div class="social-links">
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                    <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 footer-newsletter">
-                                <h4>Subscribe</h4>
-                                <p>Notifikasi Email</p>
-                                <form action="" method="post">
-                                    <input type="email" name="email"><input type="submit" value="Subscribe">
-                                </form>
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                             </div>
 
                         </div>
-                    </div>
-                </div>
 
-                <div class="container">
-                    <div class="copyright">
-                        &copy; Copyright <strong>PMII Rayon<nobr style="font-style: italic;"> Pencerahan </nobr>Galileo</strong>. All Rights Reserved
-                    </div>
-                    <div class="credits">
-                        Designed by <a href="https://github.com/Arif-X" target="_blank">Arif-X</a>
+                        <div class="col-lg-3 col-md-6 footer-newsletter">
+                            <h4>Subscribe</h4>
+                            <p>Notifikasi Email</p>
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </footer><!-- #footer -->
 
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-        <!-- Uncomment below i you want to use a preloader -->
-        <!-- <div id="preloader"></div> -->
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>PMII Rayon<nobr style="font-style: italic;"> Pencerahan </nobr>Galileo</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    Designed by <a href="https://github.com/Arif-X" target="_blank">Arif-X</a>
+                </div>
+            </div>
+        </div>
+    </footer><!-- #footer -->
 
-        <!-- JavaScript Libraries -->
-        <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
-        <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-        <script src="{{ asset('lib/mobile-nav/mobile-nav.js') }}"></script>
-        <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-        <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-        <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
-        <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-        <!-- Contact Form JavaScript File -->
-        <script src="{{ asset('contactform/contactform.js') }}"></script>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
 
-        <!-- Template Main Javascript File -->
-        <script src="{{ asset('js/main.js') }}"></script>
+    <!-- JavaScript Libraries -->
+    <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
+    <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/mobile-nav/mobile-nav.js') }}"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="{{ asset('contactform/contactform.js') }}"></script>
 
-    </body>
+    <!-- Template Main Javascript File -->
+    <script src="{{ asset('js/main.js') }}"></script>
 
-    </html>
+</body>
+
+</html>

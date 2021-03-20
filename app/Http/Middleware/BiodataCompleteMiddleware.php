@@ -17,7 +17,6 @@ class BiodataCompleteMiddleware
     public function handle($request, Closure $next)
     {
         if (
-            auth()->user()->alamat_asli != null ||  
             auth()->user()->jenis_kelamin != null || 
             auth()->user()->tanggal_lahir != null || 
             auth()->user()->jurusan != null || 

@@ -57,16 +57,8 @@
   @yield('content')
 
   <div class="col-lg-4 sidebar ftco-animate shadow-sm" style="background-color: #ffc107 !important">
-    <div class="sidebar-box shadow mt-3">
-      <form action="#" class="search-form">
-        <div class="form-group">
-          <span class="icon ion-ios-search"></span>
-          <input type="text" class="form-control" placeholder="Cari Event...">
-        </div>
-      </form>
-    </div>
 
-    <div class="sidebar-box ftco-animate shadow">
+    <div class="sidebar-box ftco-animate shadow mt-3">
       <h3 class="heading">Kategori</h3>
       <ul class="categories">
         <li><a href="/event" class="tag-cloud-link">Event Umum</a></li>

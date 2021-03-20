@@ -31,7 +31,7 @@ class CheckBiodataMiddleware
             auth()->user()->alasan == null || 
             auth()->user()->target_ke_depan == null
         ){
-            return redirect('/isi-biodata')->with('error', 'Mohon Lengkapi Biodata');                          
+            return redirect('/isi-biodata')->with('error', 'Mohon Lengkapi Biodata Sebelum Verifikasi');                          
         }        
         return $next($request);
     }

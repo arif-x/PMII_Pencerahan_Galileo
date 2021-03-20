@@ -221,12 +221,12 @@ h6 {
     font-weight: 600;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 10px 0px;
-    border-radius: 50px;
+    padding: 10px 30px;
+    border-radius: 20px;
     transition: 0.5s;
     color: #fff;
     /* width: ; */
-    width: 30%;
+    /*width: 20%;*/
     text-align: center;
 }
 

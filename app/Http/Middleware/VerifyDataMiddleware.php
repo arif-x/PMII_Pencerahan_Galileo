@@ -15,8 +15,8 @@ class VerifyDataMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->verifikasi == 'Belum Verifikasi'){
-            return redirect('/verify')->with('info', 'Verifikasi Data untuk Mengakses Page Lainnya!');
+        if(auth()->user()->verifikasi == 'Belum Verifikasi' || auth()->user()->verifikasi == null){
+            return redirect('/verify')->with('info', 'Verifikasi Data untuk Mengakses Profil!');
         } elseif (auth()->user()->verifikasi == 'Perlu Diverifikasi') {
             return redirect('/profile')->with('info', 'Data Anda Masih dalam Proses Verifikasi, Harap Bersabar!');
         } elseif (auth()->user()->verifikasi == 'Suspend') {
