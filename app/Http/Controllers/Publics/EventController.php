@@ -47,15 +47,15 @@ class EventController extends Controller
 
     public function ditutup(){
     	$now = Carbon::today()->toDateString();
-        $eventCheck = Event::where('tgl_akhir_regist', '>=', $now)->first();
+        $eventCheck = Event::where('tgl_akhir_regist', '>', $now)->first();
 
         if (empty($eventCheck)){
             $notFound = 'Tidak Ada Event';
-            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            $event = Event::where('tgl_akhir_regist', '>', $now)->orderBy('id', 'desc')->paginate(10);
             return view('event.ditutup', ['events' => $event, 'notFound' => $notFound]);
         } else {
             $notFound = '';
-            $event = Event::where('tgl_akhir_regist', '>=', $now)->orderBy('id', 'desc')->paginate(10);
+            $event = Event::where('tgl_akhir_regist', '>', $now)->orderBy('id', 'desc')->paginate(10);
             return view('event.ditutup', ['events' => $event, 'notFound' => $notFound]);
         }
     }
