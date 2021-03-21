@@ -51,6 +51,7 @@
                   <h3><strong>{{ $event->nama_event }}</strong></h3>
                   <h5 style="text-align: justify !important;"><strong>Tanggal Pendaftaran Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai_regist)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir_regist)->format('d-m-Y') }}</h5>
                   <h5 style="text-align: justify !important;"><strong>Tanggal Pelaksanaan Event:</strong> <br> {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($event->tgl_akhir)->format('d-m-Y') }}</h5>
+                  <h5 style="text-align: justify !important;"><strong>Tempat:</strong> <br> {{ $event->tempat }}</h5>
                   @guest
                   @if (Route::has('register'))
                   @endif
