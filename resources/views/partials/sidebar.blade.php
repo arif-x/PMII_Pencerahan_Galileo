@@ -42,6 +42,13 @@
                 <i class="icon-desktop"></i><span>Data Peserta & Absensi Event Pengkaderan</span>
             </a>
         </li>
+
+        <li>
+            <div class="sidebar-title">Kelola Pengurus</div>
+            <a href="{{ route('pengurus.index') }}" class="sidebar-header {{ Request::is('dashboard')? 'active': '' }}">
+                <i class="icon-desktop"></i><span>Data Pengurus</span>
+            </a>
+        </li>
     </ul>
     <br><br><br><br>
     <div class="sidebar-widget text-center">
