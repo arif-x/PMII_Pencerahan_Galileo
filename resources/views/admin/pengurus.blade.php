@@ -8,13 +8,13 @@
       <div class="row">
         <div class="col-lg-6"> 
           <h5>
-            Kelola Data Kader
+            Kelola Pengurus
           </h5>
         </div>
         <div class="col-lg-6">
           <ol class="breadcrumb pull-right">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-            <li class="breadcrumb-item active">Data Kader
+            <li class="breadcrumb-item active">Data Pengurus
             </ol>
           </div>
         </div>
@@ -85,8 +85,48 @@
                           <label for="text" class="col-sm-12 col-form-label">Jabatan</label>
                           <div class="col-sm-12">
                             <select id="jabatan" class="form-control" required name="jabatan">
-                              <option value="Jabatan 1">Jabatan 1</option>
-                              <option value="Jabatan 2">Jabatan 2</option>
+                              <option value="Ketua Rayon">Ketua Rayon</option>
+                              <option value="Wakil Ketua Rayon">Wakil Ketua Rayon</option>
+                              <option value="Sekretaris">Sekretaris</option>
+                              <option value="Wakil Sekretaris">Wakil Sekretaris</option>
+                              <option value="Bendahara">Bendahara</option>
+                              <option value="Wakil Bendahara">Wakil Bendahara</option>
+                              <option value="Co. Biro Pengkaderan">Co. Biro Pengkaderan</option>
+                              <option value="Anggota Biro Pengkaderan">Anggota Biro Pengkaderan</option>
+                              <option value="Co. Biro Gerakan">Co. Biro Gerakan</option>
+                              <option value="Anggota Biro Gerakan">Anggota Biro Gerakan</option>
+                              <option value="Co. Biro Keislaman">Co. Biro Keislaman</option>
+                              <option value="Anggota Biro Keislaman">Anggota Biro Keislaman</option>
+                              <option value="Co. Biro Pengembangan Wawasan">Co. Biro Pengembangan Wawasan</option>
+                              <option value="Anggota Biro Keislaman">Anggota Biro Keislaman</option>
+                              <option value="Co. Biro FKE">Co. Biro FKE</option>
+                              <option value="Anggota Biro FKE">Anggota Biro FKE</option>
+                              <option value="Forum Pengembangan Jurusan Matematika">Forum Pengembangan Jurusan Matematika</option>
+                              <option value="Forum Pengembangan Jurusan Biologi">Forum Pengembangan Jurusan Biologi</option>
+                              <option value="Forum Pengembangan Jurusan Kimia">Forum Pengembangan Jurusan Kimia</option>
+                              <option value="Forum Pengembangan Jurusan Fisika">Forum Pengembangan Jurusan Fisika</option>
+                              <option value="Forum Pengembangan Jurusan Teknik Informatika">Forum Pengembangan Jurusan Teknik Informatika</option>
+                              <option value="Forum Pengembangan Jurusan Teknik Arsitektur">Forum Pengembangan Jurusan Teknik Arsitektur</option>
+                              <option value="Forum Pengembangan Jurusan Perpustakaan & Ilmu Informasi">Forum Pengembangan Jurusan Perpustakaan & Ilmu Informasi</option>
+                              <option value="Ketua KOPRI">Ketua KOPRI</option>
+                              <option value="Sekretaris KOPRI">Sekretaris KOPRI</option>
+                              <option value="Bendahara KOPRI">Bendahara KOPRI</option>
+                              <option value="Co. Biro Internal">Co. Biro Internal</option>
+                              <option value="Anggota Biro Internal">Anggota Biro Internal</option>
+                              <option value="Co. Biro Eksternal">Co. Biro Eksternal</option>
+                              <option value="Anggota Biro Eksternal">Anggota Biro Eksternal</option>
+                              <option value="Direktur LSO Jurnalistik">Direktur LSO Jurnalistik</option>
+                              <option value="Sekretaris LSO Jurnalistik">Sekretaris LSO Jurnalistik</option>
+                              <option value="Anggota LSO Jurnalistik">Anggota LSO Jurnalistik</option>
+                              <option value="Direktur LSO GAPALA">Direktur LSO GAPALA</option>
+                              <option value="Sekretaris LSO GAPALA">Sekretaris LSO GAPALA</option>
+                              <option value="Anggota LSO GAPALA">Anggota LSO GAPALA</option>
+                              <option value="Direktur LSO Kewirausahaan">Direktur LSO Kewirausahaan</option>
+                              <option value="Sekretaris LSO Kewirausahaan">Sekretaris LSO Kewirausahaan</option>
+                              <option value="Anggota LSO Kewirausahaan">Anggota LSO Kewirausahaan</option>
+                              <option value="Direktur LSO TEGAL">Direktur LSO TEGAL</option>
+                              <option value="Sekretaris LSO TEGAL">Sekretaris LSO TEGAL</option>
+                              <option value="Anggota LSO TEGAL">Anggota LSO TEGAL</option>
                             </select>
                           </div>
                         </div>
@@ -127,7 +167,7 @@
 
           $('#createPengurus').click(function () {
             $('#saveBtn').val("create-pengurus");
-            $('#anggota_id').val('');
+            $('#pengurus_id').val('');
             $('#pengurusForm').trigger("reset");
             $('#modelHeading').html("Tambah Pengurus");
             $('#ajaxModel').modal('show');
@@ -136,11 +176,12 @@
           $('body').on('click', '.editPengurus', function () {
             var pengurus_id = $(this).data('id');
             $.get("{{ route('pengurus.index') }}" +'/' + pengurus_id +'/edit', function (data) {
-              $('#modelHeading').html("Edit Event");
-              $('#saveBtn').val("edit-event");
+              $('#modelHeading').html("Edit Pengurus");
+              $('#saveBtn').val("edit-pengurus");
               $('#ajaxModel').modal('show');
               $('#pengurus_id').val(data.id);
               $('#nim').val(data.nim + ' * ' + data.nama);
+              $('#jabatan').val(data.jabatan);
             })
           });
 

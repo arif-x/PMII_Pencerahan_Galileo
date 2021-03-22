@@ -21,10 +21,19 @@ class HomeController extends Controller
         $pengkaderan = EventPengkaderan::orderBy('id', 'desc')->limit(4)->get();
 
         // Pengurus
-        $ketua = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Jabatan 2')
+        $ketua = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Ketua Rayon')
         ->select('pengurus.*', 'users.photo')
         ->get();
-        return view('home', ['articles' => $article, 'events' => $event, 'pengkaderans' => $pengkaderan, 'ketuas' => $ketua]);
+        $sekretaris = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Sekretaris')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        $bendahara = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Bendahara')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        $kopri = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Ketua KOPRI')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        return view('home', ['articles' => $article, 'events' => $event, 'pengkaderans' => $pengkaderan, 'ketuas' => $ketua, 'sekretariss' => $sekretaris, 'bendaharas' => $bendahara, 'kopris' => $kopri]);
     }
     
     public function home(){
@@ -33,9 +42,18 @@ class HomeController extends Controller
         $pengkaderan = EventPengkaderan::orderBy('id', 'desc')->limit(4)->get();
 
         // Pengurus
-        $ketua = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Jabatan 2')
+        $ketua = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Ketua Rayon')
         ->select('pengurus.*', 'users.photo')
         ->get();
-        return view('home', ['articles' => $article, 'events' => $event, 'pengkaderans' => $pengkaderan, 'ketuas' => $ketua]);
+        $sekretaris = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Sekretaris')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        $bendahara = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Bendahara')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        $kopri = Pengurus::join('users', 'users.nim', '=', 'pengurus.nim')->where('pengurus.jabatan', 'Ketua KOPRI')
+        ->select('pengurus.*', 'users.photo')
+        ->get();
+        return view('home', ['articles' => $article, 'events' => $event, 'pengkaderans' => $pengkaderan, 'ketuas' => $ketua, 'sekretariss' => $sekretaris, 'bendaharas' => $bendahara, 'kopris' => $kopri]);
     }
 }

@@ -42,7 +42,7 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
         <a href="#intro" class="scrollto"><img src="img/pmiigalileo.png" alt="" class="img-fluid"></a>
-        <a href="/"><strong>Portal Kader PMII RPG</strong></a>
+        <a href="/"><strong>PMII Rayon Pencerahan Galileo</strong></a>
     </div>
 
     <nav class="main-nav float-right d-none d-lg-block">
@@ -91,7 +91,7 @@
             </div>
 
             <div class="intro-info">
-                <h2>WEB Portal<br>Kader PMII<br>Rayon <nobr style="font-style: italic;">Pencerahan</nobr> Galileo</h2>
+                <h2 class="mt-5">PMII<br>Rayon <nobr style="font-style: italic;">Pencerahan</nobr> Galileo</h2>
                 <div>
                     @guest
                     <div class="row">
@@ -470,24 +470,8 @@
             <!--Carousel Wrapper-->
             <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                        class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <!--/.Controls-->
-
-                    <!--Indicators-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#multi-item-example" data-slide-to="1"></li>
-
-                    </ol>
-                    <!--/.Indicators-->
-
                     <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner" role="listbox" style="float: center">
 
                         <!--First slide-->
                         <div class="carousel-item active">
@@ -510,121 +494,63 @@
 
                             <div class="col-md-3" style="float:left">
                                 <div class="card mb-2">
+                                    @foreach($sekretariss as $sekretaris)
                                     <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    src="/storage/foto/{{ $sekretaris->photo }}" alt="sekretaris">
+                                    <hr>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <h4 class="card-title">Card title</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
+                                            <h4 class="card-title">{{ $sekretaris->nama }}</h4>
+                                            <p class="card-text">{{ $sekretaris->jabatan }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="col-md-3" style="float:left">
                                 <div class="card mb-2">
+                                    @foreach($bendaharas as $bendahara)
                                     <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    src="/storage/foto/{{ $bendahara->photo }}" alt="bendahara">
+                                    <hr>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <h4 class="card-title">Card title</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
+                                            <h4 class="card-title">{{ $bendahara->nama }}</h4>
+                                            <p class="card-text">{{ $bendahara->jabatan }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="col-md-3" style="float:left">
                                 <div class="card mb-2">
+                                    @foreach($kopris as $kopri)
                                     <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    src="/storage/foto/{{ $kopri->photo }}" alt="kopri">
+                                    <hr>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <h4 class="card-title">Card title</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
+                                            <h4 class="card-title">{{ $kopri->nama }}</h4>
+                                            <p class="card-text">{{ $kopri->jabatan }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                         </div>
                         <!--/.First slide-->
 
-                        <!--Second slide-->
-                        <div class="carousel-item">
-
-                            <div class="col-md-3" style="float:left">
-                                <div class="card mb-2">
-                                    <img class="card-img-top"
-                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">Card title</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                            card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3" style="float:left">
-                                <div class="card mb-2">
-                                  <img class="card-img-top"
-                                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-                                  <div class="card-body">
-                                    <div class="text-center">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" style="float:left">
-                            <div class="card mb-2">
-                                <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                    <!--/.Second slide-->
-
-
+                    <!--/.Slides-->
 
                 </div>
-                <!--/.Slides-->
+                <!--/.Carousel Wrapper-->
 
             </div>
-            <!--/.Carousel Wrapper-->
-
-        </div>
-    </section><!-- #team -->
+        </section><!-- #team -->
 
     <!--==========================
       Clients Section
@@ -655,7 +581,7 @@
                             <h3>Moh. Ariffudin</h3>
                             <h4>Developer</h4>
                             <p>
-                                Text Here.
+                                Lahir &#8614; Dolen &#8614; Sekolah &#8614; Kerjo &#8614; Rabi &#8614; Duwe Anak &#8614; Duwe Puthu &#8614; Syukur-Syukur Duwe Buyut &#8614; Mati
                             </p>
                         </div>
 
