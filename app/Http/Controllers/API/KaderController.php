@@ -17,7 +17,7 @@ class KaderController extends Controller
     		$data ['kader'] = $kader;
     		return response()->json(['status' => '200', 'data' => $data]);
     	} else {
-    		return response()->json(['status' => 'Error 500']);
+    		return response()->json(['status' => 'Error 500']); 
     	}
     }
 }

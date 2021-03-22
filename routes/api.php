@@ -22,5 +22,5 @@ Route::group([
 	'prefix' => 'private'
 ], function(){
 	Route::get('/kader/', 'API\KaderController@index')->name('tool.api.kader');
-	Route::get('/article/', 'API\ArticleController@index')->name('tool.api.article');
+	Route::get('/article/', 'API\ArticleController@index')->name('tool.api.article'); 
 });

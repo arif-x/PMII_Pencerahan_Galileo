@@ -17,7 +17,7 @@ class ArticleController extends Controller
     		$data ['article'] = $article;
     		return response()->json(['status' => '200', 'data' => $data]);
     	} else {
-    		return response()->json(['status' => 'Error 500']);
+    		return response()->json(['status' => 'Error 500']); 
     	}
     }
 }
