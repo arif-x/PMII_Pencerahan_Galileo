@@ -27,6 +27,7 @@
 
     <!-- Main Stylesheet File -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 </head>
 
 <body>
@@ -347,43 +348,6 @@
         </div>
     </section><!-- #services -->
 
-        <!--==========================
-      Why Us Section
-      ============================-->
-      <section id="why-us" class="wow fadeIn">
-        <div class="container">
-            <header class="section-header">
-                <h3>Anggota</h3>
-                <p>Daftar Anggota PMII Rayon <nobr style="font-style: italic;"> Pencerahan </nobr> Galileo</p>
-            </header>
-
-            <div class="row counters">
-
-                <div class="col-md-3 col-3 text-center">
-                    <span data-toggle="counter-up">100</span>
-                    <p>Seluruh Anggota</p>
-                </div>
-
-                <div class="col-md-3 col-3 text-center">
-                    <span data-toggle="counter-up">100</span>
-                    <p>Anggota Mapaba</p>
-                </div>
-
-                <div class="col-md-3 col-3 text-center">
-                    <span data-toggle="counter-up">100</span>
-                    <p>Anggota PKD</p>
-                </div>
-
-                <div class="col-md-3 col-3 text-center">
-                    <span data-toggle="counter-up">100</span>
-                    <p>Anggota PKL</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
     <section id="article" class="wow fadeIn">
         <div class="container">
             <header class="section-header">
@@ -402,7 +366,9 @@
                     <div class="col-md-3">
                         <div class="card shadow">
                             <div class="card-header">
-                                <img src="{{ $article->thumbnail }}">
+                                <a href="/article/{{ $article->url }}">
+                                    <img src="{{ $article->thumbnail }}">
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
@@ -501,81 +467,161 @@
                 <p>Pengurus PMII Rayon <nobr style="font-style: italic;"> Pencerahan </nobr> Galileo</p>
             </div>
 
-            <div class="row">
+            <!--Carousel Wrapper-->
+            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-                <div class="col-lg-3 col-md-6 wow fadeInUp">
-                    <div class="member">
-                        <img src="img/team-1.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                            <div class="member-info-content">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
-                                <div class="social">
-                                    <a href=""><i class="fa fa-twitter"></i></a>
-                                    <a href=""><i class="fa fa-facebook"></i></a>
-                                    <a href=""><i class="fa fa-google-plus"></i></a>
-                                    <a href=""><i class="fa fa-linkedin"></i></a>
+                <!--Controls-->
+                <div class="controls-top">
+                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                        class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!--/.Controls-->
+
+                    <!--Indicators-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                        <li data-target="#multi-item-example" data-slide-to="1"></li>
+
+                    </ol>
+                    <!--/.Indicators-->
+
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+
+                        <!--First slide-->
+                        <div class="carousel-item active">
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    @foreach($ketuas as $ketua)
+                                    <img class="card-img-top"
+                                    src="/storage/foto/{{ $ketua->photo }}" alt="Ketua">
+                                    <hr>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h4 class="card-title">{{ $ketua->nama }}</h4>
+                                            <p class="card-text">{{ $ketua->jabatan }}</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                            card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                            card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                            card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/.First slide-->
+
+                        <!--Second slide-->
+                        <div class="carousel-item">
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    <img class="card-img-top"
+                                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                            card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                  <img class="card-img-top"
+                                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
+                                  <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="member">
-                        <img src="img/team-2.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                            <div class="member-info-content">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                                <div class="social">
-                                    <a href=""><i class="fa fa-twitter"></i></a>
-                                    <a href=""><i class="fa fa-facebook"></i></a>
-                                    <a href=""><i class="fa fa-google-plus"></i></a>
-                                    <a href=""><i class="fa fa-linkedin"></i></a>
+                        <div class="col-md-3" style="float:left">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="member">
-                        <img src="img/team-3.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                            <div class="member-info-content">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                                <div class="social">
-                                    <a href=""><i class="fa fa-twitter"></i></a>
-                                    <a href=""><i class="fa fa-facebook"></i></a>
-                                    <a href=""><i class="fa fa-google-plus"></i></a>
-                                    <a href=""><i class="fa fa-linkedin"></i></a>
+                        <div class="col-md-3" style="float:left">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="member">
-                        <img src="img/team-4.jpg" class="img-fluid" alt="">
-                        <div class="member-info">
-                            <div class="member-info-content">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                                <div class="social">
-                                    <a href=""><i class="fa fa-twitter"></i></a>
-                                    <a href=""><i class="fa fa-facebook"></i></a>
-                                    <a href=""><i class="fa fa-google-plus"></i></a>
-                                    <a href=""><i class="fa fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    <!--/.Second slide-->
+
+
+
                 </div>
+                <!--/.Slides-->
 
             </div>
+            <!--/.Carousel Wrapper-->
 
         </div>
     </section><!-- #team -->
@@ -596,29 +642,20 @@
                     <div class="owl-carousel testimonials-carousel wow fadeInUp">
 
                         <div class="testimonial-item">
-                            <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
+                            <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
+                            <h3>Wangga</h3>
+                            <h4>System Designer</h4>
                             <p>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                Text Here.
                             </p>
                         </div>
 
                         <div class="testimonial-item">
-                            <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
+                            <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
+                            <h3>Moh. Ariffudin</h3>
+                            <h4>Developer</h4>
                             <p>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                            </p>
-                        </div>
-
-                        <div class="testimonial-item">
-                            <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                            <p>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                Text Here.
                             </p>
                         </div>
 
@@ -688,7 +725,7 @@
 
                 <div class="col-lg-6">
                     <div class="map mb-4 mb-lg-0">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15805.774526433857!2d112.6085879!3d-7.9530225!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x686e24d74c50ca36!2sPMII%20Rayon%20%22Pencerahan%22%20Galileo%20(Tempat%20Baru)!5e0!3m2!1sid!2sid!4v1571913739953!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
+                        <iframe src="https://maps.google.com/maps?q=@-7.942778507664751,%20112.59824954632106&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0; width: 100%; height: 450px;" allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -711,10 +748,21 @@
                         </div>
                     </div>
 
+                    <div class="text-center">
+                        <h4>Kirim Feedback</h4>
+                    </div>
+
+                    <div id="messageInfo" style="display: none;">
+                        <br>
+                        <div class="col-md-12 alert alert-info alert-block margin-tengah">      
+                            <button type="button" class="close" data-dismiss="alert">×</button>    
+                            <strong>Pesan Telah Terkirim. Terimakasih!</strong>
+                        </div>
+                    </div>                    
+
                     <div class="form">
-                        <div id="sendmessage">Pesan Telah Terkirim. Terimakasih!</div>
-                        <div id="errormessage"></div>
-                        <form action="" method="post" role="form" class="contactForm">
+                        <form id="feedbackForm">
+                            @csrf
                             <div class="form-row">
                                 <div class="form-group col-lg-6">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -733,8 +781,28 @@
                                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Tulis Sesuatu"></textarea>
                                 <div class="validation"></div>
                             </div>
-                            <div class="text-center"><button type="submit" title="Kirim Pesan">Kirim Pesan</button></div>
+                            <div class="text-center"><button type="submit" id="submitForm" title="Kirim Pesan">Kirim Pesan</button></div>
                         </form>
+                        <script>
+                            $(function () {
+                                $(document).on("click", "#submitForm", function(e) {
+                                    e.preventDefault();
+                                    $.ajax({
+                                        data: $('#feedbackForm').serialize(),
+                                        url: "{{ route('feedback.send') }}",
+                                        type: "POST",
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            $('#messageInfo').css("display", "block");
+                                            $('#feedbackForm').trigger("reset");            
+                                        },
+                                        error: function (data) {
+                                            console.log('Error:', data);
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
 

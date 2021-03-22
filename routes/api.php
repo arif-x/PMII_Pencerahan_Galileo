@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group([
-	'prefix' => 'private'
+	'prefix' => 'v1'
 ], function(){
 	Route::get('/kader/', 'API\KaderController@index')->name('tool.api.kader');
 	Route::get('/article/', 'API\ArticleController@index')->name('tool.api.article'); 

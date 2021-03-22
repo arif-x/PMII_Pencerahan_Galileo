@@ -13,7 +13,7 @@ class ArticleController extends Controller
     	$data = [];
     	$apiToken = ApiToken::where('functions', 'article')->where('api_token', $request->api_token)->first();
     	if(!empty($apiToken)){
-    		$article = Cms::get();
+    		$article = Cms::where('status', 'Terverifikasi')->get();
     		$data ['article'] = $article;
     		return response()->json(['status' => '200', 'data' => $data]);
     	} else {

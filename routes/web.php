@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('index');
 
 Route::group([
+	'namespace' => 'Publics',
+], function(){
+	Route::post('/feedback/send', 'FeedbackController@send')->name('feedback.send');
+});
+
+Route::group([
 	'middleware' => ['auth'],
 ], function(){	
 	Route::get('/home', 'HomeController@index')->name('index.home');
