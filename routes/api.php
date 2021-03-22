@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group([
 	'prefix' => 'v1'
+	'namespace' => 'API'
 ], function(){
-	Route::get('/kader/', 'API\KaderController@index')->name('tool.api.kader');
-	Route::get('/article/', 'API\ArticleController@index')->name('tool.api.article'); 
+	Route::get('/kader/', 'KaderController@index')->name('tool.api.kader');
+	Route::get('/article/', 'ArticleController@index')->name('tool.api.article'); 
 });
