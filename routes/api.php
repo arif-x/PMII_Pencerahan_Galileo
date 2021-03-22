@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+	'prefix' => 'private'
+], function(){
+	Route::get('/kader/', 'API\KaderController@index')->name('tool.api.kader');
+	Route::get('/article/', 'API\ArticleController@index')->name('tool.api.article');
+});
