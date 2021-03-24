@@ -10,5 +10,6 @@ How to Deploy and Run?
 - Copy ".env-example or rename to .env"
 - Create database and give name with same name in .env file
 - Set your database configuration in .env file
+- Refresh app key "php artisan key:generate"
 - Run database migration "php artisan migrate"
 - Run app "php artisan serve"
