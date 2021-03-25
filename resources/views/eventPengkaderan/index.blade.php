@@ -61,8 +61,8 @@
                   <input type="hidden" id="id{{ $event->id }}" value="{{ $event->id }}">
 
                   <?php
-                  $date = \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y');
-                  $now = \Carbon\Carbon::today()->toDateString();
+                  $date = $event['tgl_akhir_regist'];
+                  $now = date("Y-m-d");
 
                   if($date > $now) {
                     echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>

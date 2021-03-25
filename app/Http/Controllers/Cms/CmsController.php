@@ -48,119 +48,125 @@ class CmsController extends Controller
         $exca = Cms::where('url', $link)->where('id', '!=', $request->artikel_id)->pluck('url');
         $excs = Cms::where('url', $link)->where('id', '=', $request->artikel_id)->pluck('url');
 
-        if (!empty($exc) && $exca == $excs){
-            $urls = $request->title;
-            $links = str_replace(' ', '-', strtolower($urls));
+        $published = Cms::where('id', '=', $request->artikel_id)->where('status', '=', 'Terverifikasi')->first();
 
-            $random = Str::random(1);  
-            $excRandom = $links .'-'. $random;
-            $content = $request->contents;
-            $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
+        if (empty($published)){
+            if (!empty($exc) && $exca == $excs){
+                $urls = $request->title;
+                $links = str_replace(' ', '-', strtolower($urls));
 
-            Cms::updateOrCreate(
-                ['id' => $request->artikel_id],
-                [
-                    'title' => $request->title,
-                    'keyword' => $request->keyword,
-                    'description' => $request->description,
-                    'category' => $request->category,
-                    'content' => $request->contents . $noImage,  
-                    'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
-                    'url' => $excRandom
-                ]
-            );
+                $random = Str::random(1);  
+                $excRandom = $links .'-'. $random;
+                $content = $request->contents;
+                $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
 
-            $id = Cms::orderBy('updated_at','desc')->limit(1)->pluck('id');
-            $string = Cms::where('id', $id)->select('content')->get();
-            $display = explode('src=', $string);
-            $display = explode('"', $display[1]);
-            $imgData = stripslashes($display[1]);
+                Cms::updateOrCreate(
+                    ['id' => $request->artikel_id],
+                    [
+                        'title' => $request->title,
+                        'keyword' => $request->keyword,
+                        'description' => $request->description,
+                        'category' => $request->category,
+                        'content' => $request->contents . $noImage,  
+                        'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
+                        'url' => $excRandom
+                    ]
+                );
 
-            Cms::where('id', $id)->update([
-                'thumbnail' => $imgData,
-            ]);
+                $id = Cms::orderBy('updated_at','desc')->limit(1)->pluck('id');
+                $string = Cms::where('id', $id)->select('content')->get();
+                $display = explode('src=', $string);
+                $display = explode('"', $display[1]);
+                $imgData = stripslashes($display[1]);
 
-            $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
-            $stringUp = Cms::where('id', $id)->select('content')->get();            
+                Cms::where('id', $id)->update([
+                    'thumbnail' => $imgData,
+                ]);
 
-            Cms::where('id', $idUp)->update([
-                'content' => $content
-            ]);
+                $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
+                $stringUp = Cms::where('id', $id)->select('content')->get();            
 
-            return response()->json(['success'=>'Artikel Disimpan.']); 
-        } elseif (empty($exc) && $exca != $excs) {
-            $urls = $request->title;
-            $links = str_replace(' ', '-', strtolower($urls));
+                Cms::where('id', $idUp)->update([
+                    'content' => $content
+                ]);
 
-            $random = Str::random(2);  
-            $excRandom = $links .'-'. $random;
-            $content = $request->contents;
-            $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
-            Cms::updateOrCreate(
-                ['id' => $request->artikel_id],
-                [
-                    'title' => $request->title,
-                    'keyword' => $request->keyword,
-                    'description' => $request->description,
-                    'category' => $request->category,
-                    'content' => $request->contents . $noImage,  
-                    'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
-                    'url' => $links,
-                ]
-            );
+                return response()->json(['success'=>'Artikel Disimpan.']); 
+            } elseif (empty($exc) && $exca != $excs) {
+                $urls = $request->title;
+                $links = str_replace(' ', '-', strtolower($urls));
 
-            $id = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
-            $string = Cms::where('id', $id)->select('content')->get();
-            $display = explode('src=', $string);
-            $display = explode('"', $display[1]);
-            $imgData = stripslashes($display[1]);
+                $random = Str::random(2);  
+                $excRandom = $links .'-'. $random;
+                $content = $request->contents;
+                $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
+                Cms::updateOrCreate(
+                    ['id' => $request->artikel_id],
+                    [
+                        'title' => $request->title,
+                        'keyword' => $request->keyword,
+                        'description' => $request->description,
+                        'category' => $request->category,
+                        'content' => $request->contents . $noImage,  
+                        'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
+                        'url' => $links,
+                    ]
+                );
 
-            Cms::where('id', $id)->update([
-                'thumbnail' => $imgData,
-            ]);
+                $id = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
+                $string = Cms::where('id', $id)->select('content')->get();
+                $display = explode('src=', $string);
+                $display = explode('"', $display[1]);
+                $imgData = stripslashes($display[1]);
 
-            $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
-            $stringUp = Cms::where('id', $id)->select('content')->get();            
+                Cms::where('id', $id)->update([
+                    'thumbnail' => $imgData,
+                ]);
 
-            Cms::where('id', $idUp)->update([
-                'content' => $content,
-            ]);
+                $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
+                $stringUp = Cms::where('id', $id)->select('content')->get();            
 
-            return response()->json(['success'=>'Artikel Disimpan.']);   
+                Cms::where('id', $idUp)->update([
+                    'content' => $content,
+                ]);
+
+                return response()->json(['success'=>'Artikel Disimpan.']);   
+            } else {
+                $content = $request->contents;
+                $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
+                Cms::updateOrCreate(
+                    ['id' => $request->artikel_id],
+                    [
+                        'title' => $request->title,
+                        'keyword' => $request->keyword,
+                        'description' => $request->description,
+                        'category' => $request->category,
+                        'content' => $request->contents . $noImage,  
+                        'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
+                    ]
+                );
+
+                $id = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
+                $string = Cms::where('id', $id)->select('content')->get();
+                $display = explode('src=', $string);
+                $display = explode('"', $display[1]);
+                $imgData = stripslashes($display[1]);
+
+                Cms::where('id', $id)->update([
+                    'thumbnail' => $imgData,
+                ]);
+
+                $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
+                $stringUp = Cms::where('id', $id)->select('content')->get();            
+
+                Cms::where('id', $idUp)->update([
+                    'content' => $content,
+                ]);
+
+                return response()->json(['success'=>'Artikel Disimpan.']);
+            }
         } else {
-            $content = $request->contents;
-            $noImage = '<img src="/storage/photos/1/default.jpg" style="display: none !important; visibility: hidden !important;"/>';
-            Cms::updateOrCreate(
-                ['id' => $request->artikel_id],
-                [
-                    'title' => $request->title,
-                    'keyword' => $request->keyword,
-                    'description' => $request->description,
-                    'category' => $request->category,
-                    'content' => $request->contents . $noImage,  
-                    'writer' => Auth::user()->name . ' Angkatan ' . Auth::user()->angkatan,
-                ]
-            );
-
-            $id = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
-            $string = Cms::where('id', $id)->select('content')->get();
-            $display = explode('src=', $string);
-            $display = explode('"', $display[1]);
-            $imgData = stripslashes($display[1]);
-
-            Cms::where('id', $id)->update([
-                'thumbnail' => $imgData,
-            ]);
-
-            $idUp = Cms::orderBy('updated_at', 'desc')->limit(1)->pluck('id');
-            $stringUp = Cms::where('id', $id)->select('content')->get();            
-
-            Cms::where('id', $idUp)->update([
-                'content' => $content,
-            ]);
-
-            return response()->json(['success'=>'Artikel Disimpan.']);  
-        }
+            return response()->json(['success'=>'Artikel Tidak Dapat Diedit Karena Sudah Dipublish.']);
+        }     
     }
     /**
      * Show the form for editing the specified resource.

@@ -47,13 +47,13 @@
 
     <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-            <li class="active"><a href="#intro">Home</a></li>
-            <li><a href="#about">Tentang Kami</a></li>
-            <li><a href="#services">Fitur</a></li>
-            <li><a href="#article">Artikel</a></li>
-            <li><a href="#event">Event</a></li>
-            <li><a href="#team">Pengurus</a></li>
-            <li><a href="#contact">Kontak Kami</a></li>
+            <li class="active"><a href="/#intro">Home</a></li>
+            <li><a href="/#about">Tentang Kami</a></li>
+            <li><a href="/#services">Fitur</a></li>
+            <li><a href="/#article">Artikel</a></li>
+            <li><a href="/#event">Event</a></li>
+            <li><a href="/#team">Pengurus</a></li>
+            <li><a href="/#contact">Kontak Kami</a></li>
             @guest
             @if (Route::has('register'))
             @endif

@@ -55,51 +55,62 @@
                   @guest
                   @if (Route::has('register'))
                   @endif
-                  <p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistGuestModal{{$event->id}}">Ikuti Event</a></p>
-                  <div class="modal-lg fade" id="eventRegistGuestModal{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="modalGusestLabel{{$event->id}}" aria-hidden="true">
+                  <?php
+                  
+                  $date = $event['tgl_akhir_regist'];
+                  $now = date("Y-m-d");
+                  
+                  if($date > $now) {
+                    echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistGuestModal'. $event['id'] .'">Ikuti Event</a></p>
+                    <div class="modal-lg fade" id="eventRegistGuestModal'. $event['id'] .'" tabindex="-1" role="dialog" aria-labelledby="modalGusestLabel'. $event['id'] .'" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="modalGuestLabel{{$event->id}}">Konfirmasi</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          Ingin Mengikuti {{$event->nama_event}}?
-                        </div>
-                        <div class="modal-footer">
-                          <form method="POST" action="/event/guest/join">
-                            @csrf
-                            <input type="hidden" value="{{$event->id}}" name="event_id">
-                            <div class="mt-2">
-                              <label for="email">Email</label>
-                              <input id="email" type="text" class="form-control" value="" name="email">
-                            </div>
-                            <div class="mt-2">
-                              <label for="nama">Nama</label>
-                              <input id="nama" type="text" class="form-control" value="" name="nama">
-                            </div>
-                            <div class="mt-2">
-                              <label for="rayon">Rayon</label>
-                              <input id="rayon" type="text" class="form-control" value="" name="rayon">
-                            </div>
-                            <div class="mt-4">
-                              <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary" style="width:100% !important">Ikut</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalGuestLabel'. $event['id'] .'">Konfirmasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>
-                  </div>
+                    <div class="modal-body">
+                    Ingin Mengikuti '. $event['nama_event'] .'?
+                    </div>
+                    <div class="modal-footer">
+                    <form method="POST" action="/event/guest/join">
+                    <input name="_token" value="' . csrf_token() . ' " type="hidden">
+                    <input type="hidden" value="'. $event['id'] .'" name="event_id">
+                    <div class="mt-2">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" class="form-control" value="" name="email">
+                    </div>
+                    <div class="mt-2">
+                    <label for="nama">Nama</label>
+                    <input id="nama" type="text" class="form-control" value="" name="nama">
+                    </div>
+                    <div class="mt-2">
+                    <label for="rayon">Rayon</label>
+                    <input id="rayon" type="text" class="form-control" value="" name="rayon">
+                    </div>
+                    <div class="mt-4">
+                    <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary" style="width:100% !important">Ikut</button>
+                    </div>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    </div>';
+                  } elseif($date < $now) {
+                    echo '<p><a href="#" class="btn btn-primary py-2 px-3">Pendaftaran Ditutup</a></p>';
+                  }
+
+                  ?>
                   @else
                   <input type="hidden" id="id{{ $event->id }}" value="{{ $event->id }}">
 
                   <?php
-                  $date = \Carbon\Carbon::parse($event->tgl_mulai)->format('d-m-Y');
-                  $now = \Carbon\Carbon::today()->toDateString();
+                  $date = $event['tgl_akhir_regist'];
+                  $now = date("Y-m-d");
 
                   if($date > $now) {
                     echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>
@@ -144,4 +155,4 @@
       </div>
       <!-- .col-md-8 -->      
 
-@endsection
+      @endsection
