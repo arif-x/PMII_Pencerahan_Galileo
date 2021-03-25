@@ -98,7 +98,7 @@
                               <option value="Co. Biro Keislaman">Co. Biro Keislaman</option>
                               <option value="Anggota Biro Keislaman">Anggota Biro Keislaman</option>
                               <option value="Co. Biro Pengembangan Wawasan">Co. Biro Pengembangan Wawasan</option>
-                              <option value="Anggota Biro Keislaman">Anggota Biro Keislaman</option>
+                              <option value="Anggota Biro Pengembangan Wawasan">Anggota Biro Pengembangan Wawasan</option>
                               <option value="Co. Biro FKE">Co. Biro FKE</option>
                               <option value="Anggota Biro FKE">Anggota Biro FKE</option>
                               <option value="Forum Pengembangan Jurusan Matematika">Forum Pengembangan Jurusan Matematika</option>

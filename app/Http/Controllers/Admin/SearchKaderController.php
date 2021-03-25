@@ -11,7 +11,7 @@ class SearchKaderController extends Controller
 	function search(Request $request){
 		if($request->get('query')){
 			$query = $request->get('query');
-			$data = User::where('nim', 'LIKE', "%{$query}%")
+			$data = User::where('name', 'LIKE', "%{$query}%")
 			->get();
 			$output = '';
 			foreach($data as $row)

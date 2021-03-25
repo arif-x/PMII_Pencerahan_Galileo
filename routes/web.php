@@ -18,6 +18,12 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::group([
 	'namespace' => 'Publics',
 ], function(){
+	Route::get('/pengurus', 'PengurusController@index')->name('index.pengurus');
+});
+
+Route::group([
+	'namespace' => 'Publics',
+], function(){
 	Route::post('/feedback/send', 'FeedbackController@send')->name('feedback.send');
 });
 
