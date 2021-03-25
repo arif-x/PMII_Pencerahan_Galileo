@@ -52,8 +52,8 @@
             <li><a href="/#services">Fitur</a></li>
             <li><a href="/#article">Artikel</a></li>
             <li><a href="/#event">Event</a></li>
-            <li><a href="/#team">Pengurus</a></li>
-            <li><a href="/#contact">Kontak Kami</a></li>
+            <li><a href="#team">Pengurus</a></li>
+            <li><a href="#contact">Kontak Kami</a></li>
             @guest
             @if (Route::has('register'))
             @endif
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="text-center">
-                    <h4 style="font-style: italic;">Ketua & Wakil Ketua Rayon</h4>
+                    <u><h4 style="font-style: italic;">Ketua & Wakil Ketua Rayon</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -99,7 +99,7 @@
                         @foreach($ketuas as $ketua)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$ketua->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -115,7 +115,7 @@
                         @foreach($wakils as $wakil)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$wakil->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Sekretaris & Wakil Sekretaris Rayon</h4>
+                    <u><h4 style="font-style: italic;">Sekretaris & Wakil Sekretaris Rayon</h4></u>
                 </div>
 
                 <div class="row">
@@ -140,7 +140,7 @@
                         @foreach($sekretariss as $sekretaris)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretaris->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -156,7 +156,7 @@
                         @foreach($wakilSekretariss as $wakilSekretaris)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$wakilSekretaris->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Bendahara & Wakil Bendahara Rayon</h4>
+                    <u><h4 style="font-style: italic;">Bendahara & Wakil Bendahara Rayon</h4></u>
                 </div>
 
                 <div class="row">
@@ -181,7 +181,7 @@
                         @foreach($bendaharas as $bendahara)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$bendahara->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -197,7 +197,7 @@
                         @foreach($wakilBendaharas as $wakilBendahara)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$wakilBendahara->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -213,7 +213,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Biro Pengkaderan</h4>
+                    <u><h4 style="font-style: italic;">Biro Pengkaderan</h4></u>
                 </div>
 
                 <div class="row">
@@ -221,7 +221,7 @@
                         @foreach($coPengkaderans as $coPengkaderan)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coPengkaderan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -237,7 +237,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaPengkaderan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -252,7 +252,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Biro Gerakan</h4>
+                    <u><h4 style="font-style: italic;">Biro Gerakan</h4></u>
                 </div>
 
                 <div class="row">
@@ -260,7 +260,7 @@
                         @foreach($coGerakans as $coGerakan)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coGerakan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -276,7 +276,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaGerakan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -291,7 +291,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Biro Keislaman</h4>
+                    <u><h4 style="font-style: italic;">Biro Keislaman</h4></u>
                 </div>
 
                 <div class="row">
@@ -299,7 +299,7 @@
                         @foreach($coKeislamans as $coKeislaman)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coKeislaman->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -315,7 +315,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaKeislaman->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -330,7 +330,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Biro Pengembangan Wawasan</h4>
+                    <u><h4 style="font-style: italic;">Biro Pengembangan Wawasan</h4></u>
                 </div>
 
                 <div class="row">
@@ -338,7 +338,7 @@
                         @foreach($coPengembanganWawasans as $coPengembanganWawasan)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coPengembanganWawasan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -354,7 +354,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaPengembanganWawasan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -369,7 +369,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">Biro FKE</h4>
+                    <u><h4 style="font-style: italic;">Biro FKE</h4></u>
                 </div>
 
                 <div class="row">
@@ -377,7 +377,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coFKE->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -393,7 +393,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaFKE->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -408,14 +408,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">FPJ</h4>
+                    <u><h4 style="font-style: italic;">FPJ</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         @foreach($fpjMatematikas as $fpjMatematika)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjMatematika->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -432,7 +432,7 @@
                         @foreach($fpjBiologis as $fpjBiologi)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjBiologi->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -449,7 +449,7 @@
                         @foreach($fpjFisikas as $fpjFisika)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjFisika->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -466,7 +466,7 @@
                         @foreach($fpjKimias as $fpjKimia)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjKimia->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -483,7 +483,7 @@
                         @foreach($fpjTeknikInformatikas as $fpjTeknikInformatika)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjTeknikInformatika->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -500,7 +500,7 @@
                         @foreach($fpjTeknikArsitekturs as $fpjTeknikArsitektur)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjTeknikArsitektur->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -517,7 +517,7 @@
                         @foreach($fpjPerpustakaans as $fpjPerpustakaan)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$fpjPerpustakaan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -532,14 +532,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">BSO KOPRI</h4>
+                    <u><h4 style="font-style: italic;">BSO KOPRI</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         @foreach($kopris as $kopri)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$kopri->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -555,7 +555,7 @@
                         @foreach($sekretarisKopris as $sekretarisKopri)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretarisKopri->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -571,7 +571,7 @@
                         @foreach($bendaharaKopris as $bendaharaKopri)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$bendaharaKopri->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -586,7 +586,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">BSO Biro Internal</h4>
+                    <u><h4 style="font-style: italic;">BSO Biro Internal</h4></u>
                 </div>
 
                 <div class="row">
@@ -594,7 +594,7 @@
                         @foreach($coInternals as $coInternal)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coInternal->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -610,7 +610,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaInternal->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -625,14 +625,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">BSO Biro Eksternal</h4>
+                    <u><h4 style="font-style: italic;">BSO Biro Eksternal</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         @foreach($coEksternals as $coEksternal)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$coEksternal->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -648,7 +648,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaEksternal->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -663,14 +663,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">LSO Jurnalistik</h4>
+                    <u><h4 style="font-style: italic;">LSO Jurnalistik</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         @foreach($direkturJurnalistiks as $direkturJurnalistik)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$direkturJurnalistik->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -686,7 +686,7 @@
                         @foreach($sekretarisJurnalistiks as $sekretarisJurnalistik)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretarisJurnalistik->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -702,7 +702,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaJurnalistik->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -717,14 +717,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">LSO GAPALA</h4>
+                    <u><h4 style="font-style: italic;">LSO GAPALA</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         @foreach($direkturGAPALAs as $direkturGAPALA)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$direkturGAPALA->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -740,7 +740,7 @@
                         @foreach($sekretarisGAPALAs as $sekretarisGAPALA)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretarisGAPALA->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -756,7 +756,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaGAPALA->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -771,14 +771,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">LSO Kewirausahaan</h4>
+                    <u><h4 style="font-style: italic;">LSO Kewirausahaan</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">     
                         @foreach($direkturKewirausahaans as $direkturKewirausahaan)                   
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$direkturKewirausahaan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -794,7 +794,7 @@
                         @foreach($sekretarisKewirausahaans as $sekretarisKewirausahaan)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretarisKewirausahaan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -810,7 +810,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaKewirausahaan->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -825,14 +825,14 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <h4 style="font-style: italic;">LSO TEGAL</h4>
+                    <u><h4 style="font-style: italic;">LSO TEGAL</h4></u>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         @foreach($direkturTEGALs as $direkturTEGAL)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$direkturTEGAL->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -848,7 +848,7 @@
                         @foreach($sekretarisTEGALs as $sekretarisTEGAL)
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$sekretarisTEGAL->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -864,7 +864,7 @@
                     <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
-                                <img class="card-img-top shadow-sm"
+                                <img class="card-img-top img-fluid shadow-sm"
                                 src="{{ asset('storage/foto/'.$anggotaTEGAL->photo) }}" alt="Pengurus" style="object-fit: cover;width:230px;height:230px;">
                             </div>
                             <div class="card-body">
@@ -897,7 +897,7 @@
 
                             <div class="testimonial-item">
                                 <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
-                                <h3>Wangga</h3>
+                                <h3>Wangga Surya Putra</h3>
                                 <h4>System Designer</h4>
                                 <p>
                                     Text Here.
@@ -905,7 +905,7 @@
                             </div>
 
                             <div class="testimonial-item">
-                                <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
+                                <img src="/storage/foto/18650045.jpg" class="testimonial-img" alt="">
                                 <h3>Moh. Ariffudin</h3>
                                 <h4>Developer</h4>
                                 <p>

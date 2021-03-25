@@ -472,181 +472,174 @@
             </div>
 
             <!--Carousel Wrapper-->
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <div id="multi-item-example" class="carousel slide carousel-multi-item mt-4" data-ride="carousel">
 
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                        class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <!--/.Controls-->
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                    <li data-target="#multi-item-example" data-slide-to="1"></li>
 
-                    <!--Indicators-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#multi-item-example" data-slide-to="1"></li>
+                </ol>
+                <!--/.Indicators-->
 
-                    </ol>
-                    <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
 
-                    <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
 
-                        <!--First slide-->
-                        <div class="carousel-item active">
-
-                            <div class="col-md-3" style="float:left">
-                                @foreach($ketuas as $ketua)
-                                <div class="card mb-2">
+                        <div class="col-md-3" style="float:left">
+                            @foreach($ketuas as $ketua)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$ketua->photo) }}" alt="Ketua Rayon" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
                                     <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$ketua->photo) }}" alt="Ketua Rayon" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $ketua->nama }}</h4>
-                                            <p class="card-text">{{ $ketua->jabatan }}</p>
-                                        </div>
+                                        <h4 class="card-title">{{ $ketua->nama }}</h4>
+                                        <p class="card-text">{{ $ketua->jabatan }}</p>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
-
-                            <div class="col-md-3" style="float:left">
-                                @foreach($wakils as $wakil)
-                                <div class="card mb-2">
-                                    <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$wakil->photo) }}" alt="Wakil Ketua Rayon" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $wakil->nama }}</h4>
-                                            <p class="card-text">{{ $wakil->jabatan }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-
-                            <div class="col-md-3" style="float:left">
-                                @foreach($sekretariss as $sekretaris)
-                                <div class="card mb-2">
-                                    <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$sekretaris->photo) }}" alt="Sekreataris Rayon" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $sekretaris->nama }}</h4>
-                                            <p class="card-text">{{ $sekretaris->jabatan }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-
-                            <div class="col-md-3" style="float:left">
-                                @foreach($bendaharas as $bendahara)
-                                <div class="card mb-2">
-                                    <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$bendahara->photo) }}" alt="Bendahara Rayon" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $bendahara->nama }}</h4>
-                                            <p class="card-text">{{ $bendahara->jabatan }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-
+                            @endforeach
                         </div>
-                        <!--/.First slide-->
 
-                        <!--Second slide-->
-                        <div class="carousel-item">
-
-                            <div class="col-md-3" style="float:left">
-                                @foreach($kopris as $kopri)
-                                <div class="card mb-2">
+                        <div class="col-md-3" style="float:left">
+                            @foreach($wakils as $wakil)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$wakil->photo) }}" alt="Wakil Ketua Rayon" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
                                     <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$kopri->photo) }}" alt="Ketua KOPRI" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $kopri->nama }}</h4>
-                                            <p class="card-text">{{ $kopri->jabatan }}</p>
-                                        </div>
+                                        <h4 class="card-title">{{ $wakil->nama }}</h4>
+                                        <p class="card-text">{{ $wakil->jabatan }}</p>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
+                        </div>
 
-                            <div class="col-md-3" style="float:left">
-                                @foreach($sekretarisKopris as $sekretarisKopri)
-                                <div class="card mb-2">
+                        <div class="col-md-3" style="float:left">
+                            @foreach($sekretariss as $sekretaris)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$sekretaris->photo) }}" alt="Sekreataris Rayon" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
                                     <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$sekretarisKopri->photo) }}" alt="Sekretaris KOPRI" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $sekretarisKopri->nama }}</h4>
-                                            <p class="card-text">{{ $sekretarisKopri->jabatan }}</p>
-                                        </div>
+                                        <h4 class="card-title">{{ $sekretaris->nama }}</h4>
+                                        <p class="card-text">{{ $sekretaris->jabatan }}</p>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
+                        </div>
 
-                            <div class="col-md-3" style="float:left">
-                                @foreach($bendaharaKopris as $bendaharaKopri)
-                                <div class="card mb-2">
+                        <div class="col-md-3" style="float:left">
+                            @foreach($bendaharas as $bendahara)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$bendahara->photo) }}" alt="Bendahara Rayon" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
                                     <div class="text-center">
-                                        <img class="card-img-top shadow-sm"
-                                        src="{{ asset('storage/foto/'.$bendaharaKopri->photo) }}" alt="Bendahara KOPRI" style="object-fit: cover;width:230px;height:230px;">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">{{ $bendaharaKopri->nama }}</h4>
-                                            <p class="card-text">{{ $bendaharaKopri->jabatan }}</p>
-                                        </div>
+                                        <h4 class="card-title">{{ $bendahara->nama }}</h4>
+                                        <p class="card-text">{{ $bendahara->jabatan }}</p>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
+                        </div>
 
-                            <div class="col-md-3" style="float:left">
-                                <div class="card mb-2">
-                                    <a href="/pengurus">
-                                        <img class="card-img-top shadow-sm"
+                    </div>
+                    <!--/.First slide-->
+
+                    <!--Second slide-->
+                    <div class="carousel-item">
+
+                        <div class="col-md-3" style="float:left">
+                            @foreach($kopris as $kopri)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$kopri->photo) }}" alt="Ketua KOPRI" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">{{ $kopri->nama }}</h4>
+                                        <p class="card-text">{{ $kopri->jabatan }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-3" style="float:left">
+                            @foreach($sekretarisKopris as $sekretarisKopri)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$sekretarisKopri->photo) }}" alt="Sekretaris KOPRI" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">{{ $sekretarisKopri->nama }}</h4>
+                                        <p class="card-text">{{ $sekretarisKopri->jabatan }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-3" style="float:left">
+                            @foreach($bendaharaKopris as $bendaharaKopri)
+                            <div class="card mb-2">
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid shadow-sm"
+                                    src="{{ asset('storage/foto/'.$bendaharaKopri->photo) }}" alt="Bendahara KOPRI" style="object-fit: cover;width:230px;height:230px;">
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="card-title">{{ $bendaharaKopri->nama }}</h4>
+                                        <p class="card-text">{{ $bendaharaKopri->jabatan }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-3" style="float:left">
+                            <div class="card mb-2">
+                                <a href="/pengurus">
+                                    <div class="text-center">
+                                        <img class="card-img-top img-fluid shadow-sm"
                                         src="{{ asset('img/arrow.png') }}" alt="Pengurus Lainnya" style="object-fit: cover;width:230px;height:230px;">
-                                    </a>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <h4 class="card-title">Lihat Detail Semua Pengurus</h4>
-                                            <a href="/pengurus" class=" text-white card-text btn btn-primary">Lihat Semua</a>
-                                        </div>
+                                    </div>
+                                </a>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <a href="/pengurus"><h4 class="card-title">Lihat Semua Pengurus</h4></a>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <!--/.Second slide-->
 
                     </div>
-                    <!--/.Slides-->
+                    <!--/.Second slide-->
 
                 </div>
-                <!--/.Carousel Wrapper-->
+                <!--/.Slides-->
 
             </div>
-        </section><!-- #team -->
+            <!--/.Carousel Wrapper-->
+
+        </div>
+    </section><!-- #team -->
 
     <!--==========================
       Clients Section
@@ -665,7 +658,7 @@
 
                         <div class="testimonial-item">
                             <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
-                            <h3>Wangga</h3>
+                            <h3>Wangga Surya Putra</h3>
                             <h4>System Designer</h4>
                             <p>
                                 Text Here.
@@ -673,7 +666,7 @@
                         </div>
 
                         <div class="testimonial-item">
-                            <img src="https://avatars.githubusercontent.com/u/42700729?s=460&u=d7375aae2589ff3f3ac501b8812e83b698bee147&v=4" class="testimonial-img" alt="">
+                            <img src="/storage/foto/18650045.jpg" class="testimonial-img" alt="">
                             <h3>Moh. Ariffudin</h3>
                             <h4>Developer</h4>
                             <p>

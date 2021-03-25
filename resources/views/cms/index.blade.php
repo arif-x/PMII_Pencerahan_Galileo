@@ -11,8 +11,8 @@
             </button>
         </div>
 
-        <div class="table-responsive">
-            <table class="table stripe row-border order-column data-table mt-4" style="width: 100% !important">
+        <div style="width: 100% !important">
+            <table class="table stripe table-responsive row-border order-column data-table mt-4">
                 <thead>
                     <tr>
                         <th>No.</th>

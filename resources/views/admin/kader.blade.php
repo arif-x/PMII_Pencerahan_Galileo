@@ -39,8 +39,8 @@
         </div>
         <br />
         <div style="width: 100%">
-          <div class="table-responsive">
-            <table class="table stripe row-border order-column data-table" style="width: 100% !important">
+          <div class="">
+            <table class="table stripe table-responsive row-border order-column data-table" style="width: 100% !important">
               <thead>
                 <tr>
                   <th>No.</th>
