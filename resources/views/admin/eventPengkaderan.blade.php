@@ -166,120 +166,167 @@
              </div>
            </div>
          </div>
-       </div>
 
-       <script type="text/javascript">
-         $(function () {
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         <div class="modal fade bd-example-modal-lg" id="ajaxModelDelete" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-long">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modelHeadingDelete"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="eventFormDelete" name="eventFormDelete" class="form-horizontal">
+                  <input type="hidden" name="event_id_delete" id="event_id_delete" value="">
+
+                  <div class="row">
+                    <div class="col-md-12">
+
+                      <h4>Ingin Menghapus Event <strong id="nama_event_delete"></strong>?</h4>
+
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                   <button type="submit" class="btn btn-danger" id="saveBtnDelete" value="delete" style="width: 100%">Hapus
+                   </button>
+                 </div>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <script type="text/javascript">
+       $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+        var table = $('.data-table').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "{{ route('event-pengkaderan.index') }}",
+          columns: [
+          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+          {data: 'nama_event', name: 'nama_event'},
+          {data: 'tempat', name: 'tempat'},
+          {data: 'event_angkatan', name: 'event_angkatan'},
+          {data: 'img', name: 'img', orderable: false, searchable: false},
+          {data: 'tgl_mulai_regist', name: 'tgl_mulai_regist'},
+          {data: 'tgl_akhir_regist', name: 'tgl_akhir_regist'},
+          {data: 'tgl_mulai', name: 'tgl_mulai'},
+          {data: 'tgl_akhir', name: 'tgl_akhir'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+          ]
+        });
+
+        $('body').on('click', '.addEvent', function () {
+          $('#modelHeading').html("Tambah Event");
+          $('#eventForm').trigger("reset");
+          $('#saveBtn').val("add-event");
+          $('#ajaxModel').modal('show');
+        });
+
+        $('body').on('click', '.editEvent', function () {
+          var event_id = $(this).data('id');
+          $.get("{{ route('event-pengkaderan.index') }}" +'/' + event_id +'/edit', function (data) {
+            $('#modelHeading').html("Edit Event");
+            $('#saveBtn').val("edit-event");
+            $('#ajaxModel').modal('show');
+            $('#event_id').val(data.id);
+            $('#thumbnail').val(data.image);
+            $('#tempat').val(data.tempat);
+            $('#nama_event').val(data.nama_event);
+            $('#event_angkatan').val(data.event_angkatan);
+            $('#tgl_mulai_regist').val(data.tgl_mulai_regist);
+            $('#tgl_akhir_regist').val(data.tgl_akhir_regist);
+            $('#tgl_mulai').val(data.tgl_mulai);
+            $('#tgl_akhir').val(data.tgl_akhir);
+          })
+        });
+
+        $('body').on('click', '.deleteEvent', function () {
+          var event_id = $(this).data('id');
+          $.get("{{ route('event-pengkaderan.index') }}" +'/' + event_id +'/edit', function (data) {
+            $('#modelHeadingDelete').html("Hapus Event");
+            $('#saveBtnDelete').val("delete-event");
+            $('#ajaxModelDelete').modal('show');
+            $('#event_id_delete').val(data.id);
+            $('#nama_event_delete').html(data.nama_event);
+          })
+        });
+
+        $('#saveBtn').click(function (e) {
+          e.preventDefault();
+          $(this).html('Memproses..');
+
+          $.ajax({
+            data: $('#eventForm').serialize(),
+            url: "{{ route('event-pengkaderan.store') }}",
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+              $('#eventForm').trigger("reset");
+              $('#ajaxModel').modal('hide');
+              table.draw();
+            },
+            error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn').html('Save Changes');
             }
           });
-
-          var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('event-pengkaderan.index') }}",
-            columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'nama_event', name: 'nama_event'},
-            {data: 'tempat', name: 'tempat'},
-            {data: 'event_angkatan', name: 'event_angkatan'},
-            {data: 'img', name: 'img', orderable: false, searchable: false},
-            {data: 'tgl_mulai_regist', name: 'tgl_mulai_regist'},
-            {data: 'tgl_akhir_regist', name: 'tgl_akhir_regist'},
-            {data: 'tgl_mulai', name: 'tgl_mulai'},
-            {data: 'tgl_akhir', name: 'tgl_akhir'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
-          });
-
-          $('body').on('click', '.addEvent', function () {
-            $('#modelHeading').html("Edit Event");
-            $('#eventForm').trigger("reset");
-            $('#saveBtn').val("add-event");
-            $('#ajaxModel').modal('show');
-          });
-
-          $('body').on('click', '.editEvent', function () {
-            var event_id = $(this).data('id');
-            $.get("{{ route('event-pengkaderan.index') }}" +'/' + event_id +'/edit', function (data) {
-              $('#modelHeading').html("Edit Event");
-              $('#saveBtn').val("edit-event");
-              $('#ajaxModel').modal('show');
-              $('#event_id').val(data.id);
-              $('#thumbnail').val(data.image);
-              $('#tempat').val(data.tempat);
-              $('#nama_event').val(data.nama_event);
-              $('#event_angkatan').val(data.event_angkatan);
-              $('#tgl_mulai_regist').val(data.tgl_mulai_regist);
-              $('#tgl_akhir_regist').val(data.tgl_akhir_regist);
-              $('#tgl_mulai').val(data.tgl_mulai);
-              $('#tgl_akhir').val(data.tgl_akhir);
-            })
-          });
-
-          $('#saveBtn').click(function (e) {
-            e.preventDefault();
-            $(this).html('Memproses..');
-
-            $.ajax({
-              data: $('#eventForm').serialize(),
-              url: "{{ route('event-pengkaderan.store') }}",
-              type: "POST",
-              dataType: 'json',
-              success: function (data) {
-                $('#eventForm').trigger("reset");
-                $('#ajaxModel').modal('hide');
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-                $('#saveBtn').html('Save Changes');
-              }
-            });
-          });
-
-          $('body').on('click', '.deleteEvent', function () {
-            var event_id = $(this).data("id");
-            confirm("Are You sure want to delete !");
-            $.ajax({
-              type: "DELETE",
-              url: "{{ route('event-pengkaderan.store') }}"+'/'+event_id,
-              success: function (data) {
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-              }
-            });
-          });
-
         });
-      </script>
 
-      <script>
-        var route_prefix = "/filemanager";
-      </script>
+        $('#saveBtnDelete').click(function (e) {
+          var event_id =$("#event_id_delete").val();
+          e.preventDefault();
+          $(this).html('Memproses..');
+          $.ajax({
+            data: $('#eventFormDelete').serialize(),
+            url: "{{ route('event-pengkaderan.store') }}"+'/'+event_id,
+            type: "DELETE",
+            dataType: 'json',
+            success: function (data) {
+              $('#eventFormDelete').trigger("reset");
+              $('#ajaxModelDelete').modal('hide');
+              table.draw();
+            },
+            error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtnDelete').html('Save Changes');
+            }
+          });
+        });   
 
-      <script>
-        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
-      </script>
-      <script>
-        $('#lfm').filemanager('image', {prefix: route_prefix});
-      </script>
+      });
+    </script>
 
-      <style type="text/css">
-        #holder img {
-          max-width: 100% !important;
-          height: 100% !important;
-        }
-      </style>
+    <script>
+      var route_prefix = "/filemanager";
+    </script>
+
+    <script>
+      {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+    </script>
+    <script>
+      $('#lfm').filemanager('image', {prefix: route_prefix});
+    </script>
+
+    <style type="text/css">
+      #holder img {
+        max-width: 100% !important;
+        height: 100% !important;
+      }
+    </style>
 
 
-    </div>
-    <!-- Container-fluid Ends -->
   </div>
-  <!--Page Body Ends-->
+  <!-- Container-fluid Ends -->
+</div>
+<!--Page Body Ends-->
 </div>
 @endsection

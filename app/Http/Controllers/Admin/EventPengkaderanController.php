@@ -47,21 +47,41 @@ class EventPengkaderanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-    	EventPengkaderan::updateOrCreate(
-            ['id' => $request->event_id],
-    		[
-                'nama_event' => $request->nama_event,
-                'event_angkatan' => $request->event_angkatan,
-                'image' => $request->filepath,
-                'tempat' => $request->tempat,
-                'tgl_mulai_regist' => $request->tgl_mulai_regist,
-                'tgl_akhir_regist' => $request->tgl_akhir_regist,                
-                'tgl_mulai' => $request->tgl_mulai,
-                'tgl_akhir' => $request->tgl_akhir,
-            ]
-        );        
+    	$filepath = $request->filepath;
+        if($filepath == ''){
+            EventPengkaderan::updateOrCreate(
+                ['id' => $request->event_id],
+                [
+                    'nama_event' => $request->nama_event,
+                    'event_angkatan' => $request->event_angkatan,
+                    'tempat' => $request->tempat,
+                    'event_angkatan' => $request->event_angkatan,
+                    'tgl_mulai_regist' => $request->tgl_mulai_regist,
+                    'tgl_akhir_regist' => $request->tgl_akhir_regist,                
+                    'tgl_mulai' => $request->tgl_mulai,
+                    'tgl_akhir' => $request->tgl_akhir,
+                ]
+            );      
 
-    	return response()->json(['success'=>'Data Event Disimpan.']);
+            return response()->json(['success'=>'Data Event Disimpan.']);
+        } else {
+            EventPengkaderan::updateOrCreate(
+                ['id' => $request->event_id],
+                [
+                    'nama_event' => $request->nama_event,
+                    'event_angkatan' => $request->event_angkatan,
+                    'image' => $request->filepath,
+                    'tempat' => $request->tempat,
+                    'event_angkatan' => $request->event_angkatan,
+                    'tgl_mulai_regist' => $request->tgl_mulai_regist,
+                    'tgl_akhir_regist' => $request->tgl_akhir_regist,                
+                    'tgl_mulai' => $request->tgl_mulai,
+                    'tgl_akhir' => $request->tgl_akhir,
+                ]
+            );      
+
+            return response()->json(['success'=>'Data Event Disimpan.']);
+        }    
     }
     /**
      * Show the form for editing the specified resource.

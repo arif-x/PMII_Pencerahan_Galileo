@@ -142,125 +142,171 @@
              </div>
            </div>
          </div>
+
+         <div class="modal fade bd-example-modal-lg" id="ajaxModelDelete" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-long">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modelHeadingDelete"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="pengurusFormDelete" name="pengurusFormDelete" class="form-horizontal">
+                  <input type="hidden" name="pengurus_id_delete" id="pengurus_id_delete" value="">
+
+                  <div class="row">
+                    <div class="col-md-12">                        
+                        <h4>Ingin Menghapus Pengurus dengan NIM * Nama <strong id="nama_pengutus_delete"></strong> Pada Jabatan <strong id="jabatan_delete"></strong>?</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                   <button type="submit" class="btn btn-danger" id="saveBtnDelete" value="create" style="width: 100%">Hapus
+                   </button>
+                 </div>
+               </form>
+             </div>
+           </div>
+         </div>
        </div>
+     </div>
 
-       <script type="text/javascript">
-        $(function () {
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
+     <script type="text/javascript">
+      $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
 
-          var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('pengurus.index') }}",
-            columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'nim', name: 'nim'},
-            {data: 'nama', name: 'nama'},
-            {data: 'jabatan', name: 'jabatan'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
-          });
+        var table = $('.data-table').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "{{ route('pengurus.index') }}",
+          columns: [
+          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+          {data: 'nim', name: 'nim'},
+          {data: 'nama', name: 'nama'},
+          {data: 'jabatan', name: 'jabatan'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+          ]
+        });
 
-          $('#createPengurus').click(function () {
-            $('#saveBtn').val("create-pengurus");
-            $('#pengurus_id').val('');
-            $('#pengurusForm').trigger("reset");
-            $('#modelHeading').html("Tambah Pengurus");
+        $('#createPengurus').click(function () {
+          $('#saveBtn').val("create-pengurus");
+          $('#pengurus_id').val('');
+          $('#pengurusForm').trigger("reset");
+          $('#modelHeading').html("Tambah Pengurus");
+          $('#ajaxModel').modal('show');
+        }); 
+
+        $('body').on('click', '.editPengurus', function () {
+          var pengurus_id = $(this).data('id');
+          $.get("{{ route('pengurus.index') }}" +'/' + pengurus_id +'/edit', function (data) {
+            $('#modelHeading').html("Edit Pengurus");
+            $('#saveBtn').val("edit-pengurus");
             $('#ajaxModel').modal('show');
-          }); 
-
-          $('body').on('click', '.editPengurus', function () {
-            var pengurus_id = $(this).data('id');
-            $.get("{{ route('pengurus.index') }}" +'/' + pengurus_id +'/edit', function (data) {
-              $('#modelHeading').html("Edit Pengurus");
-              $('#saveBtn').val("edit-pengurus");
-              $('#ajaxModel').modal('show');
-              $('#pengurus_id').val(data.id);
-              $('#nim').val(data.nim + ' * ' + data.nama);
-              $('#jabatan').val(data.jabatan);
-            })
-          });
-
-          $('#saveBtn').click(function (e) {
-            e.preventDefault();
-            $(this).html('Memproses..');
-
-            $.ajax({
-              data: $('#pengurusForm').serialize(),
-              url: "{{ route('pengurus.store') }}",
-              type: "POST",
-              dataType: 'json',
-              success: function (data) {
-                $('#pengurusForm').trigger("reset");
-                $('#ajaxModel').modal('hide');
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-                $('#saveBtn').html('Save Changes');
-              }
-            });
-          });
-
-          $('body').on('click', '.deletePengurus', function () {
-            var pengurus_id = $(this).data("id");
-            confirm("Are You sure want to delete !");
-            $.ajax({
-              type: "DELETE",
-              url: "{{ route('pengurus.store') }}"+'/'+pengurus_id,
-              success: function (data) {
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-              }
-            });
-          });
-
+            $('#pengurus_id').val(data.id);
+            $('#nim').val(data.nim + ' * ' + data.nama);
+            $('#jabatan').val(data.jabatan);
+          })
         });
 
-      </script>
+        $('body').on('click', '.deletePengurus', function () {
+          var event_id = $(this).data('id');
+          $.get("{{ route('pengurus.index') }}" +'/' + event_id +'/edit', function (data) {
+            $('#modelHeadingDelete').html("Hapus Pengurus");
+            $('#saveBtnDelete').val("delete-pengurus");
+            $('#ajaxModelDelete').modal('show');
+            $('#pengurus_id_delete').val(data.id);
+            $('#jabatan_delete').html(data.jabatan);
+            $('#nama_pengutus_delete').html(data.nim + ' * ' + data.nama);
+          })
+        });
 
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('#nim').keyup(function(){ 
-            var query = $(this).val();
-            if(query != ''){
-              var _token = $('input[name="_token"]').val();
-              $.ajax({
-                url:"{{ route('search') }}",
-                method:"GET",
-                data:{query:query, _token:_token},
-                success:function(data){
-                  $('#dropdown-menu').fadeIn();  
-                  $('#dropdown-menu').html(data);
-                }
-              });
+        $('#saveBtn').click(function (e) {
+          e.preventDefault();
+          $(this).html('Memproses..');
+
+          $.ajax({
+            data: $('#pengurusForm').serialize(),
+            url: "{{ route('pengurus.store') }}",
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+              $('#pengurusForm').trigger("reset");
+              $('#ajaxModel').modal('hide');
+              table.draw();
+            },
+            error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn').html('Save Changes');
             }
           });
-
-          $(document).on('click', 'li', function(){  
-            $('#nim').val($(this).text());  
-            $('#dropdown-menu').fadeOut();  
-          });  
-
         });
-      </script>
 
-      <style type="text/css">
-        .box{
-          width:600px;
-          margin:0 auto;
-        }
-      </style>
+        $('#saveBtnDelete').click(function (e) {
+          var pengurus_id = $("#pengurus_id_delete").val();
+          e.preventDefault();
+          $(this).html('Memproses..');
+          $.ajax({
+            data: $('#pengurusFormDelete').serialize(),
+            url: "{{ route('pengurus.store') }}"+'/'+pengurus_id,
+            type: "DELETE",
+            dataType: 'json',
+            success: function (data) {
+              $('#pengurusFormDelete').trigger("reset");
+              $('#ajaxModelDelete').modal('hide');
+              table.draw();
+            },
+            error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtnDelete').html('Save Changes');
+            }
+          });
+        }); 
 
-    </div>
-    <!-- Container-fluid Ends -->
+      });
+
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#nim').keyup(function(){ 
+          var query = $(this).val();
+          if(query != ''){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+              url:"{{ route('search') }}",
+              method:"GET",
+              data:{query:query, _token:_token},
+              success:function(data){
+                $('#dropdown-menu').fadeIn();  
+                $('#dropdown-menu').html(data);
+              }
+            });
+          }
+        });
+
+        $(document).on('click', 'li', function(){  
+          $('#nim').val($(this).text());  
+          $('#dropdown-menu').fadeOut();  
+        });  
+
+      });
+    </script>
+
+    <style type="text/css">
+      .box{
+        width:600px;
+        margin:0 auto;
+      }
+    </style>
+
   </div>
-  <!--Page Body Ends-->
+  <!-- Container-fluid Ends -->
+</div>
+<!--Page Body Ends-->
 </div>
 @endsection

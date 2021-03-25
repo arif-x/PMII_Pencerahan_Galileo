@@ -166,6 +166,36 @@
              </div>
            </div>
          </div>
+
+         <div class="modal fade bd-example-modal-lg" id="ajaxModelDelete" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content modal-long">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modelHeadingDelete"></h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="eventFormDelete" name="eventFormDelete" class="form-horizontal">
+                    <input type="hidden" name="event_id_delete" id="event_id_delete" value="">
+
+                    <div class="row">
+                      <div class="col-md-12">
+
+                        <h4>Ingin Menghapus Event <strong id="nama_event_delete"></strong>?</h4>
+
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                     <button type="submit" class="btn btn-danger" id="saveBtnDelete" value="delete" style="width: 100%">Hapus
+                     </button>
+                   </div>
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
        </div>
 
        <script type="text/javascript">
@@ -195,7 +225,7 @@
           });
 
           $('body').on('click', '.addEvent', function () {
-            $('#modelHeading').html("Edit Event");
+            $('#modelHeading').html("Tambah Event");
             $('#eventForm').trigger("reset");
             $('#saveBtn').val("add-event");
             $('#ajaxModel').modal('show');
@@ -214,6 +244,17 @@
               $('#tgl_akhir_regist').val(data.tgl_akhir_regist);
               $('#tgl_mulai').val(data.tgl_mulai);
               $('#tgl_akhir').val(data.tgl_akhir);
+            })
+          });
+
+          $('body').on('click', '.deleteEvent', function () {
+            var event_id = $(this).data('id');
+            $.get("{{ route('event.index') }}" +'/' + event_id +'/edit', function (data) {
+              $('#modelHeadingDelete').html("Hapus Event");
+              $('#saveBtnDelete').val("delete-event");
+              $('#ajaxModelDelete').modal('show');
+              $('#event_id_delete').val(data.id);
+              $('#nama_event_delete').html(data.nama_event);
             })
           });
 
@@ -236,23 +277,28 @@
                 $('#saveBtn').html('Save Changes');
               }
             });
-          });
+          });  
 
-          $('body').on('click', '.deleteEvent', function () {
-            var event_id = $(this).data("id");
-            confirm("Are You sure want to delete !");
+          $('#saveBtnDelete').click(function (e) {
+            var event_id =$("#event_id_delete").val();
+            e.preventDefault();
+            $(this).html('Memproses..');
             $.ajax({
-              type: "DELETE",
+              data: $('#eventFormDelete').serialize(),
               url: "{{ route('event.store') }}"+'/'+event_id,
+              type: "DELETE",
+              dataType: 'json',
               success: function (data) {
+                $('#eventFormDelete').trigger("reset");
+                $('#ajaxModelDelete').modal('hide');
                 table.draw();
               },
               error: function (data) {
                 console.log('Error:', data);
+                $('#saveBtnDelete').html('Save Changes');
               }
             });
-          });
-
+          });          
         });
       </script>
 
