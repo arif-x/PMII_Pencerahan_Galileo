@@ -8,5 +8,7 @@ How to Deploy and Run?
 
 - Run "composer install".
 - Copy ".env-example or rename to .env"
-- Run Database Migration "php artisan migrate"
-- Run App "php artisan serve"
+- Create database and give name with same name in .env file
+- Set your database configuration in .env file
+- Run database migration "php artisan migrate"
+- Run app "php artisan serve"
