@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publics;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Cms;
+use DB;
 
 class BlogController extends Controller
 {
@@ -15,6 +16,9 @@ class BlogController extends Controller
 
     public function single($url){
     	$data = Cms::where('status', 'Terverifikasi')->where('url', $url)->get();
+        $views = Cms::where('url', $url)->update([
+            'views'=> DB::raw('views+1'),
+        ]);
     	return view('blog.single', ['datas' => $data]);	
     }
 

@@ -57,7 +57,9 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="/">Kembali Ke Home</a></li>
-          <li><a href="/article">Daftar Artikel</a></li>
+          <li><a href="/event">Event Umum</a></li>
+          <li><a href="/event-pengkaderan">Event Pengkaderan</a></li>
+          <li><a href="/article">Artikel</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
