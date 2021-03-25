@@ -467,6 +467,10 @@
                 <p>Pengurus PMII Rayon <nobr style="font-style: italic;"> Pencerahan </nobr> Galileo</p>
             </div>
 
+            <div class="text-center">
+                <a type="button" class="btn btn-secondary" href="{{ route('index.pengurus') }}">Lihat Semua Pengurus</a>
+            </div>
+
             <!--Carousel Wrapper-->
             <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
@@ -621,7 +625,7 @@
                                 <div class="card mb-2">
                                     <a href="/pengurus">
                                         <img class="card-img-top shadow-sm"
-                                        src="{{ asset('img/arrow.png') }}" alt="Pengurus Lainnya">
+                                        src="{{ asset('img/arrow.png') }}" alt="Pengurus Lainnya" style="object-fit: cover;width:230px;height:230px;">
                                     </a>
                                     <div class="card-body">
                                         <div class="text-center">

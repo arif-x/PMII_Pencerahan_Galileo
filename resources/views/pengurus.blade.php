@@ -232,9 +232,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaPengkaderans as $anggotaPengkaderan)
+                    </div>                
+                    @foreach($anggotaPengkaderans as $anggotaPengkaderan)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -246,9 +246,9 @@
                                     <p class="card-text">{{ $anggotaPengkaderan->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -271,9 +271,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaGerakans as $anggotaGerakan)
+                    </div>                
+                    @foreach($anggotaGerakans as $anggotaGerakan)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -285,9 +285,9 @@
                                     <p class="card-text">{{ $anggotaGerakan->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -310,9 +310,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaKeislamans as $anggotaKeislaman)
+                    </div>                
+                    @foreach($anggotaKeislamans as $anggotaKeislaman)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -324,9 +324,9 @@
                                     <p class="card-text">{{ $anggotaKeislaman->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -349,9 +349,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaPengembanganWawasans as $anggotaPengembanganWawasan)
+                    </div>                
+                    @foreach($anggotaPengembanganWawasans as $anggotaPengembanganWawasan)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -363,9 +363,9 @@
                                     <p class="card-text">{{ $anggotaPengembanganWawasan->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -373,8 +373,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        @foreach($coFKEs as $coFKE)
+                    @foreach($coFKEs as $coFKE)
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -386,11 +386,11 @@
                                     <p class="card-text">{{ $coFKE->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaFKEs as $anggotaFKE)
+                        </div>                        
+                    </div>    
+                    @endforeach            
+                    @foreach($anggotaFKEs as $anggotaFKE)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -402,9 +402,9 @@
                                     <p class="card-text">{{ $anggotaFKE->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -535,7 +535,7 @@
                     <h4 style="font-style: italic;">BSO KOPRI</h4>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         @foreach($kopris as $kopri)
                         <div class="card mb-2">
                             <div class="text-center">
@@ -551,7 +551,7 @@
                         </div>
                         @endforeach
                     </div>                    
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         @foreach($sekretarisKopris as $sekretarisKopri)
                         <div class="card mb-2">
                             <div class="text-center">
@@ -567,7 +567,7 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         @foreach($bendaharaKopris as $bendaharaKopri)
                         <div class="card mb-2">
                             <div class="text-center">
@@ -605,9 +605,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaInternals as $anggotaInternal)
+                    </div>                
+                    @foreach($anggotaInternals as $anggotaInternal)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -619,9 +619,9 @@
                                     <p class="card-text">{{ $anggotaInternal->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -643,9 +643,9 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>                    
-                    <div class="col-md-3">
-                        @foreach($anggotaEksternals as $anggotaEksternal)
+                    </div>                
+                    @foreach($anggotaEksternals as $anggotaEksternal)    
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -657,9 +657,9 @@
                                     <p class="card-text">{{ $anggotaEksternal->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -698,8 +698,8 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
-                        @foreach($anggotaJurnalistiks as $anggotaJurnalistik)
+                    @foreach($anggotaJurnalistiks as $anggotaJurnalistik)
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -711,9 +711,9 @@
                                     <p class="card-text">{{ $anggotaJurnalistik->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -752,8 +752,8 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
-                        @foreach($anggotaGAPALAs as $anggotaGAPALA)
+                    @foreach($anggotaGAPALAs as $anggotaGAPALA)
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -765,17 +765,17 @@
                                     <p class="card-text">{{ $anggotaGAPALA->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
                     <h4 style="font-style: italic;">LSO Kewirausahaan</h4>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        @foreach($direkturKewirausahaans as $direkturKewirausahaan)
+                    <div class="col-md-3">     
+                        @foreach($direkturKewirausahaans as $direkturKewirausahaan)                   
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -806,8 +806,8 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
-                        @foreach($anggotaKewirausahaans as $anggotaKewirausahaan)
+                    @foreach($anggotaKewirausahaans as $anggotaKewirausahaan)
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -819,9 +819,9 @@
                                     <p class="card-text">{{ $anggotaKewirausahaan->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
                 <div class="text-center mt-5">
@@ -860,8 +860,8 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-3">
-                        @foreach($anggotaTEGALs as $anggotaTEGAL)
+                    @foreach($anggotaTEGALs as $anggotaTEGAL)
+                    <div class="col-md-3">                        
                         <div class="card mb-2">
                             <div class="text-center">
                                 <img class="card-img-top shadow-sm"
@@ -873,9 +873,9 @@
                                     <p class="card-text">{{ $anggotaTEGAL->jabatan }}</p>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                        </div>                        
                     </div>
+                    @endforeach
                 </div>
 
             </div>
