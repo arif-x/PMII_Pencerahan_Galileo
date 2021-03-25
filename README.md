@@ -6,6 +6,7 @@
 
 How to Deploy and Run?
 
+- Clone this repository
 - Run "composer install".
 - Copy .env.example to directory and rename to .env or rename only .env.example to .env
 - Set your database configuration in .env file

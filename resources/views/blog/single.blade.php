@@ -86,12 +86,16 @@
           <span style="color: #000 !important;">
             >
           </span>
+          <span style="color: #000 !important;">
+            {{ $notFoundCode }}
+          </span>
           @foreach($datas as $posts)
           <span style="color: #000 !important;">
             {{ $posts->title }}
           </span>
           @endforeach
         </p>
+        <h1 class="mb-0 bread">{{ $notFound }}</h1>
         @foreach($datas as $posts)
         <h1 class="mb-0 bread">{{ $posts->title }}</h1>
         @endforeach
@@ -106,41 +110,45 @@
       <div class="col-lg-8 ftco-animate shadow">
         <hr class="hr-yellow">
         <div class="mr-3 ml-3">
-        @foreach($datas as $posts)
-        <h2 class="mb-3 mt-4">{{ $posts->title }}</h2>
-        <hr>
-        <div class="img-content" style="text-align: justify;">
-          <?php
-          echo $posts->content
-          ?>
-        </div>      
-        <div class="tag-widget post-tag-container mb-5 mt-5">
-          <div class="tagcloud">
-            Tag: <a href="/post/category/{{ $posts->category }}" class="tag-cloud-link">{{ $posts->category }}</a>
+          <div class="text-center mt-5 mb-5">
+            <h1 style="font-size: 100px">{{ $notFoundCode }}</h1>
+            <h4>{{ $notFound }}</h4>
           </div>
-        </div>
-        <hr class="hr-yellow">
+          @foreach($datas as $posts)
+          <h2 class="mb-3 mt-4">{{ $posts->title }}</h2>
+          <hr>
+          <div class="img-content" style="text-align: justify;">
+            <?php
+            echo $posts->content
+            ?>
+          </div>      
+          <div class="tag-widget post-tag-container mb-5 mt-5">
+            <div class="tagcloud">
+              Tag: <a href="/post/category/{{ $posts->category }}" class="tag-cloud-link">{{ $posts->category }}</a>
+            </div>
+          </div>          
+          @endforeach        
+          <hr class="hr-yellow">
 
-        <div class="about-author d-flex p-4 bg-light mb-3">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="bio align-self-md-center mr-4">
-                <img src="{{ asset('img/pmiigalileo.png') }}" alt="placeholder" class="img-fluid mb-4" style="max-width: 100% !important; height: auto;">
+          <div class="about-author d-flex p-4 bg-light mb-3">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="bio align-self-md-center mr-4">
+                  <img src="{{ asset('img/pmiigalileo.png') }}" alt="placeholder" class="img-fluid mb-4" style="max-width: 100% !important; height: auto;">
+                </div>
               </div>
-            </div>
-            <div class="col-lg-8">
-              <div class="desc align-self-md-center">
-                <h3>PMII Rayon "Pencerahan" Galileo</h3>
-                <p>
-                  Jl. Address <br>
-                  <strong>Phone:</strong> +1 5589 55488 55<br>
-                  <strong>Email:</strong> info@example.com<br>
-                </p>
+              <div class="col-lg-8">
+                <div class="desc align-self-md-center">
+                  <h3>PMII Rayon "Pencerahan" Galileo</h3>
+                  <p>
+                    Jl. Address <br>
+                    <strong>Phone:</strong> +1 5589 55488 55<br>
+                    <strong>Email:</strong> info@example.com<br>
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>                    
-        </div>
-        @endforeach        
+            </div>                    
+          </div>
         </div>
       </div> <!-- .col-md-8 -->
       <div class="col-lg-4 sidebar ftco-animate shadow" style="background-color: #ffc107 !important">

@@ -11,8 +11,8 @@
             </button>
         </div>
 
-        <div style="width: 100% !important">
-            <table class="table stripe table-responsive row-border order-column data-table mt-4">
+        <div class="">
+            <table class="table stripe table-responsive row-border order-column data-table w-100 d-block d-md-table" style="width: 100% !important">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -116,6 +116,7 @@
         $('#createArticle').click(function () {
             $('#saveBtn').val("create-article");
             $('#artikel_id').val('');
+            CKEDITOR.instances['contents'].setData('');
             $('#contentForm').trigger("reset");
             $('#modelHeading').html("Tambah Artikel");
             $('#ajaxModel').modal('show');
@@ -132,7 +133,7 @@
                 $('#keyword').val(data.keyword);
                 $('#description').val(data.description);
                 $('#category').val(data.category);
-                CKEDITOR.instances['contents'].setData(data.content);                
+                CKEDITOR.instances['contents'].setData(data.content);
                 $('#contents').val(data.contents);
             })
         });

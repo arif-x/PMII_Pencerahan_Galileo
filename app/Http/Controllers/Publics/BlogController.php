@@ -15,11 +15,21 @@ class BlogController extends Controller
     }
 
     public function single($url){
-    	$data = Cms::where('status', 'Terverifikasi')->where('url', $url)->get();
-        $views = Cms::where('url', $url)->update([
-            'views'=> DB::raw('views+1'),
-        ]);
-    	return view('blog.single', ['datas' => $data]);	
+        $select = Cms::where('status', 'Terverifikasi')->where('url', $url)->first();
+        if(!empty($select)){
+            $notFoundCode = '';
+            $notFound = '';
+            $data = Cms::where('status', 'Terverifikasi')->where('url', $url)->get();
+            $views = Cms::where('url', $url)->update([
+                'views'=> DB::raw('views+1'),
+            ]);
+            return view('blog.single', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]); 
+        } else {           
+            $notFoundCode = '404'; 
+            $notFound = 'Artikel Tidak Ada atau Telah Dihapus';
+            $data = Cms::where('status', 'Terverifikasi')->where('url', $url)->get();            
+            return view('blog.single', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]); 
+        }
     }
 
     public function category($cat){

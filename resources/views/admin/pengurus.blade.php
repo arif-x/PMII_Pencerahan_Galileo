@@ -41,8 +41,8 @@
         </div>
         <br />
         <div style="width: 100%">
-          <div class="">
-            <table class="table stripe table-responsive row-border order-column data-table" style="width: 100% !important">
+          <div class="table-responsive">
+            <table class="table stripe row-border order-column data-table">
               <thead>
                 <tr>
                   <th>No.</th>
@@ -75,7 +75,7 @@
 
                         <div class="col-md-12">
                           <div class="form-group">
-                            <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan Nama" autocomplete="off" required />
+                            <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan NIM" autocomplete="off" required />
                             <div class="dropdown-menu" id="dropdown-menu">
                             </div>
                           </div>
