@@ -20,12 +20,12 @@ class CreateUsersTable extends Migration
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('nim')->unique();  
 
             $table->string('is_admin')->default(0);
 
             $table->string('angkatan');
             $table->string('status_kaderisasi')->nullable();
-            $table->string('nim');
             $table->string('jenis_kelamin')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('jurusan')->nullable();
@@ -36,11 +36,13 @@ class CreateUsersTable extends Migration
             $table->string('no_hp')->nullable();
             $table->string('minat')->nullable();
             $table->string('bakat')->nullable();
-            $table->string('alasan')->nullable();
             $table->string('target_ke_depan')->nullable();
-            $table->string('photo')->nullable();
-
-            $table->rememberToken();
+            $table->string('alasan')->nullable();
+            $table->string('photo')->default('default.png');
+            $table->string('pasphoto')->nullable();
+            $table->string('ktm')->nullable();
+            $table->string('verifikasi')->default('Belum Verifikasi');
+            $table->string('remember_token')->nullable();            
             $table->timestamps();
         });
     }

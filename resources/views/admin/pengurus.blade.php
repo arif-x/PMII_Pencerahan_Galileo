@@ -75,7 +75,7 @@
 
                         <div class="col-md-12">
                           <div class="form-group">
-                            <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan NIM" autocomplete="off" required />
+                            <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan Nama" autocomplete="off" required />
                             <div class="dropdown-menu" id="dropdown-menu">
                             </div>
                           </div>
