@@ -76,7 +76,7 @@ Route::group([
 });
 
 Route::group([
-	'middleware' => ['auth', 'biodata'],
+	'middleware' => ['auth', 'biodata', 'verifydata'],
 	'namespace' => 'Publics',
 ], function(){	
 	Route::post('/event-pengkaderan/join', 'EventPengkaderanController@join')->name('authed.event-pengkaderan.join');
@@ -94,11 +94,17 @@ Route::group([
 });
 
 Route::group([
-	'middleware' => ['auth', 'biodata', 'verifydata'],
+	'middleware' => ['auth', 'biodata'],
 	'namespace' => 'Kader',
 ], function(){
 	Route::get('/verify', 'VerifyController@index');
 	Route::post('/verify/submit', 'VerifyController@upload');
+});
+
+Route::group([
+	'middleware' => ['auth', 'biodata', 'verifydata'],
+	'namespace' => 'Kader',
+], function(){	
 	Route::get('/profile', 'ProfileController@index')->name('kader.profil');
 	Route::post('/profile/store', 'ProfileController@store')->name('kader.profile.store');
 	Route::post('/profile/photo/store', 'ProfileController@photoStore')->name('kader.profile.photo.store');

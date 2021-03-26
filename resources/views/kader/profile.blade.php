@@ -13,12 +13,7 @@
 	</div>
 	@endif
 
-	@if ($message = Session::get('error'))
-	<div class="col-md-12 alert alert-info alert-block margin-tengah">
-		<button type="button" class="close" data-dismiss="alert">×</button>    
-		<strong>{{ $message }}</strong>
-	</div>
-	@endif
+	<?php echo $notif ?>
 </div>
 
 <div class="container bootstrap snippet">

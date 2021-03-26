@@ -61,32 +61,37 @@ class EventPengkaderanController extends Controller
     }
 
     public function join(Request $request){
-        $check = AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', $request->user_id)->first();
 
-        $eventNames = EventPengkaderan::where('id', $request->event_id)->pluck('nama_event');
-
-        $eventName = str_replace('"]', '', $eventNames);
-        $eventName = str_replace('["', '', $eventName);
-
-
-        if (empty($check)){
-            AbsensiEventKaderisasi::create([
-                'id_event' => $request->event_id,
-                'id_user' => Auth::user()->id,
-                'nama' => Auth::user()->name,
-                'kehadiran' => 'Pending'
-            ]);
-            return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
+        if(Auth::user()->verifikasi != 'Terverifikasi'){
+            return redirect('/profile')->with('info', 'Sebelum Mengikuti Event Kaderisasi, Data Anda Harus Terverifikasi. Jika Masih Pending, Harap Bersabar Atau Hubungi Admin via Email (admin@pmiigalileo.or.id)');
         } else {
+            $check = AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', $request->user_id)->first();
 
-            AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', Auth::user()->id)->update([
-                'id_event' => $request->event_id,
-                'id_user' => Auth::user()->id,
-                'nama' => Auth::user()->name,
-                'kehadiran' => 'Pending'
-            ]);
+            $eventNames = EventPengkaderan::where('id', $request->event_id)->pluck('nama_event');
 
-            return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
-        }
+            $eventName = str_replace('"]', '', $eventNames);
+            $eventName = str_replace('["', '', $eventName);
+
+
+            if (empty($check)){
+                AbsensiEventKaderisasi::create([
+                    'id_event' => $request->event_id,
+                    'id_user' => Auth::user()->id,
+                    'nama' => Auth::user()->name,
+                    'kehadiran' => 'Pending'
+                ]);
+                return back()->with('success', 'Anda Berhasil Mendaftar Event ' . $eventName);
+            } else {
+
+                AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', Auth::user()->id)->update([
+                    'id_event' => $request->event_id,
+                    'id_user' => Auth::user()->id,
+                    'nama' => Auth::user()->name,
+                    'kehadiran' => 'Pending'
+                ]);
+
+                return back()->with('success', 'Anda Sudah Mendaftar Event ' . $eventName);
+            }
+        }     
     }
 }

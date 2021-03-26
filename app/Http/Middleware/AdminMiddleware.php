@@ -16,7 +16,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if (auth()->user()->id_admin == 0){
-            return redirect('/profile')->with('error', 'Anda Bukan Seorang Admin');
+            return redirect('/profile')->with('info', 'Anda Bukan Seorang Admin');
         }
         return $next($request);
     }

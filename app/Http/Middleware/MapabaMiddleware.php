@@ -16,7 +16,7 @@ class MapabaMiddleware
     public function handle($request, Closure $next)
     {
         if (auth()->user()->status_kaderisasi == null){
-            return redirect('/profile')->with('Anda harus Mapaba Terlebih Daluhu Sebelum Mengakses Halaman ini');
+            return redirect('/profile')->with('info', 'Anda harus Mapaba Terlebih Daluhu Sebelum Mengakses Halaman ini');
         }
         return $next($request);
     }

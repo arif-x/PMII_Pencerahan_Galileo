@@ -10,13 +10,30 @@ use Auth;
 
 class ProfileController extends Controller
 {
-    public function index(){
-    	$profile = User::where('email', Auth::user()->email)->get();
-		return view('kader.profile',['profiles'=>$profile]);
-    }
+	public function index(){
+		if(Auth::user()->verifikasi == 'Perlu Diverifikasi'){
+			$notif = '<div class="col-md-12 alert alert-info alert-block margin-tengah">
+			<button type="button" class="close" data-dismiss="alert">×</button>    
+			<strong>Data Anda Masih dalam Proses Verifikasi, Harap Bersabar!</strong>
+			</div>';
+			$profile = User::where('email', Auth::user()->email)->get();
+			return view('kader.profile', ['profiles'=>$profile, 'notif' => $notif]);
+		} elseif(Auth::user()->verifikasi == 'Suspended'){
+			$notif = '<div class="col-md-12 alert alert-danger alert-block margin-tengah">
+			<button type="button" class="close" data-dismiss="alert">×</button>    
+			<strong>Akun Anda Disuspend!</strong>
+			</div>';
+			$profile = User::where('email', Auth::user()->email)->get();
+			return view('kader.profile', ['profiles'=>$profile, 'notif' => $notif]);
+		} elseif(Auth::user()->verifikasi == 'Terverifikasi'){
+			$notif = '';
+			$profile = User::where('email', Auth::user()->email)->get();
+			return view('kader.profile', ['profiles'=>$profile, 'notif' => $notif]);
+		} 
+	}
 
-    public function store(Request $request){
-    	$validator = Validator::make(request()->all(),[
+	public function store(Request $request){
+		$validator = Validator::make(request()->all(),[
 			'tanggal_lahir' => 'required',
 			'jurusan' => 'required',
 			'alamat_di_malang' => 'required',
@@ -48,9 +65,9 @@ class ProfileController extends Controller
 			]);
 			return back()->with('info', 'Sukses, Profil Telah Diedit');
 		}
-    }
+	}
 
-    public function photoStore(Request $request){
+	public function photoStore(Request $request){
 		$request->validate([
 			'image' => 'required|mimes:png,jpeg,jpg|max:2048'
 		]);
