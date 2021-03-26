@@ -94,7 +94,7 @@ Route::group([
 });
 
 Route::group([
-	'middleware' => ['auth', 'biodata'],
+	'middleware' => ['auth', 'biodata', 'verifydata'],
 	'namespace' => 'Kader',
 ], function(){
 	Route::get('/verify', 'VerifyController@index');

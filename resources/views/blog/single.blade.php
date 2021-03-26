@@ -7,12 +7,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="" name="keywords" />
   @foreach($datas as $posts)
-  <meta content="{{ $posts->description }} | PMII Rayon Pencerahan Galileo" name="description" />
-  @endforeach
-  @foreach($datas as $posts)
-  <meta name="author" content="{{ $posts->writer }}" />
+
+  <meta name="description" content="{{ $posts->description }}"/>
+  <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ $posts->title }} | PMII Rayon Pencerahan Galileo" />
+  <meta property="og:description" content="{{ $posts->description }}" />
+  <meta property="og:url" content="{{URL::asset('/article'). '/' . $posts->url }}" />
+  <meta property="og:site_name" content="PMII Rayon Pencerahan Galileo" />
+  <meta property="article:publisher" content="https://www.facebook.com/goodnewsfrompmii/" />
+  <meta property="article:published_time" content="{{ $posts->updated_at }}" />
+  <meta property="article:modified_time" content="{{ $posts->updated_at }}" />
+  <meta property="og:updated_time" content="{{ $posts->updated_at }}" />
+  <meta property="og:image" content="https://pmiigalileo.or.id{{$posts->thumbnail }}" />
+  <meta property="og:image:secure_url" content="https://pmiigalileo.or.id{{$posts->thumbnail }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="694" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:description" content="{{ $posts->description }}" />
+  <meta name="twitter:title" content="{{ $posts->title }} | PMII Rayon Pencerahan Galileo" />
+  <meta name="twitter:image" content="https://pmiigalileo.or.id{{$posts->thumbnail }}" />
   @endforeach
 
   <!-- Favicons -->
