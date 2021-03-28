@@ -202,15 +202,20 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="nim">NIM</label>  
+                                <label for="nim">NIM/NIK</label>                        
                                 <div class="form-group">
-                                    <input id="nim" type="number" class="form-control" name="nim" required autocomplete="nim" autofocus>
+                                    <input id="nim" type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" required autocomplete="nim" autofocus>
+                                    @error('nim')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="angkatan">Angkatan</label>
+                                <label for="angakatan">Angkatan</label>
                                 <div class="form-group">
-                                    <select class="form-control" name="angkatan">
+                                    <select class="form-control @error('angkatan') is-invalid @enderror" name="angkatan">
                                         <option selected="true" disabled>Angkatan Mapaba</option>
                                         <option value="2019">2020</option>
                                         <option value="2019">2019</option>
@@ -222,10 +227,15 @@
                                         <option value="2013">2013</option>
                                         <option value="2012">2012</option>
                                         <option value="2011">2011</option>
-                                    </select>                                                           
+                                    </select> 
+                                    @error('angkatan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror                                                          
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
 
                         <label for="name">Nama Lengkap</label>
                         <div class="form-group">

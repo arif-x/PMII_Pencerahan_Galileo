@@ -35,7 +35,6 @@ class ProfileController extends Controller
 	public function store(Request $request){
 		$validator = Validator::make(request()->all(),[
 			'tanggal_lahir' => 'required',
-			'jurusan' => 'required',
 			'alamat_di_malang' => 'required',
 			'alamat_asli' => 'required',
 			'nama_ayah' => 'required',
@@ -52,7 +51,6 @@ class ProfileController extends Controller
 		} else {
 			User::where('email', Auth::user()->email)->update([
 				'tanggal_lahir' => $request->tanggal_lahir,
-				'jurusan' => $request->jurusan,
 				'alamat_di_malang' => $request->alamat_di_malang,
 				'alamat_asli' => $request->alamat_asli,
 				'nama_ayah' => $request->nama_ayah,
@@ -69,7 +67,7 @@ class ProfileController extends Controller
 
 	public function photoStore(Request $request){
 		$request->validate([
-			'image' => 'required|mimes:png,jpeg,jpg|max:2048'
+			'image' => 'required|mimes:png,jpeg,jpg|max:512'
 		]);
 		$photo = $request->file('image');
 		$new_name = Auth::user()->nim . '.' . $photo->getClientOriginalExtension();

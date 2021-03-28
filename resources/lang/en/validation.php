@@ -130,6 +130,52 @@ return [
     */
 
     'custom' => [
+        'nim' => [
+            'required' => 'NIM/NIK Kosong',
+            'unique' => 'NIM/NIK Sudah Digunakan',
+        ],
+        'angkatan' => [
+            'required' => 'Angkatan Tidak Boleh Kosong',
+        ],
+        'tanggal_lahir' => [
+            'required' => 'Tanggal Lahir Tidak Boleh Kosong',
+        ],
+        'jenis_kelamin' => [
+            'required' => 'Jenis Kelamin Tidak Boleh Kosong',
+        ],
+        'jurusan' => [
+            'required' => 'Jurusan Tidak Boleh Kosong',
+        ],
+        'mhs_aktif' => [
+            'required' => 'Pilihan Mahasiswa Aktif/Tidak Tidak Boleh Kosong',
+        ],
+        'alamat_asli' => [
+            'required' => 'Alamat Asli Tidak Boleh Kosong',
+        ],
+        'nama_ayah' => [
+            'required' => 'Nama Ayah Tidak Boleh Kosong',
+        ],
+        'nama_ibu' => [
+            'required' => 'Nama Ibu Tidak Boleh Kosong',
+        ],
+        'no_hp' => [
+            'required' => 'Nomor HP Tidak Boleh Kosong',
+        ],
+        'minat' => [
+            'required' => 'Minat Tidak Boleh Kosong',
+        ],
+        'bakat' => [
+            'required' => 'Bakat Tidak Boleh Kosong',
+        ],
+        'alasan' => [
+            'required' => 'Alasan Gabung PMII Tidak Boleh Kosong',
+        ],
+        'target_ke_depan' => [
+            'required' => 'Target ke Depan Tidak Boleh Kosong',
+        ],
+        'ukuran_500' => [
+            'max' => 'Ukuran Foto Maksimum 500Kb'
+        ],
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],

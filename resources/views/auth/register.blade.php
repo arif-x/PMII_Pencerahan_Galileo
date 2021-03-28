@@ -11,22 +11,19 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <label for="nim">NIM</label>
+                <label for="nim">NIM/NIK</label>
                 <div class="form-group">
-                    <input id="nim" type="number" class="form-control" name="{{ old('nim') }}" required autocomplete="nim" autofocus>
-                    @if ($errors->any())
-                    @foreach ($errors->all() as $error)
+                    <input id="nim" type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" required autocomplete="nim" autofocus>
+                    @error('nim')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{$error}}</strong>
+                        <strong>{{ $message }}</strong>
                     </span>
-                    @endforeach
-                    @endif
-
+                    @enderror
                 </div>
 
                 <label for="angakatan">Angkatan</label>
                 <div class="form-group">
-                    <select class="form-control" name="angkatan">
+                    <select class="form-control @error('angkatan') is-invalid @enderror" name="angkatan">
                         <option selected="true" disabled>Angkatan Mapaba</option>
                         <option value="2019">2020</option>
                         <option value="2019">2019</option>
@@ -38,12 +35,12 @@
                         <option value="2013">2013</option>
                         <option value="2012">2012</option>
                         <option value="2011">2011</option>
-                    </select>
+                    </select> 
                     @error('angkatan')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                    @enderror
+                    @enderror                                                          
                 </div>
 
                 <label for="name">Nama Lengkap</label>
@@ -79,7 +76,7 @@
                     @enderror
                 </div>
 
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label for="password-confirm">Konfirmasi Password</label>
                 <div class="form-group">
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>

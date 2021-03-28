@@ -16,7 +16,6 @@ class DataBiodataController extends Controller
 
     public function store(Request $request){
     	$validator = Validator::make(request()->all(),[
-			'nim' =>'required',
 			'tanggal_lahir' => 'required',
 			'jenis_kelamin' => 'required',
 			'jurusan' => 'required',
@@ -37,7 +36,6 @@ class DataBiodataController extends Controller
 			return redirect('/isi-biodata');
 		} else {
 			User::where('email', Auth::user()->email)->update([
-				'nim' => $request->nim,
 				'tanggal_lahir' => $request->tanggal_lahir,
 				'jenis_kelamin' => $request->jenis_kelamin,
 				'jurusan' => $request->jurusan,

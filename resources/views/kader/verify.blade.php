@@ -27,16 +27,26 @@
 							</label>							
 							<div class="col-md-12">
 								<label style="font-size: 12px;">*Ukuran Gambar Maksimum: 500Kb</label>
-								<input type="file" id="pasphoto" name="pasphoto" class="form-control">
+								<input type="file" id="pasphoto" name="pasphoto" class="form-control @error('max') is-invalid @enderror">
+								@error('max')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="ktm" class="col-md-12 col-form-label">
-								<strong>KTM</strong>
+								<strong>KTM/KTP</strong>
 							</label>							
 							<div class="col-md-12">
 								<label style="font-size: 12px;">*Ukuran Gambar Maksimum: 500Kb</label>
-								<input type="file" id="ktm" name="ktm" class="form-control">
+								<input type="file" id="ktm" name="ktm" class="form-control @error('max') is-invalid @enderror">
+								@error('max')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
 						</div>
 					</strong>

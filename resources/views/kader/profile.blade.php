@@ -40,8 +40,18 @@
 						<label for="file" class="col-form-label mb-1">
 							<strong>Ganti Foto</strong>
 						</label>
-						<input type="file" id="file" name="image" class="form-control mb-1">
-						<label style="font-size: 12px;">*Ukuran Gambar Maksimum: 500Kb</label>
+						<input type="file" id="file" name="image" class="form-control @error('mimes') is-invalid @enderror @error('max') is-invalid @enderror">
+						@error('mimes')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+						@enderror
+						@error('max')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+						@enderror
+						<label style="font-size: 12px;">*Ukuran Foto Maksimum: 500Kb</label>
 
 						<div class="mb-mb-1">
 							<div class="margin-tengah">
@@ -73,7 +83,7 @@
 								<form>
 									<strong>
 										<div class="form-group row">
-											<label for="text" class="col-md-3 col-form-label">NIM</label>
+											<label for="text" class="col-md-3 col-form-label">NIM/NIK</label>
 											<div class="col-md-9">
 												<input type="text" id="nim" class="form-control" value="{{ Auth::user()->nim }}" readonly>
 											</div>
@@ -176,93 +186,112 @@
 									@csrf
 									<strong>
 										<div class="form-group row">
-											<label for="text" class="col-md-3 col-form-label">NIM</label>
-											<div class="col-md-9">
-												<input type="text" id="nim" name="nim" class="form-control" value="{{ Auth::user()->nim }}">
-											</div>
-										</div>
-										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Tanggal Lahir</label>
 											<div class="col-md-9">
-												<input type="date" name="tanggal_lahir" class="form-control" value="{{ Auth::user()->tanggal_lahir }}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="text" class="col-md-3 col-form-label">Jurusan</label>
-											<div class="col-md-9">
-												<select id="jurusan" class="form-control" name="jurusan">
-													<option selected value="{{ Auth::user()->jurusan }}">{{ Auth::user()->jurusan }}</option>
-													<option value="Biologi">Biologi</option>
-													<option value="Fisika">Fisika</option>
-													<option value="Kimia">Kimia</option>
-													<option value="Matematika">Matematika</option>
-													<option value="Teknik Arsitektur">Teknik Arsitektur</option>
-													<option value="Teknik Informatika">Teknik Informatika</option>
-													<option value="Perpustakaan & Ilmu Informasi">Perpustakaan & Ilmu Informasi</option>
-												</select>
+												<input type="date" name="tanggal_lahir" class="form-control" value="{{ Auth::user()->tanggal_lahir }}" required>
 											</div>
 										</div>
 										@if(Auth::user()->mhs_aktif == 'Ya')
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label>
 											<div class="col-md-9">
-												<input type="text" id="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}">
+												<input type="text" id="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}" required>
 											</div>
 										</div>
 										@elseif(Auth::user()->mhs_aktif == 'Tidak')
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label>
 											<div class="col-md-9">
-												<input type="text" id="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}">
+												<input type="text" id="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}" required>
 											</div>
 										</div>
 										@endif
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Asli</label>
 											<div class="col-md-9">
-												<input type="text" id="alamat_asli" name="alamat_asli" class="form-control" value="{{ Auth::user()->alamat_asli }}">
+												<input type="text" id="alamat_asli" name="alamat_asli" class="form-control @error('alamat_asli') is-invalid @enderror" value="{{ Auth::user()->alamat_asli }}" required>
+												@error('alamat_asli')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Nama Ayah</label>
 											<div class="col-md-9">
-												<input type="text" id="nama_ayah" name="nama_ayah" class="form-control" value="{{ Auth::user()->nama_ayah }}">
+												<input type="text" id="nama_ayah" name="nama_ayah" class="form-control @error('nama_ayah') is-invalid @enderror" value="{{ Auth::user()->nama_ayah }}" required>
+												@error('nama_ayah')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Nama Ibu</label>
 											<div class="col-md-9">
-												<input type="text" id="nama_ibu" name="nama_ibu" class="form-control" value="{{ Auth::user()->nama_ibu }}">
+												<input type="text" id="nama_ibu" name="nama_ibu" class="form-control @error('nama_ibu') is-invalid @enderror" value="{{ Auth::user()->nama_ibu }}">
+												@error('nama_ibu')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Nomor HP</label>
 											<div class="col-md-9">
-												<input type="text" id="no_hp" name="no_hp" class="form-control" value="{{ Auth::user()->no_hp }}">
+												<input type="text" id="no_hp" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" value="{{ Auth::user()->no_hp }}">
+												@error('no_hp')
+												<span class="invalid-feedback" role="alert" required>
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Minat</label>
 											<div class="col-md-9">
-												<input type="text" id="minat" name="minat" class="form-control" value="{{ Auth::user()->minat }}">
+												<input type="text" id="minat" name="minat" class="form-control @error('minat') is-invalid @enderror" value="{{ Auth::user()->minat }}">
+												@error('minat')
+												<span class="invalid-feedback" role="alert" required>
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Bakat</label>
 											<div class="col-md-9">
-												<input type="text" id="bakat" name="bakat" class="form-control" value="{{ Auth::user()->bakat }}">
+												<input type="text" id="bakat" name="bakat" class="form-control @error('bakat') is-invalid @enderror" value="{{ Auth::user()->bakat }}">
+												@error('bakat')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="text" class="col-md-3 col-form-label">Alasan</label>
+											<label for="text" class="col-md-3 col-form-label">Alasan Gabung PMII</label>
 											<div class="col-md-9">
-												<input type="text" id="alasan" name="alasan" class="form-control" value="{{ Auth::user()->alasan }}">
+												<input type="text" id="alasan" name="alasan" class="form-control @error('alasan') is-invalid @enderror" value="{{ Auth::user()->alasan }}">
+												@error('alasan')
+												<span class="invalid-feedback" role="alert" required>
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Target Ke Depan</label>
 											<div class="col-md-9">
-												<input type="text" id="target_ke_depan" name="target_ke_depan" class="form-control" value="{{ Auth::user()->target_ke_depan }}">
+												<input type="text" id="target_ke_depan" name="target_ke_depan" class="form-control @error('target_ke_depan') is-invalid @enderror" value="{{ Auth::user()->target_ke_depan }}" required>
+												@error('target_ke_depan')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
 											</div>
 										</div>
 									</strong>
