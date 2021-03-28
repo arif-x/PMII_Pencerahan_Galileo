@@ -13,12 +13,12 @@
 @endif
 <div class="col-md-7 margin-tengah">
 	<div class="card my-card-border">
-        <div class="card-body">
-            <label class="col-md-12 col-form-label">
-                <strong>Harap Isi Biodata Sebelum Mengakses Profil</strong>
-            </label>
-        </div>
-    </div>
+		<div class="card-body">
+			<label class="col-md-12 col-form-label">
+				<strong>Harap Isi Biodata Sebelum Mengakses Profil</strong>
+			</label>
+		</div>
+	</div>
 	<div class="card my-card-border mt-3">
 		<div class="card-header my-card-header">
 			<strong>Biodata</strong>
@@ -49,34 +49,58 @@
 						<div class="form-group row">
 							<label for="text" class="col-md-3 col-form-label">Jenis Kelamin</label>
 							<div class="col-md-9">
-							    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
-                                    <option value="" disabled selected="true">Pilih...</option>
-                                    <option value="Laki-laki">Laki-Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
+								<select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
+									<option value="" disabled selected="true">Pilih...</option>
+									<option value="Laki-laki">Laki-Laki</option>
+									<option value="Perempuan">Perempuan</option>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="text" class="col-md-3 col-form-label">Jurusan</label>
 							<div class="col-md-9">
-							    <select id="jurusan" class="form-control" name="jurusan">
-							    	<option value="" disabled selected="true">Pilih...</option>
-                                    <option value="Biologi">Biologi</option>
-                                    <option value="Fisika">Fisika</option>
-                                    <option value="Kimia">Kimia</option>
-                                    <option value="Matematika">Matematika</option>
-                                    <option value="Teknik Arsitektur">Teknik Arsitektur</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Perpustakaan & Ilmu Informasi">Perpustakaan & Ilmu Informasi</option>
-                                </select>
+								<select id="jurusan" class="form-control" name="jurusan">
+									<option value="" disabled selected="true">Pilih...</option>
+									<option value="Biologi">Biologi</option>
+									<option value="Fisika">Fisika</option>
+									<option value="Kimia">Kimia</option>
+									<option value="Matematika">Matematika</option>
+									<option value="Teknik Arsitektur">Teknik Arsitektur</option>
+									<option value="Teknik Informatika">Teknik Informatika</option>
+									<option value="Perpustakaan & Ilmu Informasi">Perpustakaan & Ilmu Informasi</option>
+								</select>
 							</div>
 						</div>
+
 						<div class="form-group row">
-							<label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label>
+							<label for="text" class="col-md-3 col-form-label">Mahasiswa Aktif?</label>
 							<div class="col-md-9">
-								<input type="text" id="alamat_di_malang" name="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}">
+								<select id="mhs_aktif" class="form-control" name="mhs_aktif">
+									<option value="" disabled selected="true">Pilih...</option>
+									<option value="Ya">Ya</option>
+									<option value="Tidak">Tidak</option>
+								</select>
 							</div>
 						</div>
+
+						<div id="checkAktif">
+							
+						</div>
+
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$('#mhs_aktif').change(function(){									
+									if($('#mhs_aktif option:selected').text() == "Ya"){
+										$('#checkAktif').empty();
+										$('#checkAktif').html('<div class="form-group row"><label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label><div class="col-md-9"><input type="text" id="alamat_di_malang" name="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}"></div></div>');
+									} else if($('#mhs_aktif option:selected').text() == "Tidak"){
+										$('#checkAktif').empty();
+										$('#checkAktif').html('<div class="form-group row"><label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label><div class="col-md-9"><input type="text" id="alamat_sekarang" name="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}"></div></div>');
+									}
+								})
+							});
+						</script>						
+
 						<div class="form-group row">
 							<label for="text" class="col-md-3 col-form-label">Alamat Asli</label>
 							<div class="col-md-9">

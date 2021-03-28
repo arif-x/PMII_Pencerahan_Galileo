@@ -62,8 +62,12 @@ class EventPengkaderanController extends Controller
 
     public function join(Request $request){
 
-        if(Auth::user()->verifikasi != 'Terverifikasi'){
+        if(Auth::user()->verifikasi != 'Terverifikasi' && Auth::user()->status_kaderisasi == 'PKD'){
             return redirect('/profile')->with('info', 'Sebelum Mengikuti Event Kaderisasi, Data Anda Harus Terverifikasi. Jika Masih Pending, Harap Bersabar Atau Hubungi Admin via Email (admin@pmiigalileo.or.id)');
+        } elseif (Auth::user()->status_kaderisasi == 'Mapaba'){
+            return redirect('/profile')->with('info', 'Status Kaderisasi Anda Sudah Mapaba, Maka Tidak Diperlukan Mapaba Lagi');
+        } elseif (Auth::user()->status_kaderisasi == 'PKD'){
+            return redirect('/profile')->with('info', 'Status Kaderisasi Anda Sudah PKD, Maka Tidak Diperlukan Mapaba Lagi');
         } else {
             $check = AbsensiEventKaderisasi::where('id_event', $request->event_id)->where('id_user', $request->user_id)->first();
 

@@ -102,12 +102,23 @@
 												<input type="text" id="jurusan" class="form-control" value="{{ Auth::user()->jurusan }}" readonly>
 											</div>
 										</div>
+
+										@if(Auth::user()->mhs_aktif == 'Ya')
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label>
 											<div class="col-md-9">
 												<input type="text" id="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}" readonly>
 											</div>
 										</div>
+										@elseif(Auth::user()->mhs_aktif == 'Tidak')
+										<div class="form-group row">
+											<label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label>
+											<div class="col-md-9">
+												<input type="text" id="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}" readonly>
+											</div>
+										</div>
+										@endif
+
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Asli</label>
 											<div class="col-md-9">
@@ -191,12 +202,21 @@
 												</select>
 											</div>
 										</div>
+										@if(Auth::user()->mhs_aktif == 'Ya')
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label>
 											<div class="col-md-9">
-												<input type="text" id="alamat_di_malang" name="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}">
+												<input type="text" id="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}">
 											</div>
 										</div>
+										@elseif(Auth::user()->mhs_aktif == 'Tidak')
+										<div class="form-group row">
+											<label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label>
+											<div class="col-md-9">
+												<input type="text" id="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}">
+											</div>
+										</div>
+										@endif
 										<div class="form-group row">
 											<label for="text" class="col-md-3 col-form-label">Alamat Asli</label>
 											<div class="col-md-9">

@@ -21,7 +21,6 @@ class CheckBiodataMiddleware
             auth()->user()->jenis_kelamin == null || 
             auth()->user()->tanggal_lahir == null || 
             auth()->user()->jurusan == null || 
-            auth()->user()->alamat_di_malang == null || 
             auth()->user()->alamat_asli == null || 
             auth()->user()->nama_ayah == null || 
             auth()->user()->nama_ibu == null || 

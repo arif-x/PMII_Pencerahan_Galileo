@@ -13,7 +13,15 @@
 
                 <label for="nim">NIM</label>
                 <div class="form-group">
-                    <input id="nim" type="number" class="form-control" name="nim" required autocomplete="nim" autofocus>
+                    <input id="nim" type="number" class="form-control" name="{{ old('nim') }}" required autocomplete="nim" autofocus>
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{$error}}</strong>
+                    </span>
+                    @endforeach
+                    @endif
+
                 </div>
 
                 <label for="angakatan">Angkatan</label>
@@ -30,7 +38,12 @@
                         <option value="2013">2013</option>
                         <option value="2012">2012</option>
                         <option value="2011">2011</option>
-                    </select>                                                           
+                    </select>
+                    @error('angkatan')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <label for="name">Nama Lengkap</label>
