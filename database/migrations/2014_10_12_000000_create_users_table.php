@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('jenis_kelamin')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('jurusan')->nullable();
+            $table->string('mhs_aktif')->nullable();
+            $table->string('alamat_sekarang')->nullable();
             $table->string('alamat_di_malang')->nullable();
             $table->string('alamat_asli')->nullable();
             $table->string('nama_ayah')->nullable();
