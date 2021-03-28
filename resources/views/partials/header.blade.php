@@ -24,9 +24,7 @@
         <div class="nav-right col">
             <ul class="nav-menus">
                 <li class="onhover-dropdown">
-                    <div class="media  align-items-center">
-                        <img class="align-self-center pull-right mr-2"
-                        src="{{ URL::asset('admin/assets/images/dashboard/user.png') }}" alt="header-user" />
+                    <div class="media align-items-center">
                         <div class="media-body">
                             <h6 class="m-0 txt-dark f-16">
 
