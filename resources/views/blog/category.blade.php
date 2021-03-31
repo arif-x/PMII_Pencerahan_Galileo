@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <title>PMII Rayon "Pencerahan" Galileo</title>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Artikel | PMII Rayon "Pencerahan" Galileo</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <meta name="description" content="Daftar Artikel dan Karya Tulis Kader PMII Rayon Pencerahan Galileo"/>
   <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
   <meta property="og:locale" content="id_ID" />
@@ -86,20 +82,37 @@
     <div class="container" style="padding-top: 70px !important;">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center">
-         <p class="breadcrumbs" style="padding-top: 10px !important;">
-          <span class="mr-2">
-            <a href="/post" style="color: #000 !important;">
-              Home
-            </a>
-          </span>
-          <span style="color: #000 !important;">
-            >
-          </span>
-          <span style="color: #000 !important;">
-            Article
-          </span>
-        </p>
-        <h1 class="mb-0 bread">Daftar Artikel</h1>
+          <p class="breadcrumbs" style="padding-top: 10px !important;">
+            <span class="mr-2">
+              <a href="/" style="color: #000 !important;">
+                Home
+              </a>
+            </span>
+            <span style="color: #000 !important;">
+              >
+            </span>
+            <span style="color: #000 !important;">
+              <a href="/article" style="color: #000 !important;">
+                Article
+              </a>
+            </span>
+            <span style="color: #000 !important;">
+              >
+            </span>
+            <span style="color: #000 !important;">
+              {{ $notFoundCode }}
+            </span>
+            @foreach($datas as $data)
+            <span style="color: #000 !important;">
+              {{ $data->category }}
+            </span>
+            @endforeach
+          </p>
+          <h1 class="mb-0 bread">{{ $notFound }}</h1>
+          @foreach($datas as $data)
+          <h1 class="mb-0 bread">{{ $data->category }}</h1>
+          @endforeach
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +122,10 @@
       <div class="row">      
         <div class="col-lg-8 ftco-animate shadow">
           <hr class="hr-blue">
+          <div class="text-center">
+            <h1 style="font-size: 100px">{{ $notFoundCode }}</h1>
+            <h4>{{ $notFound }}</h4>
+          </div>
           @foreach($datas as $posts)
           <div class="col-md-12">          
             <div class="row">
@@ -129,8 +146,8 @@
             </div>
             <hr class="hr-yellow">          
           </div>
-          @endforeach          
-          {{ $datas->links() }}
+          @endforeach
+          <hr class="hr-yellow">
 
           <div class="about-author d-flex p-4 bg-light mb-3">
             <div class="row">
@@ -157,6 +174,7 @@
               </div>
             </div>                    
           </div>
+
         </div>      
         <!-- .col-md-8 -->
         <div class="col-lg-4 sidebar ftco-animate shadow-sm" style="background-color: #ffc107 !important">
@@ -168,7 +186,7 @@
               </div>
             </form>
           </div>
-          
+
           <div class="sidebar-box ftco-animate shadow">
             <h3 class="heading">Kategori</h3>
             <ul class="categories">

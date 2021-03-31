@@ -37,8 +37,10 @@ Route::group([
 	'middleware' => ['web'],
 	'namespace' => 'Publics',
 ], function(){	
-	Route::get('/article', 'BlogController@index')->name('publics.article');
+	Route::get('/article', 'BlogController@index')->name('publics.article');	
 	Route::get('/article/{url}', 'BlogController@single')->name('publics.article.single');
+	Route::get('/article/category/{cat}', 'BlogController@category')->name('publics.article.category');
+	Route::get('/article/search', 'BlogController@search')->name('publics.article.search');
 });
 
 Route::group([

@@ -65,13 +65,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Desckripsi</label>
+                            <label for="">Deskripsi</label>
                             <input type="text" name="description" id="description" class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label for="">Kategori</label>
-                            <input type="text" name="category" id="category" class="form-control" required>
+                            <select name="category" id="category" class="form-control" required>
+                                <option value="" disabled="" selected="true">Pilih ... </option>
+                                <option value="Artikel">Artikel</option>
+                                <option value="Cerpen">Cerita</option>
+                                <option value="Essay">Essay</option>
+                                <option value="Opini">Opini</option>
+                                <option value="Puisi">Puisi</option>                                
+                            </select>
                         </div>
 
                         <div class="form-group">

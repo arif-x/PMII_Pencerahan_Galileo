@@ -33,7 +33,34 @@ class BlogController extends Controller
     }
 
     public function category($cat){
-    	$data = Cms::where('status', 'Terverifikasi')->where('category', $cat)->get();
-    	return view('blog.category', ['datas' => $data]);	
+        $select = Cms::where('status', 'Terverifikasi')->where('category', $cat)->first();
+        if(!empty($select)){
+            $notFoundCode = '';
+            $notFound = '';
+            $data = Cms::where('status', 'Terverifikasi')->where('category', $cat)->get();
+            return view('blog.category', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]); 
+        } else {           
+            $notFoundCode = '404'; 
+            $notFound = 'Kategori Tidak Ada';
+            $data = Cms::where('status', 'Terverifikasi')->where('category', $cat)->get();
+            return view('blog.category', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]);   
+        }	
+    }
+
+    public function search($query){
+        $query = $request->search;
+        $select = Cms::where('status', 'Terverifikasi')->where('name', 'Like', "%{$query}%")->first();
+
+        if(!empty($select)){
+            $data = Cms::where('status', 'Terverifikasi')->where('name', 'Like', "%{$query}%")->paginate(10);
+            $notFoundCode = '';
+            $notFound = '';
+            return view('blog.search', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]);   
+        } else {
+            $notFoundCode = '404'; 
+            $notFound = 'Pencarian Tidak Ada';
+            $data = Cms::where('status', 'Terverifikasi')->where('name', 'Like', "%{$query}%")->paginate(10);
+            return view('blog.search', ['datas' => $data, 'notFound' => $notFound, 'notFoundCode' => $notFoundCode]);  
+        }
     }
 }

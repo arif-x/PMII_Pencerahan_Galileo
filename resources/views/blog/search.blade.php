@@ -26,6 +26,35 @@
   <meta name="twitter:description" content="Daftar Artikel dan Karya Tulis Kader PMII Rayon Pencerahan Galileo" />
   <meta name="twitter:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
   <meta name="twitter:image" content="{{ asset('img/favicon.ico') }}" />
+
+  <!-- Favicons -->
+  <link href="{{ asset('img/favicon.ico') }}" rel="icon">
+  <link href="{{ URL::asset('img/apple-touch-icon.ico') }}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/open-iconic-bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/animate.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/magnific-popup.css') }}">
+
+  <link href="{{ asset('blog/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/aos.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/ionicons.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/bootstrap-datepicker.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/jquery.timepicker.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('blog/css/flaticon.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/icomoon.css') }}">
+  <link rel="stylesheet" href="{{ asset('blog/css/style.css') }}">  
   
 </head>
 <body>
@@ -53,20 +82,37 @@
     <div class="container" style="padding-top: 70px !important;">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center">
-         <p class="breadcrumbs" style="padding-top: 10px !important;">
-          <span class="mr-2">
-            <a href="/post" style="color: #000 !important;">
-              Home
-            </a>
-          </span>
-          <span style="color: #000 !important;">
-            >
-          </span>
-          <span style="color: #000 !important;">
-            Article
-          </span>
-        </p>
-        <h1 class="mb-0 bread">Daftar Artikel</h1>
+          <p class="breadcrumbs" style="padding-top: 10px !important;">
+            <span class="mr-2">
+              <a href="/" style="color: #000 !important;">
+                Home
+              </a>
+            </span>
+            <span style="color: #000 !important;">
+              >
+            </span>
+            <span style="color: #000 !important;">
+              <a href="/article" style="color: #000 !important;">
+                Article
+              </a>
+            </span>
+            <span style="color: #000 !important;">
+              >
+            </span>
+            <span style="color: #000 !important;">
+              {{ $notFoundCode }}
+            </span>
+            @foreach($datas as $data)
+            <span style="color: #000 !important;">
+              {{ $data->category }}
+            </span>
+            @endforeach
+          </p>
+          <h1 class="mb-0 bread">{{ $notFound }}</h1>
+          @foreach($datas as $data)
+          <h1 class="mb-0 bread">{{ $data->category }}</h1>
+          @endforeach
+        </div>
       </div>
     </div>
   </div>
@@ -76,6 +122,10 @@
       <div class="row">      
         <div class="col-lg-8 ftco-animate shadow">
           <hr class="hr-blue">
+          <div class="text-center">
+            <h1 style="font-size: 100px">{{ $notFoundCode }}</h1>
+            <h4>{{ $notFound }}</h4>
+          </div>
           @foreach($datas as $posts)
           <div class="col-md-12">          
             <div class="row">
@@ -97,34 +147,55 @@
             <hr class="hr-yellow">          
           </div>
           @endforeach          
-          {{ $datas->links() }}
-        </div>      
-        <!-- .col-md-8 -->
-        <div class="col-lg-4 sidebar ftco-animate shadow-sm" style="background-color: #ffc107 !important">
-          <div class="sidebar-box shadow mt-3">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <span class="icon ion-ios-search"></span>
-                <input type="text" class="form-control" placeholder="Cari Post...">
+          <hr class="hr-yellow">
+
+          <div class="about-author d-flex p-4 bg-light mb-3">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="bio align-self-md-center mr-4">
+                  <img src="{{ asset('img/pmiigalileo.png') }}" alt="placeholder" class="img-fluid mb-4" style="max-width: 100% !important; height: auto;">
+                </div>
               </div>
-            </form>
-          </div>
-          <div class="sidebar-box ftco-animate shadow">
-            <h3 class="heading">Kategori</h3>
-            <ul class="categories">
-              <li><a href="/post/kategori/kegiatan" class="tag-cloud-link">Kegiatan</a></li>
-            </ul>
+              <div class="col-lg-8">
+                <div class="desc align-self-md-center">
+                  <h3>PMII Rayon "Pencerahan" Galileo</h3>
+                  <strong>Alamat: </strong><br>
+                  Jl. Joyo Tamansari 1 No. 67 Gg. II RT.06 RW.06 Merjosari Lokowaru Malang<br><br>
+                  <strong>Telpon:</strong>
+                  <ul>
+                    <li>+6285850987734</li>
+                  </ul>
+                  <strong>Email:</strong>
+                  <ul>
+                    <li>sahabatgalileo@gmail.com</li>
+                    <li>admin@pmiigalileo.or.id</li>
+                  </ul>
+                </div>
+              </div>
+            </div>                    
           </div>
 
-        <!-- <div class="sidebar-box ftco-animate">
-
-        </div> -->
+        </div>           
+      <!-- .col-md-8 -->
+      <div class="col-lg-4 sidebar ftco-animate shadow-sm" style="background-color: #ffc107 !important">
+        <div class="sidebar-box shadow mt-3">
+          <form action="{{ route('publics.article.search') }}" method="GET" class="search-form">
+            <div class="form-group">
+              <span class="icon ion-ios-search"></span>
+              <input type="text" name="search" class="form-control" placeholder="Cari Post...">
+            </div>
+          </form>
+        </div>
 
         <div class="sidebar-box ftco-animate shadow">
-          <h3 class="heading">Tag</h3>
-          <div class="tagcloud">
-            <a href="/post/kategori/kegiatan" class="tag-cloud-link">Kegiatan</a>
-          </div>
+          <h3 class="heading">Kategori</h3>
+          <ul class="categories">
+            <li><a href="/article/category/artikel" class="tag-cloud-link">Artikel</a></li>
+            <li><a href="/article/category/cerita" class="tag-cloud-link">Cerita</a></li>
+            <li><a href="/article/category/essay" class="tag-cloud-link">Essay</a></li>
+            <li><a href="/article/category/opini" class="tag-cloud-link">Opini</a></li>
+            <li><a href="/article/category/puisi" class="tag-cloud-link">Puisi</a></li>
+          </ul>
         </div>
 
       </div>
