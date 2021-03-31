@@ -140,9 +140,9 @@ hr:after {
     -moz-transform: scale(0.3);
     transform: scale(0.3);
     opacity: 0.9;
-    -webkit-animation: moveclouds 15s linear infinite;
-    -moz-animation: moveclouds 15s linear infinite;
-    -o-animation: moveclouds 15s linear infinite;
+    -webkit-animation: moveclouds 120s linear infinite;
+    -moz-animation: moveclouds 120s linear infinite;
+    -o-animation: moveclouds 120s linear infinite;
 }
 
 .x1_5{
@@ -151,9 +151,9 @@ hr:after {
     -webkit-transform: scale(0.3);
     -moz-transform: scale(0.3);
     transform: scale(0.3);
-    -webkit-animation: moveclouds 17s linear infinite;
-    -moz-animation: moveclouds 17s linear infinite;
-    -o-animation: moveclouds 17s linear infinite; 
+    -webkit-animation: moveclouds 120s linear infinite;
+    -moz-animation: moveclouds 120s linear infinite;
+    -o-animation: moveclouds 120s linear infinite; 
 }
 
 .x2 {
@@ -163,9 +163,9 @@ hr:after {
     -moz-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 0.6; 
-    -webkit-animation: moveclouds 25s linear infinite;
-    -moz-animation: moveclouds 25s linear infinite;
-    -o-animation: moveclouds 25s linear infinite;
+    -webkit-animation: moveclouds 120s linear infinite;
+    -moz-animation: moveclouds 120s linear infinite;
+    -o-animation: moveclouds 120s linear infinite;
 }
 
 .x3 {
@@ -176,9 +176,9 @@ hr:after {
     transform: scale(0.6);
     opacity: 0.8; 
 
-    -webkit-animation: moveclouds 25s linear infinite;
-    -moz-animation: moveclouds 25s linear infinite;
-    -o-animation: moveclouds 25s linear infinite;
+    -webkit-animation: moveclouds 120s linear infinite;
+    -moz-animation: moveclouds 120s linear infinite;
+    -o-animation: moveclouds 120s linear infinite;
 }
 
 .x4 {
@@ -189,9 +189,9 @@ hr:after {
     transform: scale(0.75);
     opacity: 0.75;
 
-    -webkit-animation: moveclouds 18s linear infinite;
-    -moz-animation: moveclouds 18s linear infinite;
-    -o-animation: moveclouds 18s linear infinite;
+    -webkit-animation: moveclouds 120s linear infinite;
+    -moz-animation: moveclouds 120s linear infinite;
+    -o-animation: moveclouds 120s linear infinite;
 }
 
 .x5 {
@@ -202,20 +202,21 @@ hr:after {
     transform: scale(0.5);
     opacity: 0.8; 
 
-    -webkit-animation: moveclouds 20s linear infinite;
-    -moz-animation: moveclouds 20s linear infinite;
-    -o-animation: moveclouds 20s linear infinite;
+    -webkit-animation: moveclouds120s linear infinite;
+    -moz-animation: moveclouds120s linear infinite;
+    -o-animation: moveclouds120s linear infinite;
 }
 
-@-webkit-keyframes moveclouds {
-    0% {margin-left: 1000px;}
-    100% {margin-left: -1000px;}
-}
-@-moz-keyframes moveclouds {
+/*@-webkit-keyframes moveclouds {
     0% {margin-left: 1000px;}
     100% {margin-left: -1000px;}
 }
 @-o-keyframes moveclouds {
     0% {margin-left: 1000px;}
     100% {margin-left: -1000px;}
+}*/
+
+@keyframes moveclouds{
+  0%{ left: 0px; }
+  100% {left: 100%;}
 }

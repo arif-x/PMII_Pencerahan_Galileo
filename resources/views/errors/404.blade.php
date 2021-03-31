@@ -6,7 +6,7 @@
 </head>
 <body>
 
- <div id="clouds">
+   <div id="clouds">
     <div class="cloud x1"></div>
     <div class="cloud x1_5"></div>
     <div class="cloud x2"></div>
@@ -19,7 +19,7 @@
     <hr>
     <div class='_1'>HALAMAN</div>
     <div class='_2'>TIDAK ADA</div>
-    <a class='btn' href="javascript:history.back()">KEMBALI</a>
+    <a class='btn' href='#'>KEMBALI</a>
 </div>
 
 </body>
