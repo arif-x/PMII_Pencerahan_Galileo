@@ -8,6 +8,27 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <meta name="description" content="Web Resmi PMII Rayon Pencerahan Galileo. Rayon “Pencerahan” Galileo yang beranggotakan mahasiswa berbasis eksakta, Sebagian orang mengatakan mahasiswanya terkesan individualis dan  praktis. Karena hal yang demikianlah Rayon “Pencerahan” Galileo dituntut untuk berupaya membuka pola pikir warga eksakta menjadi warga eksak yang berpikiran luas, mempunyai paradigma kritis transformatif, profesional,ilmiah (positif) dan dinamis. dan mengaktualisasikan diri sebagai sebuah citra diri “Ulul Albab”."/>
+    <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
+    <meta property="og:description" content="Web Resmi PMII Rayon Pencerahan Galileo. Rayon “Pencerahan” Galileo yang beranggotakan mahasiswa berbasis eksakta, Sebagian orang mengatakan mahasiswanya terkesan individualis dan  praktis. Karena hal yang demikianlah Rayon “Pencerahan” Galileo dituntut untuk berupaya membuka pola pikir warga eksakta menjadi warga eksak yang berpikiran luas, mempunyai paradigma kritis transformatif, profesional,ilmiah (positif) dan dinamis. dan mengaktualisasikan diri sebagai sebuah citra diri “Ulul Albab”." />
+    <meta property="og:url" content="{{URL::asset('/article') }}" />
+    <meta property="og:site_name" content="PMII Rayon Pencerahan Galileo" />
+    <meta property="article:publisher" content="https://www.facebook.com/goodnewsfrompmii/" />
+    <meta property="article:published_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="article:modified_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="og:updated_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="og:image" content="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:image:secure_url" content="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="694" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Web Resmi PMII Rayon Pencerahan Galileo. Rayon “Pencerahan” Galileo yang beranggotakan mahasiswa berbasis eksakta, Sebagian orang mengatakan mahasiswanya terkesan individualis dan  praktis. Karena hal yang demikianlah Rayon “Pencerahan” Galileo dituntut untuk berupaya membuka pola pikir warga eksakta menjadi warga eksak yang berpikiran luas, mempunyai paradigma kritis transformatif, profesional,ilmiah (positif) dan dinamis. dan mengaktualisasikan diri sebagai sebuah citra diri “Ulul Albab”." />
+    <meta name="twitter:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
+    <meta name="twitter:image" content="{{ asset('img/favicon.ico') }}" />
+
     <!-- Favicons -->
     <link href="{{ asset('img/favicon.ico') }}" rel="icon">
     <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">

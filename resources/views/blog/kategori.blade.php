@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <title>PMII Rayon "Pencerahan" Galileo</title>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <!-- Favicons -->
-  <link href="{{ asset('img/favicon.ico') }}" rel="icon">
-  <link href="{{ URL::asset('img/apple-touch-icon.ico') }}" rel="apple-touch-icon">
-
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/open-iconic-bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/animate.css') }}">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/owl.carousel.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/owl.theme.default.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/magnific-popup.css') }}">
-
-  <link href="{{ asset('blog/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/aos.css') }}">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/ionicons.min.css') }}">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/bootstrap-datepicker.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/jquery.timepicker.css') }}">
-
-  <link rel="stylesheet" href="{{ asset('blog/css/flaticon.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/icomoon.css') }}">
-  <link rel="stylesheet" href="{{ asset('blog/css/style.css') }}">  
+  <title>Artikel | PMII Rayon "Pencerahan" Galileo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="description" content="Daftar Artikel dan Karya Tulis Kader PMII Rayon Pencerahan Galileo"/>
+  <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
+  <meta property="og:description" content="Daftar Artikel dan Karya Tulis Kader PMII Rayon Pencerahan Galileo" />
+  <meta property="og:url" content="{{URL::asset('/article') }}" />
+  <meta property="og:site_name" content="PMII Rayon Pencerahan Galileo" />
+  <meta property="article:publisher" content="https://www.facebook.com/goodnewsfrompmii/" />
+  <meta property="article:published_time" content="{{ \Carbon\Carbon::now() }}" />
+  <meta property="article:modified_time" content="{{ \Carbon\Carbon::now() }}" />
+  <meta property="og:updated_time" content="{{ \Carbon\Carbon::now() }}" />
+  <meta property="og:image" content="{{ asset('img/favicon.ico') }}" />
+  <meta property="og:image:secure_url" content="{{ asset('img/favicon.ico') }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="694" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:description" content="Daftar Artikel dan Karya Tulis Kader PMII Rayon Pencerahan Galileo" />
+  <meta name="twitter:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
+  <meta name="twitter:image" content="{{ asset('img/favicon.ico') }}" />
   
 </head>
 <body>
@@ -208,7 +201,7 @@
   </footer>
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#18d36e"/></svg></div>
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#007bff"/></svg></div>
 
 
   <script src="{{ asset('blog/js/jquery.min.js') }}"></script>

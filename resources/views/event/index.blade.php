@@ -112,7 +112,7 @@
                   $date = $event['tgl_akhir_regist'];
                   $now = date("Y-m-d");
 
-                  if($date > $now) {
+                  if($date >= $now) {
                     echo '<p><a href="#" class="btn btn-primary py-2 px-3" data-toggle="modal" data-target="#eventRegistModal'. $event['id'] .'">Ikuti Event</a></p>
 
                     <div class="modal-lg fade" id="eventRegistModal'. $event['id'] .'" tabindex="-1" role="dialog" aria-labelledby="modalLabel'. $event['id'] .'" aria-hidden="true">
@@ -138,7 +138,7 @@
                     </div>
                     </div>
                     ';
-                  } elseif($date < $now) {
+                  } elseif($date <= $now) {
                     echo '<p><a href="#" class="btn btn-primary py-2 px-3">Pendaftaran Ditutup</a></p>';
                   }
                   ?>                    

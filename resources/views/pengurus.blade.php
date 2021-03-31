@@ -8,6 +8,25 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <meta name="description" content="Daftar Pengurus PMII Rayon Pencerahan Galileo"/>
+    <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Artikel | PMII Rayon Pencerahan Galileo" />
+    <meta property="og:description" content="Daftar Pengurus PMII Rayon Pencerahan Galileo" />
+    <meta property="og:url" content="{{URL::asset('/article') }}" />
+    <meta property="og:site_name" content="PMII Rayon Pencerahan Galileo" />
+    <meta property="article:publisher" content="https://www.facebook.com/goodnewsfrompmii/" />
+    <meta property="article:published_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="article:modified_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="og:updated_time" content="{{ \Carbon\Carbon::now() }}" />
+    <meta property="og:image" content="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:image:secure_url" content="{{ asset('img/favicon.ico') }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="694" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Daftar Pengurus PMII Rayon Pencerahan Galileo" />
+
     <!-- Favicons -->
     <link href="{{ asset('img/favicon.ico') }}" rel="icon">
     <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
