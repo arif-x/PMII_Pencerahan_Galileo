@@ -20,14 +20,14 @@ class KaderController extends Controller
 			return Datatables::of($data)
 			->addIndexColumn()
             ->addColumn('pasfoto', function($row){
-                $data = '<a href="/admin/kader/'.$row->nim.'/photo/pasphoto" target="_blank">Lihat Pasphoto</a>'; 
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Detail" class="edit btn btn-primary btn-sm lihatPas">Lihat Pasphoto</a>';
 
-                return $data;
+                return $btn;                
             })
             ->addColumn('ktm', function($row){
-                $data = '<a href="/admin/kader/'.$row->nim.'/photo/ktm" target="_blank">Lihat KTM</a>'; 
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Detail" class="edit btn btn-primary btn-sm lihatKTM">Lihat KTM</a>';
 
-                return $data;
+                return $btn;                
             })
             ->addColumn('detail', function($row){
                 $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Detail" class="edit btn btn-primary btn-sm detailKader">Lihat Detail</a>';

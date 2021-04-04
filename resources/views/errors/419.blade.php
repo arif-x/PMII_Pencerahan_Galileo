@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Error 404</title>
+    <title>Error 419</title>
     <link href="{{ URL::asset('message/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -15,10 +15,10 @@
     <div class="cloud x5"></div>
 </div>
 <div class='c'>
-    <div class='_404'>404</div>
+    <div class='_404'>419</div>
     <hr>
     <div class='_1'>HALAMAN</div>
-    <div class='_2'>TIDAK ADA</div>
+    <div class='_2'>KADALUARSA</div>
     <a class='btn' href='javascript:history.go(-1)'>KEMBALI</a>
 </div>
 

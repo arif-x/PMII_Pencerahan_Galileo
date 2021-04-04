@@ -284,96 +284,155 @@
              </div>
            </div>
          </div>
-       </div>
 
-       <script type="text/javascript">
-         $(function () {
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         <div class="modal fade bd-example-modal-lg" id="modalKTM" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-long">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modalHeadingKTM"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12">
+                  <div class="text-center">
+                    <img src="" class="img-fluid" id="img_ktm" style="max-width: 100% !important; height: auto;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" id="modalPas" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-long">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modalHeadingPas"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="col-md-12">
+                  <div class="text-center">
+                    <img src="" class="img-fluid" id="img_pas" style="max-width: 100% !important; height: auto;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <script type="text/javascript">
+       $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+        var table = $('.data-table').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "{{ route('kader.index') }}",
+          columns: [
+          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+          {data: 'nim', name: 'nim'},
+          {data: 'name', name: 'name'},
+          {data: 'status_kaderisasi', name: 'status_kaderisasi'},
+          {data: 'verifikasi', name: 'verifikasi'},
+          {data: 'pasfoto', name: 'pasfoto'},
+          {data: 'ktm', name: 'ktm'},
+          {data: 'detail', name: 'detail', orderable: false, searchable: false},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+          ]
+        });
+
+        $('body').on('click', '.editKader', function () {
+          var kader_id = $(this).data('id');
+          $.get("{{ route('kader.index') }}" +'/' + kader_id +'/edit', function (data) {
+            $('#modelHeading').html("Edit Kader");
+            $('#saveBtn').val("edit-user");
+            $('#ajaxModel').modal('show');
+            $('#kader_id').val(data.id);
+            $('#nim').val(data.nim);
+            $('#name').val(data.name);
+            $('#status_kaderisasi').val(data.status_kaderisasi);
+            $('#verifikasi').val(data.verifikasi);
+          })
+        });
+        $('#saveBtn').click(function (e) {
+          e.preventDefault();
+          $(this).html('Memproses..');
+
+          $.ajax({
+            data: $('#kaderForm').serialize(),
+            url: "{{ route('kader.store') }}",
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+              $('#kaderForm').trigger("reset");
+              $('#ajaxModel').modal('hide');
+              table.draw();
+            },
+            error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn').html('Save Changes');
             }
           });
+        });          
 
-          var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('kader.index') }}",
-            columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'nim', name: 'nim'},
-            {data: 'name', name: 'name'},
-            {data: 'status_kaderisasi', name: 'status_kaderisasi'},
-            {data: 'verifikasi', name: 'verifikasi'},
-            {data: 'pasfoto', name: 'pasfoto'},
-            {data: 'ktm', name: 'ktm'},
-            {data: 'detail', name: 'detail', orderable: false, searchable: false},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
-          });
-
-          $('body').on('click', '.editKader', function () {
-            var kader_id = $(this).data('id');
-            $.get("{{ route('kader.index') }}" +'/' + kader_id +'/edit', function (data) {
-              $('#modelHeading').html("Edit Kader");
-              $('#saveBtn').val("edit-user");
-              $('#ajaxModel').modal('show');
-              $('#kader_id').val(data.id);
-              $('#nim').val(data.nim);
-              $('#name').val(data.name);
-              $('#status_kaderisasi').val(data.status_kaderisasi);
-              $('#verifikasi').val(data.verifikasi);
-            })
-          });
-          $('#saveBtn').click(function (e) {
-            e.preventDefault();
-            $(this).html('Memproses..');
-
-            $.ajax({
-              data: $('#kaderForm').serialize(),
-              url: "{{ route('kader.store') }}",
-              type: "POST",
-              dataType: 'json',
-              success: function (data) {
-                $('#kaderForm').trigger("reset");
-                $('#ajaxModel').modal('hide');
-                table.draw();
-              },
-              error: function (data) {
-                console.log('Error:', data);
-                $('#saveBtn').html('Save Changes');
-              }
-            });
-          });          
-
-          $('body').on('click', '.detailKader', function () {
-            var kader_id = $(this).data('id');
-            $.get("{{ route('kader.index') }}" +'/' + kader_id, function (data) {
-              $('#modalHeadingDetail').html("Detail Kader");
-              $('#detailModal').modal('show');
-              $('#kader_id_det').val(data.id);
-              $('#nim_det').val(data.nim);
-              $('#name_det').val(data.name);
-              $('#email_det').val(data.email);
-              $('#tanggal_lahir_det').val(data.tanggal_lahir);
-              $('#jenis_kelamin_det').val(data.jenis_kelamin);
-              $('#jurusan_det').val(data.jurusan);
-              $('#alamat_di_malang_det').val(data.alamat_di_malang);
-              $('#alamat_asli_det').val(data.alamat_asli);
-              $('#nama_ayah_det').val(data.nama_ayah);
-              $('#nama_ibu_det').val(data.nama_ibu);
-              $('#nomor_hp_det').val(data.no_hp);
-              $('#minat_det').val(data.minat);
-              $('#bakat_det').val(data.bakat);
-              $('#alasan_det').val(data.alasan);
-              $('#target_ke_depan_det').val(data.target_ke_depan);
-            })
-          });
+        $('body').on('click', '.detailKader', function () {
+          var kader_id = $(this).data('id');
+          $.get("{{ route('kader.index') }}" +'/' + kader_id, function (data) {
+            $('#modalHeadingDetail').html("Detail Kader");
+            $('#detailModal').modal('show');
+            $('#kader_id_det').val(data.id);
+            $('#nim_det').val(data.nim);
+            $('#name_det').val(data.name);
+            $('#email_det').val(data.email);
+            $('#tanggal_lahir_det').val(data.tanggal_lahir);
+            $('#jenis_kelamin_det').val(data.jenis_kelamin);
+            $('#jurusan_det').val(data.jurusan);
+            $('#alamat_di_malang_det').val(data.alamat_di_malang);
+            $('#alamat_asli_det').val(data.alamat_asli);
+            $('#nama_ayah_det').val(data.nama_ayah);
+            $('#nama_ibu_det').val(data.nama_ibu);
+            $('#nomor_hp_det').val(data.no_hp);
+            $('#minat_det').val(data.minat);
+            $('#bakat_det').val(data.bakat);
+            $('#alasan_det').val(data.alasan);
+            $('#target_ke_depan_det').val(data.target_ke_depan);
+          })
         });
-      </script>
 
-    </div>
-    <!-- Container-fluid Ends -->
+        $('body').on('click', '.lihatKTM', function () {
+          var kader_id = $(this).data('id');
+          $.get("{{ route('kader.index') }}" +'/' + kader_id, function (data) {
+            $('#modalHeadingKTM').html("KTM " + data.name);
+            $('#modalKTM').modal('show');
+            $('#img_ktm').attr('src', '/storage/ktm/' + data.ktm);
+          })
+        });
+
+        $('body').on('click', '.lihatPas', function () {
+          var kader_id = $(this).data('id');
+          $.get("{{ route('kader.index') }}" +'/' + kader_id, function (data) {
+            $('#modalHeadingPas').html("Pasphoto " + data.name);
+            $('#modalPas').modal('show');
+            $('#img_pas').attr('src', '/storage/pasphoto/' + data.pasphoto);
+          })
+        });
+      });
+    </script>
+
   </div>
-  <!--Page Body Ends-->
+  <!-- Container-fluid Ends -->
+</div>
+<!--Page Body Ends-->
 </div>
 @endsection
