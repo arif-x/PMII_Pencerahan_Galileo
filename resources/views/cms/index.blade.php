@@ -45,11 +45,6 @@
           <div class="modal-body">
             <div class="row">
                 <div class="col-md-12">
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif
 
                     <form name="contentForm" id="contentForm">
                         <input type="hidden" name="artikel_id" id="artikel_id">
