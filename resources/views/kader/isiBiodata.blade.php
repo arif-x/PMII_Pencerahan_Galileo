@@ -115,7 +115,7 @@
 										$('#checkAktif').html('<div class="form-group row"><label for="text" class="col-md-3 col-form-label">Alamat Di Malang</label><div class="col-md-9"><input type="text" id="alamat_di_malang" name="alamat_di_malang" class="form-control" value="{{ Auth::user()->alamat_di_malang }}"></div></div>');
 									} else if($('#mhs_aktif option:selected').text() == "Tidak"){
 										$('#checkAktif').empty();
-										$('#checkAktif').html('<div class="form-group row"><label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label><div class="col-md-9"><input type="text" id="alamat_sekarang" name="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}"></div></div>');
+										$('#checkAktif').html('<div class="form-group row"><label for="text" class="col-md-3 col-form-label">Alamat Sekarang</label><div class="col-md-9"><input type="text" id="alamat_sekarang" name="alamat_sekarang" class="form-control" value="{{ Auth::user()->alamat_sekarang }}"></div></div><div class="form-group row"><label for="text" class="col-md-3 col-form-label">Pekerjaan</label><div class="col-md-9"><input type="text" id="pekerjaan" name="pekerjaan" class="form-control" value="{{ Auth::user()->pekerjaan }}"></div></div>');
 									}
 								})
 							});

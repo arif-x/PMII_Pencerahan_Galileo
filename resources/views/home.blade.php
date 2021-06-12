@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PMII Rayon "Pencerahan Galileo"</title>
+    <title>PMII Rayon "Pencerahan" Galileo</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="pmii galileo, pmii rayon galileo, pmii rayon pencerahan galileo, web resmi pmii galileo, web portal kader pmii" name="keywords">
 
     <meta name="description" content="Web Resmi PMII Rayon Pencerahan Galileo. Rayon “Pencerahan” Galileo yang beranggotakan mahasiswa berbasis eksakta, Sebagian orang mengatakan mahasiswanya terkesan individualis dan  praktis. Karena hal yang demikianlah Rayon “Pencerahan” Galileo dituntut untuk berupaya membuka pola pikir warga eksakta menjadi warga eksak yang berpikiran luas, mempunyai paradigma kritis transformatif, profesional,ilmiah (positif) dan dinamis. dan mengaktualisasikan diri sebagai sebuah citra diri “Ulul Albab”."/>
     <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />

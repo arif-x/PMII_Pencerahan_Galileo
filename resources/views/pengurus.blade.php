@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PMII Rayon "Pencerahan Galileo"</title>
+    <title>PMII Rayon "Pencerahan" Galileo</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="pmii galileo, pmii rayon galileo, pmii rayon pencerahan galileo, web resmi pmii galileo, web portal kader pmii" name="keywords">
 
     <meta name="description" content="Daftar Pengurus PMII Rayon Pencerahan Galileo"/>
     <link rel="canonical" href="{{ asset('img/favicon.ico') }}" />
